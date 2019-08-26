@@ -42,20 +42,10 @@ BUI.MenuList = {
 			HideUIPanel(PlayerTalentFrame)
 		end
 	end},
-	{text = LFG_TITLE, func = function() ToggleLFDParentFrame(); end},
-	{text = ACHIEVEMENT_BUTTON, func = function() ToggleAchievementFrame() end},
 	{text = REPUTATION, func = function() ToggleCharacter('ReputationFrame') end},
-	{text = GARRISON_TYPE_8_0_LANDING_PAGE_TITLE, func = function() GarrisonLandingPageMinimapButton_OnClick() end},
 	{text = COMMUNITIES_FRAME_TITLE, func = function() ToggleGuildFrame() end},
 	{text = L["Calendar"], func = function() GameTimeFrame:Click() end},
-	{text = MOUNTS, func = function() ToggleCollectionsJournal(1) end},
-	{text = PET_JOURNAL, func = function() ToggleCollectionsJournal(2) end},
-	{text = TOY_BOX, func = function() ToggleCollectionsJournal(3) end},
-	{text = HEIRLOOMS, func = function() ToggleCollectionsJournal(4) end},
-	{text = WARDROBE, func = function() ToggleCollectionsJournal(5) end},
 	{text = MACROS, func = function() GameMenuButtonMacros:Click() end},
-	{text = TIMEMANAGER_TITLE, func = function() ToggleFrame(TimeManagerFrame) end},
-	{text = ADVENTURE_JOURNAL, func = function() if not IsAddOnLoaded('Blizzard_EncounterJournal') then EncounterJournal_LoadUI(); end ToggleFrame(EncounterJournal) end},
 	{text = SOCIAL_BUTTON, func = function() ToggleFriendsFrame() end},
 	{text = MAINMENU_BUTTON,
 	func = function()
@@ -76,7 +66,6 @@ BUI.MenuList = {
 		end
 	end},
 	{text = HELP_BUTTON, func = function() ToggleHelpFrame() end},
-	{text = BLIZZARD_STORE, func = function() StoreMicroButton:Click() end}
 }
 
 local function sortFunction(a, b)
