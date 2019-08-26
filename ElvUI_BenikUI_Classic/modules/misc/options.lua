@@ -15,13 +15,13 @@ local function miscTable()
 				type = 'header',
 				name = BUI:cOption(L["Miscellaneous"]),
 			},
-			flightMode = {
+			--[[flightMode = {
 				order = 2,
 				type = 'toggle',
 				name = L['Flight Mode'],
 				desc = L['Display the Flight Mode screen when taking flight paths'],
 				get = function(info) return E.db.benikui.misc[ info[#info] ] end,
-				set = function(info, value) E.db.benikui.misc[ info[#info] ] = value; BUI:GetModule('FlightMode'):Toggle() E:StaticPopup_Show('PRIVATE_RL') end,
+				set = function(info, value) E.db.benikui.misc[ info[#info] ] = value; BUI:GetModule('FlightMode'):Toggle() E:StaticPopup_Show('PRIVATE_RL') end,]]
 			},
 			afkMode = {
 				order = 3,
@@ -35,7 +35,7 @@ local function miscTable()
 				type = 'description',
 				name = '',
 			},
-			ilevel = {
+			--[[ilevel = {
 				order = 5,
 				type = 'group',
 				guiInline = true,
@@ -93,10 +93,10 @@ local function miscTable()
 						type = "color",
 						name = L.COLOR_PICKER,
 						disabled = function() return E.db.benikui.misc.ilevel.colorStyle == 'RARITY' or not E.db.benikui.misc.ilevel.enable end,
-						get = function(info)
-							local t = E.db.benikui.misc.ilevel[ info[#info] ]
-							local d = P.benikui.misc.ilevel[info[#info]]
-							return t.r, t.g, t.b, t.a, d.r, d.g, d.b
+						get = function(info)]]
+							--local t = E.db.benikui.misc.ilevel[info[#info]]
+							--local d = P.benikui.misc.ilevel[info[#info]]
+							--[[return t.r, t.g, t.b, t.a, d.r, d.g, d.b
 							end,
 						set = function(info, r, g, b)
 							E.db.benikui.misc.ilevel[ info[#info] ] = {}
@@ -117,7 +117,7 @@ local function miscTable()
 						set = function(info, value) E.db.benikui.misc.ilevel[ info[#info] ] = value; BUI:GetModule('iLevel'):UpdateItemLevelPosition() end,
 					},
 				},
-			},
+			},]]
 		},
 	}
 end
