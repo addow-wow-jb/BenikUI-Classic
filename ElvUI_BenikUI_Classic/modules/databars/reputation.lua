@@ -11,9 +11,6 @@ local find, gsub = string.find, string.gsub
 local incpat = gsub(gsub(FACTION_STANDING_INCREASED, "(%%s)", "(.+)"), "(%%d)", "(.+)")
 local changedpat = gsub(gsub(FACTION_STANDING_CHANGED, "(%%s)", "(.+)"), "(%%d)", "(.+)")
 local decpat = gsub(gsub(FACTION_STANDING_DECREASED, "(%%s)", "(.+)"), "(%%d)", "(.+)")
-local C_Reputation_GetFactionParagonInfo = C_Reputation.GetFactionParagonInfo
-local C_Reputation_IsFactionParagon = C_Reputation.IsFactionParagon
-local C_TimerAfter = C_Timer.After
 
 local GetWatchedFactionInfo = GetWatchedFactionInfo
 local SetWatchedFactionIndex = SetWatchedFactionIndex
@@ -120,18 +117,7 @@ function mod:UpdateRepNotifier()
 	local bar = ElvUI_ReputationBar.statusBar
 	local name, reaction, min, max, value, factionID = GetWatchedFactionInfo()
 
-	if (C_Reputation_IsFactionParagon(factionID)) then
-		local currentValue, threshold, _, hasRewardPending = C_Reputation_GetFactionParagonInfo(factionID)
-		if currentValue and threshold then
-			min, max = 0, threshold
-			value = currentValue % threshold
-			if hasRewardPending then
-				value = value + threshold
-			end
-		end
-	end
-
-	if not name or E.db.databars.reputation.orientation ~= 'VERTICAL' or (reaction == MAX_REPUTATION_REACTION and not C_Reputation_IsFactionParagon(factionID)) then
+	if not name or E.db.databars.reputation.orientation ~= 'VERTICAL' or (reaction == MAX_REPUTATION_REACTION) then
 		bar.f:Hide()
 	else
 		bar.f:Show()
@@ -192,7 +178,7 @@ function mod:LoadRep()
 		hooksecurefunc(M, 'UpdateReputationDimensions', mod.UpdateRepNotifierPositions)
 		hooksecurefunc(M, 'UpdateReputationDimensions', mod.UpdateRepNotifier)
 
-		C_TimerAfter(1, mod.UpdateRepNotifier)
+		E:Delay(1, mod.UpdateRepNotifier)
 	end
 
 	if E.db.benikuiDatabars.reputation.enable ~= true then return end
