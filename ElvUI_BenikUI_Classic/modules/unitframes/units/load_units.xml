@@ -2,6 +2,5 @@
 	<Script file='player.lua'/>
 	<Script file='target.lua'/>
 	<Script file='targettarget.lua'/>
-	<Script file='focus.lua'/>
 	<Script file='pet.lua'/>
 </Ui>
