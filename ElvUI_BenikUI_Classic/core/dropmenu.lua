@@ -16,35 +16,8 @@ local UIFrameFadeOut, UIFrameFadeIn, UISpecialFrames = UIFrameFadeOut, UIFrameFa
 BUI.MenuList = {
 	{text = CHARACTER_BUTTON, func = function() ToggleCharacter("PaperDollFrame") end},
 	{text = SPELLBOOK_ABILITIES_BUTTON, func = function() if not SpellBookFrame:IsShown() then ShowUIPanel(SpellBookFrame) else HideUIPanel(SpellBookFrame) end end},
-	{text = SPECIALIZATION,
-	func = function()
-		if not PlayerTalentFrame then
-			TalentFrame_LoadUI()
-		end
-
-		if not PlayerTalentFrame:IsShown() then
-			ShowUIPanel(PlayerTalentFrame)
-			_G["PlayerTalentFrameTab"..SPECIALIZATION_TAB]:Click()
-		else
-			HideUIPanel(PlayerTalentFrame)
-		end
-	end},
-	{text = TALENTS,
-	func = function()
-		if not PlayerTalentFrame then
-			TalentFrame_LoadUI()
-		end
-
-		if not PlayerTalentFrame:IsShown() then
-			ShowUIPanel(PlayerTalentFrame)
-			_G["PlayerTalentFrameTab"..TALENTS_TAB]:Click()
-		else
-			HideUIPanel(PlayerTalentFrame)
-		end
-	end},
 	{text = REPUTATION, func = function() ToggleCharacter('ReputationFrame') end},
 	{text = COMMUNITIES_FRAME_TITLE, func = function() ToggleGuildFrame() end},
-	{text = L["Calendar"], func = function() GameTimeFrame:Click() end},
 	{text = MACROS, func = function() GameMenuButtonMacros:Click() end},
 	{text = SOCIAL_BUTTON, func = function() ToggleFriendsFrame() end},
 	{text = MAINMENU_BUTTON,
