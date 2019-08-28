@@ -19,6 +19,8 @@ local units = {"Player", "Target", "Pet"}
 --Configure castbar text position and alpha
 local function ConfigureText(unit, castbar)
 	local db = E.db.benikui.unitframes.castbar.text
+	
+	if not castbar then return end
 
 	if db.castText then
 		castbar.Text:Show()
@@ -51,13 +53,17 @@ local function ConfigureText(unit, castbar)
 end
 
 local function changeCastbarLevel(unit, unitframe)
-	unitframe.Castbar:SetFrameStrata("LOW")
-	unitframe.Castbar:SetFrameLevel(unitframe.InfoPanel:GetFrameLevel() + 10)
+	local castbar = unitframe.Castbar
+	if not castbar then return end
+	castbar:SetFrameStrata("LOW")
+	castbar:SetFrameLevel(unitframe.InfoPanel:GetFrameLevel() + 10)
 end
 
 local function resetCastbarLevel(unit, unitframe)
-	unitframe.Castbar:SetFrameStrata("HIGH")
-	unitframe.Castbar:SetFrameLevel(6)
+	local castbar = unitframe.Castbar
+	if not castbar then return end
+	castbar:SetFrameStrata("HIGH")
+	castbar:SetFrameLevel(6)
 end
 
 local function ConfigureCastbarShadow(unit, unitframe)
@@ -66,7 +72,7 @@ local function ConfigureCastbarShadow(unit, unitframe)
 	local db = E.db.unitframe.units[unit].castbar;
 	local castbar = unitframe.Castbar
 
-	if not castbar.backdrop.shadow then return end
+	if not castbar or not castbar.backdrop.shadow then return end
 
 	if unitframe.USE_INFO_PANEL and db.insideInfoPanel then
 		castbar.backdrop.shadow:Hide()
