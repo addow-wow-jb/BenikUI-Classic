@@ -12,7 +12,7 @@ local LSM = LibStub("LibSharedMedia-3.0");
 
 local _G = _G
 
-local units = {"Player", "Target", "Focus", "Pet"}
+local units = {"Player", "Target", "Pet"}
 
 -- GLOBALS: hooksecurefunc
 
@@ -93,18 +93,6 @@ local function ConfigureCastbar(unit, unitframe)
 			end
 		else
 			resetCastbarLevel(unit, unitframe)
-		end
-	elseif unit == "focus" or unit == "pet" then
-		ConfigureCastbarShadow(unit, unitframe)
-	elseif unit == "arena" then
-		for i = 1, 5 do
-			local unitframe = _G["ElvUF_Arena"..i]
-			ConfigureCastbarShadow(unit, unitframe)
-		end
-	elseif unit == "boss" then
-		for i = 1, 5 do
-			local unitframe = _G["ElvUF_Boss"..i]
-			ConfigureCastbarShadow(unit, unitframe)
 		end
 	end
 end
