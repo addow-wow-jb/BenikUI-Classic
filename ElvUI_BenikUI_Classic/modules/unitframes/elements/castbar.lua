@@ -122,10 +122,7 @@ end
 function mod:UpdateAllCastbars()
 	mod:UpdateSettings("player")
 	mod:UpdateSettings("target")
-	mod:UpdateSettings("focus")
 	mod:UpdateSettings("pet")
-	mod:UpdateSettings("arena")
-	mod:UpdateSettings("boss")
 end
 
 --Castbar texture
@@ -209,30 +206,6 @@ function mod:CastBarHooks()
 	for _, unit in pairs(units) do
 		local unitframe = _G["ElvUF_"..unit];
 		local castbar = unitframe and unitframe.Castbar
-		if castbar then
-			if BUI.ShadowMode then
-				castbar.backdrop:CreateSoftShadow()
-				castbar.ButtonIcon.bg:CreateSoftShadow()
-			end
-			hooksecurefunc(castbar, "PostCastStart", mod.PostCast)
-			hooksecurefunc(castbar, "PostCastInterruptible", mod.PostCastInterruptible)
-		end
-	end
-
-	for i = 1, 5 do
-		local castbar = _G["ElvUF_Arena"..i].Castbar
-		if castbar then
-			if BUI.ShadowMode then
-				castbar.backdrop:CreateSoftShadow()
-				castbar.ButtonIcon.bg:CreateSoftShadow()
-			end
-			hooksecurefunc(castbar, "PostCastStart", mod.PostCast)
-			hooksecurefunc(castbar, "PostCastInterruptible", mod.PostCastInterruptible)
-		end
-	end
-
-	for i = 1, MAX_BOSS_FRAMES do
-		local castbar = _G["ElvUF_Boss"..i].Castbar
 		if castbar then
 			if BUI.ShadowMode then
 				castbar.backdrop:CreateSoftShadow()
