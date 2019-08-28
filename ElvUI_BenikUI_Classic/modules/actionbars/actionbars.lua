@@ -191,7 +191,7 @@ function mod:TotemShadows()
 
 	for i=1, MAX_TOTEMS do
 		button = _G["ElvUI_TotemBarTotem"..i];
-		if not button.shadow then
+		if button and not button.shadow then
 			button:CreateSoftShadow()
 		end
 	end
@@ -219,7 +219,7 @@ function mod:Initialize()
 	hooksecurefunc(BUI, "SetupColorThemes", mod.ColorBackdrops)
 
 	if not BUI.ShadowMode then return end
-	_G.SpellFlyout:HookScript("OnShow", mod.FlyoutShadows)
+	--_G.SpellFlyout:HookScript("OnShow", mod.FlyoutShadows)
 end
 
 BUI:RegisterModule(mod:GetName())
