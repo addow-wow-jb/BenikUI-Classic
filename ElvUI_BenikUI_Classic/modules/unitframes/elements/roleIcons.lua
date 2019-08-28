@@ -20,9 +20,9 @@ local UnitIsConnected = UnitIsConnected
 local IsAddOnLoaded = IsAddOnLoaded
 
 local rolePaths = {
-	TANK = [[Interface\AddOns\ElvUI_BenikUI\media\textures\roleIcons\tank.tga]],
-	HEALER = [[Interface\AddOns\ElvUI_BenikUI\media\textures\roleIcons\healer.tga]],
-	DAMAGER = [[Interface\AddOns\ElvUI_BenikUI\media\textures\roleIcons\dps.tga]]
+	TANK = [[Interface\AddOns\ElvUI_BenikUI_Classic\media\textures\roleIcons\tank.tga]],
+	HEALER = [[Interface\AddOns\ElvUI_BenikUI_Classic\media\textures\roleIcons\healer.tga]],
+	DAMAGER = [[Interface\AddOns\ElvUI_BenikUI_Classic\media\textures\roleIcons\dps.tga]]
 }
 
 local specNameToRole = {}

@@ -1997,7 +1997,7 @@ end
 BUI.installTable = {
 	["Name"] = "|cff00c0faBenikUI|r",
 	["Title"] = L["|cff00c0faBenikUI|r Installation"],
-	["tutorialImage"] = [[Interface\AddOns\ElvUI_BenikUI\media\textures\logo_benikui.tga]],
+	["tutorialImage"] = [[Interface\AddOns\ElvUI_BenikUI_Classic\media\textures\logo_benikui.tga]],
 	["Pages"] = {
 		[1] = function()
 			PluginInstallFrame:Style('Outside')
