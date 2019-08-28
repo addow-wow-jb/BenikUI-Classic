@@ -132,43 +132,9 @@ function BU:PartyInfoPanelColor()
 	end
 end
 
--- Arena
-function BU:ArenaInfoPanelColor()
-	local bar = LSM:Fetch("statusbar", E.db.benikui.unitframes.infoPanel.texture)
-	for i = 1, 5 do
-		local unitbutton = _G["ElvUF_Arena"..i]
-		if unitbutton.InfoPanel then
-			if not unitbutton.InfoPanel.color then
-				unitbutton.InfoPanel.color = unitbutton.InfoPanel:CreateTexture(nil, 'OVERLAY')
-				unitbutton.InfoPanel.color:SetAllPoints()
-			end
-			unitbutton.InfoPanel.color:SetTexture(bar)
-			unitbutton.InfoPanel.color:SetVertexColor(BUI:unpackColor(E.db.benikui.unitframes.infoPanel.color))
-		end
-	end
-end
-
--- Boss
-function BU:BossInfoPanelColor()
-	local bar = LSM:Fetch("statusbar", E.db.benikui.unitframes.infoPanel.texture)
-	for i = 1, 5 do
-		local unitbutton = _G["ElvUF_Boss"..i]
-		if unitbutton.InfoPanel then
-			if not unitbutton.InfoPanel.color then
-				unitbutton.InfoPanel.color = unitbutton.InfoPanel:CreateTexture(nil, 'OVERLAY')
-				unitbutton.InfoPanel.color:SetAllPoints()
-			end
-			unitbutton.InfoPanel.color:SetTexture(bar)
-			unitbutton.InfoPanel.color:SetVertexColor(BUI:unpackColor(E.db.benikui.unitframes.infoPanel.color))
-		end
-	end
-end
-
 function BU:InfoPanelColor()
 	BU:UnitInfoPanelColor()
 	BU:RaidInfoPanelColor()
 	BU:Raid40InfoPanelColor()
 	BU:PartyInfoPanelColor()
-	BU:ArenaInfoPanelColor()
-	BU:BossInfoPanelColor()
 end
