@@ -215,7 +215,7 @@ function mod:Initialize()
 	C_TimerAfter(2, mod.LoadToggleButtons)
 	C_TimerAfter(2, mod.ToggleStyle)
 	C_TimerAfter(2, mod.TotemShadows)
-	self:LoadRequestButton()
+	--self:LoadRequestButton()
 	hooksecurefunc(BUI, "SetupColorThemes", mod.ColorBackdrops)
 
 	if not BUI.ShadowMode then return end
