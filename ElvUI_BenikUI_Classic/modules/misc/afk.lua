@@ -46,39 +46,13 @@ local function createTime()
 	end
 end
 
-local monthAbr = {
-	[1] = L["Jan"],
-	[2] = L["Feb"],
-	[3] = L["Mar"],
-	[4] = L["Apr"],
-	[5] = L["May"],
-	[6] = L["Jun"],
-	[7] = L["Jul"],
-	[8] = L["Aug"],
-	[9] = L["Sep"],
-	[10] = L["Oct"],
-	[11] = L["Nov"],
-	[12] = L["Dec"],
-}
-
-local daysAbr = {
-	[1] = L["Sun"],
-	[2] = L["Mon"],
-	[3] = L["Tue"],
-	[4] = L["Wed"],
-	[5] = L["Thu"],
-	[6] = L["Fri"],
-	[7] = L["Sat"],
-}
-
 -- Create Date
 local function createDate()
-	local date = C_Calendar_GetDate();
-	local presentWeekday = date.weekday;
-	local presentMonth = date.month;
-	local presentDay = date.monthDay;
-	local presentYear = date.year;
-	AFK.AFKMode.top.date:SetFormattedText("%s, %s %d, %d", daysAbr[presentWeekday], monthAbr[presentMonth], presentDay, presentYear)
+	local presentWeekday = date("%a");
+	local presentMonth = date("%b");
+	local presentDay = date("%d");
+	local presentYear = date("%Y");
+	AFK.AFKMode.top.date:SetFormattedText("%s, %s %s, %s", presentWeekday, presentMonth, presentDay, presentYear)
 end
 
 function AFK:UpdateLogOff()
@@ -105,7 +79,7 @@ local function UpdateTimer()
 	AFK.AFKMode.top.time:SetFormattedText(createdTime)
 
 	-- Set Date
-	--createDate()
+	createDate()
 
 	-- Don't need the default timer
 	AFK.AFKMode.bottom.time:SetText(nil)
