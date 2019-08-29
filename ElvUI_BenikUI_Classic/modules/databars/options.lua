@@ -96,80 +96,8 @@ local function databarsTable()
 					},
 				},
 			},
-			azerite = {
-				order = 2,
-				type = 'group',
-				name = L['Azerite Bar'],
-				args = {
-					enable = {
-						order = 1,
-						type = 'toggle',
-						name = L["Enable"],
-						get = function(info) return E.db.benikuiDatabars.azerite.enable end,
-						set = function(info, value) E.db.benikuiDatabars.azerite.enable = value E:StaticPopup_Show('PRIVATE_RL'); end,
-					},
-					buiStyle = {
-						order = 2,
-						type = 'toggle',
-						name = L['BenikUI Style'],
-						disabled = function() return not E.db.benikuiDatabars.azerite.enable end,
-						desc = L['Show BenikUI decorative bars on the default ElvUI Azerite bar'],
-						get = function(info) return E.db.benikuiDatabars.azerite.buiStyle end,
-						set = function(info, value) E.db.benikuiDatabars.azerite.buiStyle = value; mod:ApplyAzeriteStyling(); end,
-					},
-					buttonStyle = {
-						order = 3,
-						type = 'select',
-						name = L['Button Backdrop'],
-						disabled = function() return not E.db.benikuiDatabars.azerite.enable end,
-						values = backdropValues,
-						get = function(info) return E.db.benikuiDatabars.azerite.buttonStyle end,
-						set = function(info, value) E.db.benikuiDatabars.azerite.buttonStyle = value; mod:ToggleAzeriteBackdrop(); end,
-					},
-					notifiers = {
-						order = 4,
-						type = 'group',
-						name = L['Notifiers'],
-						guiInline = true,
-						args = {
-							enable = {
-								order = 1,
-								type = 'toggle',
-								name = L["Enable"],
-								get = function(info) return E.db.benikuiDatabars.azerite.notifiers.enable end,
-								set = function(info, value) E.db.benikuiDatabars.azerite.notifiers.enable = value; E:StaticPopup_Show('PRIVATE_RL'); end,
-							},
-							combat = {
-								order = 2,
-								type = 'toggle',
-								name = L["Combat Fade"],
-								get = function(info) return E.db.benikuiDatabars.azerite.notifiers.combat end,
-								set = function(info, value) E.db.benikuiDatabars.azerite.notifiers.combat = value; E:StaticPopup_Show('PRIVATE_RL'); end,
-							},
-							position = {
-								order = 3,
-								type = 'select',
-								name = L['Position'],
-								disabled = function() return not E.db.benikuiDatabars.azerite.notifiers.enable end,
-								values = {
-									['LEFT'] = L['Left'],
-									['RIGHT'] = L['Right'],
-								},
-								get = function(info) return E.db.benikuiDatabars.azerite.notifiers.position end,
-								set = function(info, value) E.db.benikuiDatabars.azerite.notifiers.position = value; mod:UpdateAzeriteNotifier(); end,
-							},
-						},
-					},
-					elvuiOption = {
-						order = 10,
-						type = "execute",
-						name = L["ElvUI"].." "..L["Azerite Bar"],
-						func = function() LibStub("AceConfigDialog-3.0-ElvUI"):SelectGroup("ElvUI", "databars", "azerite") end,
-					},
-				},
-			},
 			reputation = {
-				order = 3,
+				order = 2,
 				type = 'group',
 				name = REPUTATION,
 				args = {
@@ -248,78 +176,6 @@ local function databarsTable()
 					},
 				},
 			},
-			honor = {
-				order = 4,
-				type = 'group',
-				name = HONOR,
-				args = {
-					enable = {
-						order = 1,
-						type = 'toggle',
-						name = L["Enable"],
-						get = function(info) return E.db.benikuiDatabars.honor.enable end,
-						set = function(info, value) E.db.benikuiDatabars.honor.enable = value E:StaticPopup_Show('PRIVATE_RL'); end,
-					},
-					buiStyle = {
-						order = 2,
-						type = 'toggle',
-						name = L['BenikUI Style'],
-						disabled = function() return not E.db.benikuiDatabars.honor.enable end,
-						desc = L['Show BenikUI decorative bars on the default ElvUI Honor bar'],
-						get = function(info) return E.db.benikuiDatabars.honor.buiStyle end,
-						set = function(info, value) E.db.benikuiDatabars.honor.buiStyle = value; mod:ApplyHonorStyling(); end,
-					},
-					buttonStyle = {
-						order = 3,
-						type = 'select',
-						name = L['Button Backdrop'],
-						disabled = function() return not E.db.benikuiDatabars.honor.enable end,
-						values = backdropValues,
-						get = function(info) return E.db.benikuiDatabars.honor.buttonStyle end,
-						set = function(info, value) E.db.benikuiDatabars.honor.buttonStyle = value; mod:ToggleHonorBackdrop(); end,
-					},
-					notifiers = {
-						order = 4,
-						type = 'group',
-						name = L['Notifiers'],
-						guiInline = true,
-						args = {
-							enable = {
-								order = 1,
-								type = 'toggle',
-								name = L["Enable"],
-								get = function(info) return E.db.benikuiDatabars.honor.notifiers.enable end,
-								set = function(info, value) E.db.benikuiDatabars.honor.notifiers.enable = value; E:StaticPopup_Show('PRIVATE_RL'); end,
-							},
-							combat = {
-								order = 2,
-								type = 'toggle',
-								name = L["Combat Fade"],
-								get = function(info) return E.db.benikuiDatabars.honor.notifiers.combat end,
-								set = function(info, value) E.db.benikuiDatabars.honor.notifiers.combat = value; E:StaticPopup_Show('PRIVATE_RL'); end,
-							},
-							position = {
-								order = 3,
-								type = 'select',
-								name = L['Position'],
-								disabled = function() return not E.db.benikuiDatabars.honor.notifiers.enable end,
-								values = {
-									['LEFT'] = L['Left'],
-									['RIGHT'] = L['Right'],
-								},
-								get = function(info) return E.db.benikuiDatabars.honor.notifiers.position end,
-								set = function(info, value) E.db.benikuiDatabars.honor.notifiers.position = value; mod:UpdateHonorNotifierPositions(); end,
-							},
-						},
-					},
-					elvuiOption = {
-						order = 10,
-						type = "execute",
-						name = L["ElvUI"].." "..HONOR,
-						func = function() LibStub("AceConfigDialog-3.0-ElvUI"):SelectGroup("ElvUI", "databars", "honor") end,
-					},
-				},
-			},
 		},
 	}
 end
@@ -354,35 +210,6 @@ local function injectElvUIDatabarOptions()
 		func = function() LibStub("AceConfigDialog-3.0-ElvUI"):SelectGroup("ElvUI", "benikui", "benikuiDatabars", "experience") end,
 	}
 
-	-- azerite
-	E.Options.args.databars.args.azerite.args.textYoffset = {
-		order = 20,
-		type = "range",
-		min = -30, max = 30, step = 1,
-		name = BUI:cOption(L['Text yOffset']),
-		get = function(info) return E.db.databars.azerite[ info[#info] ] end,
-		set = function(info, value) E.db.databars.azerite[ info[#info] ] = value; mod:AzeriteTextOffset() end,
-	}
-
-	E.Options.args.databars.args.azerite.args.spacer1 = {
-		order = 21,
-		type = 'description',
-		name = '',
-	}
-
-	E.Options.args.databars.args.azerite.args.spacer2 = {
-		order = 22,
-		type = 'header',
-		name = '',
-	}
-
-	E.Options.args.databars.args.azerite.args.gotobenikui = {
-		order = 23,
-		type = "execute",
-		name = BUI.Title..L["Azerite Bar"],
-		func = function() LibStub("AceConfigDialog-3.0-ElvUI"):SelectGroup("ElvUI", "benikui", "benikuiDatabars", "azerite") end,
-	}
-
 	-- reputation
 	E.Options.args.databars.args.reputation.args.textYoffset = {
 		order = 20,
@@ -410,35 +237,6 @@ local function injectElvUIDatabarOptions()
 		type = "execute",
 		name = BUI.Title..REPUTATION,
 		func = function() LibStub("AceConfigDialog-3.0-ElvUI"):SelectGroup("ElvUI", "benikui", "benikuiDatabars", "reputation") end,
-	}
-
-	-- honor
-	E.Options.args.databars.args.honor.args.textYoffset = {
-		order = 20,
-		type = "range",
-		min = -30, max = 30, step = 1,
-		name = BUI:cOption(L['Text yOffset']),
-		get = function(info) return E.db.databars.honor[ info[#info] ] end,
-		set = function(info, value) E.db.databars.honor[ info[#info] ] = value; mod:HonorTextOffset() end,
-	}
-
-	E.Options.args.databars.args.honor.args.spacer1 = {
-		order = 21,
-		type = 'description',
-		name = '',
-	}
-
-	E.Options.args.databars.args.honor.args.spacer2 = {
-		order = 22,
-		type = 'header',
-		name = '',
-	}
-
-	E.Options.args.databars.args.honor.args.gotobenikui = {
-		order = 23,
-		type = "execute",
-		name = BUI.Title..HONOR,
-		func = function() LibStub("AceConfigDialog-3.0-ElvUI"):SelectGroup("ElvUI", "benikui", "benikuiDatabars", "honor") end,
 	}
 end
 tinsert(BUI.Config, injectElvUIDatabarOptions)

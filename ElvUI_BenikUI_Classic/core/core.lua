@@ -14,8 +14,8 @@ local GetAddOnEnableState = GetAddOnEnableState
 BUI["styles"] = {}
 BUI["softGlow"] = {}
 BUI.TexCoords = {.08, 0.92, -.04, 0.92}
-BUI.Title = format('|cff00c0fa%s |r', 'BenikUI')
-BUI.Version = GetAddOnMetadata('ElvUI_BenikUI', 'Version')
+BUI.Title = format('|cff00c0fa%s |r', 'BenikUI Classic')
+BUI.Version = GetAddOnMetadata('ElvUI_BenikUI_Classic', 'Version')
 BUI.ShadowMode = false;
 BUI.AddonProfileKey = '';
 BINDING_HEADER_BENIKUI = BUI.Title
@@ -66,7 +66,7 @@ end
 
 local r, g, b = 0, 0, 0
 function BUI:UpdateStyleColors()
-	local BTT = BUI:GetModule('Tooltip')
+	--local BTT = BUI:GetModule('Tooltip')
 	for frame, _ in pairs(BUI["styles"]) do
 		if frame and not frame.ignoreColor then
 			if E.db.benikui.colors.StyleColor == 1 then
@@ -83,8 +83,8 @@ function BUI:UpdateStyleColors()
 			BUI["styles"][frame] = nil;
 		end
 	end
-	BTT:CheckTooltipStyleColor()
-	BTT:RecolorTooltipStyle()
+	--BTT:CheckTooltipStyleColor()
+	--BTT:RecolorTooltipStyle()
 end
 
 function BUI:UpdateStyleVisibility()

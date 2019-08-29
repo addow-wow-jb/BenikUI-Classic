@@ -12,13 +12,15 @@ local LSM = LibStub("LibSharedMedia-3.0");
 
 local _G = _G
 
-local units = {"Player", "Target", "Focus", "Pet"}
+local units = {"Player", "Target", "Pet"}
 
 -- GLOBALS: hooksecurefunc
 
 --Configure castbar text position and alpha
 local function ConfigureText(unit, castbar)
 	local db = E.db.benikui.unitframes.castbar.text
+	
+	if not castbar then return end
 
 	if db.castText then
 		castbar.Text:Show()
@@ -51,13 +53,17 @@ local function ConfigureText(unit, castbar)
 end
 
 local function changeCastbarLevel(unit, unitframe)
-	unitframe.Castbar:SetFrameStrata("LOW")
-	unitframe.Castbar:SetFrameLevel(unitframe.InfoPanel:GetFrameLevel() + 10)
+	local castbar = unitframe.Castbar
+	if not castbar then return end
+	castbar:SetFrameStrata("LOW")
+	castbar:SetFrameLevel(unitframe.InfoPanel:GetFrameLevel() + 10)
 end
 
 local function resetCastbarLevel(unit, unitframe)
-	unitframe.Castbar:SetFrameStrata("HIGH")
-	unitframe.Castbar:SetFrameLevel(6)
+	local castbar = unitframe.Castbar
+	if not castbar then return end
+	castbar:SetFrameStrata("HIGH")
+	castbar:SetFrameLevel(6)
 end
 
 local function ConfigureCastbarShadow(unit, unitframe)
@@ -66,7 +72,7 @@ local function ConfigureCastbarShadow(unit, unitframe)
 	local db = E.db.unitframe.units[unit].castbar;
 	local castbar = unitframe.Castbar
 
-	if not castbar.backdrop.shadow then return end
+	if not castbar or not castbar.backdrop.shadow then return end
 
 	if unitframe.USE_INFO_PANEL and db.insideInfoPanel then
 		castbar.backdrop.shadow:Hide()
@@ -94,18 +100,6 @@ local function ConfigureCastbar(unit, unitframe)
 		else
 			resetCastbarLevel(unit, unitframe)
 		end
-	elseif unit == "focus" or unit == "pet" then
-		ConfigureCastbarShadow(unit, unitframe)
-	elseif unit == "arena" then
-		for i = 1, 5 do
-			local unitframe = _G["ElvUF_Arena"..i]
-			ConfigureCastbarShadow(unit, unitframe)
-		end
-	elseif unit == "boss" then
-		for i = 1, 5 do
-			local unitframe = _G["ElvUF_Boss"..i]
-			ConfigureCastbarShadow(unit, unitframe)
-		end
 	end
 end
 
@@ -122,10 +116,7 @@ end
 function mod:UpdateAllCastbars()
 	mod:UpdateSettings("player")
 	mod:UpdateSettings("target")
-	mod:UpdateSettings("focus")
 	mod:UpdateSettings("pet")
-	mod:UpdateSettings("arena")
-	mod:UpdateSettings("boss")
 end
 
 --Castbar texture
@@ -209,30 +200,6 @@ function mod:CastBarHooks()
 	for _, unit in pairs(units) do
 		local unitframe = _G["ElvUF_"..unit];
 		local castbar = unitframe and unitframe.Castbar
-		if castbar then
-			if BUI.ShadowMode then
-				castbar.backdrop:CreateSoftShadow()
-				castbar.ButtonIcon.bg:CreateSoftShadow()
-			end
-			hooksecurefunc(castbar, "PostCastStart", mod.PostCast)
-			hooksecurefunc(castbar, "PostCastInterruptible", mod.PostCastInterruptible)
-		end
-	end
-
-	for i = 1, 5 do
-		local castbar = _G["ElvUF_Arena"..i].Castbar
-		if castbar then
-			if BUI.ShadowMode then
-				castbar.backdrop:CreateSoftShadow()
-				castbar.ButtonIcon.bg:CreateSoftShadow()
-			end
-			hooksecurefunc(castbar, "PostCastStart", mod.PostCast)
-			hooksecurefunc(castbar, "PostCastInterruptible", mod.PostCastInterruptible)
-		end
-	end
-
-	for i = 1, MAX_BOSS_FRAMES do
-		local castbar = _G["ElvUF_Boss"..i].Castbar
 		if castbar then
 			if BUI.ShadowMode then
 				castbar.backdrop:CreateSoftShadow()

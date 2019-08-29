@@ -97,7 +97,7 @@ local function Core()
 				type = 'description',
 				name = L['BenikUI is a completely external ElvUI mod. More available options can be found in ElvUI options (e.g. Actionbars, Unitframes, Player and Target Portraits), marked with ']..BUI:cOption(L['light blue color.']),
 				fontSize = 'medium',
-				image = function() return 'Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\logo_benikui.tga', 256, 64 end,
+				image = function() return 'Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\logo_benikui.tga', 256, 64 end,
 			},
 			install = {
 				order = 3,
@@ -430,7 +430,7 @@ local function Core()
 								order = 1,
 								type = 'description',
 								fontSize = 'medium',
-								name = format('|cffffd200%s|r', 'Merathilis, Roxanne, BuG, Semprini, Vxt, V4NT0M, Obscurrium, ElvUI community'),
+								name = format('|cffffd200%s|r', 'Merathilis, Roxanne, BuG, Semprini, Vxt, V4NT0M, Obscurrium, Sikoru, ElvUI community'),
 							},
 						},
 					},

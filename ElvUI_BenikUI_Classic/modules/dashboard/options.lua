@@ -302,8 +302,8 @@ local function dashboardsTable()
 						get = function(info) return E.db.dashboards[ info[#info] ] end,
 						set = function(info, value) E.db.dashboards[ info[#info] ] = value;
 							if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end
-							if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
-							if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
+							--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
+							--if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
 						end,
 					},
 					customBarColor = {
@@ -322,8 +322,8 @@ local function dashboardsTable()
 							local t = E.db.dashboards[ info[#info] ]
 							t.r, t.g, t.b, t.a = r, g, b, a
 							if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end
-							if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
-							if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
+							--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
+							--if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
 						end,
 					},
 					spacer = {
@@ -342,8 +342,8 @@ local function dashboardsTable()
 						get = function(info) return E.db.dashboards[ info[#info] ] end,
 						set = function(info, value) E.db.dashboards[ info[#info] ] = value;
 							if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end
-							if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
-							if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
+							--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
+							--if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
 						end,
 					},
 					customTextColor = {
@@ -361,8 +361,8 @@ local function dashboardsTable()
 							local t = E.db.dashboards[ info[#info] ]
 							t.r, t.g, t.b, t.a = r, g, b, a
 							if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end
-							if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
-							if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
+							--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
+							--if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
 						end,
 					},
 				},
@@ -376,8 +376,8 @@ local function dashboardsTable()
 				get = function(info) return E.db.dashboards.dashfont[ info[#info] ] end,
 				set = function(info, value) E.db.dashboards.dashfont[ info[#info] ] = value;
 					if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end;
-					if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end;
-					if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end;
+					--if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end;
+					--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end;
 					end,
 				args = {
 					useDTfont = {
@@ -489,7 +489,7 @@ local function dashboardsTable()
 					},
 				},
 			},
-			tokens = {
+			--[[tokens = {
 				order = 5,
 				type = 'group',
 				name = TOKENS,
@@ -744,15 +744,15 @@ local function dashboardsTable()
 						set = function(info, value) E.db.dashboards.professions.capped = value; BUID:UpdateProfessions(); BUID:UpdateProfessionSettings(); end,
 					},
 				},
-			},
+			},]]
 		},
 	}
-	-- update the options, when ElvUI Config fires
+	--[[ update the options, when ElvUI Config fires
 	hooksecurefunc(E, "ToggleOptionsUI", UpdateTokenOptions)
-	hooksecurefunc(E, "ToggleOptionsUI", UpdateProfessionOptions)
+	hooksecurefunc(E, "ToggleOptionsUI", UpdateProfessionOptions)]]
 end
 
 tinsert(BUI.Config, dashboardsTable)
 tinsert(BUI.Config, UpdateSystemOptions)
-tinsert(BUI.Config, UpdateTokenOptions)
-tinsert(BUI.Config, UpdateProfessionOptions)
+--tinsert(BUI.Config, UpdateTokenOptions)
+--tinsert(BUI.Config, UpdateProfessionOptions)

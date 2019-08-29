@@ -498,7 +498,6 @@ function mod:Initialize()
 	hooksecurefunc(DT, 'LoadDataTexts', updateButtonFont)
 	hooksecurefunc(E, 'UpdateMedia', updateButtonFont)
 	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-	self:RegisterEvent('ACTIVE_TALENT_GROUP_CHANGED', 'regEvents')
 end
 
 BUI:RegisterModule(mod:GetName())

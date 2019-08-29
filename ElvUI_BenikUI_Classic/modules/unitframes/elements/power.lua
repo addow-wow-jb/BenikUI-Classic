@@ -101,7 +101,7 @@ function BU:ChangeArenaPowerBarTexture()
 		end
 	end
 end
-hooksecurefunc(UF, 'Update_ArenaFrames', BU.ChangeArenaPowerBarTexture)
+--hooksecurefunc(UF, 'Update_ArenaFrames', BU.ChangeArenaPowerBarTexture)
 
 -- Boss
 function BU:ChangeBossPowerBarTexture()
@@ -113,7 +113,7 @@ function BU:ChangeBossPowerBarTexture()
 		end
 	end
 end
-hooksecurefunc(UF, 'Update_BossFrames', BU.ChangeBossPowerBarTexture)
+--hooksecurefunc(UF, 'Update_BossFrames', BU.ChangeBossPowerBarTexture)
 
 
 function BU:ChangePowerBarTexture()
@@ -121,7 +121,7 @@ function BU:ChangePowerBarTexture()
 	BU:ChangeRaidPowerBarTexture()
 	BU:ChangeRaid40PowerBarTexture()
 	BU:ChangePartyPowerBarTexture()
-	BU:ChangeArenaPowerBarTexture()
-	BU:ChangeBossPowerBarTexture()
+	--BU:ChangeArenaPowerBarTexture()
+	--BU:ChangeBossPowerBarTexture()
 end
 hooksecurefunc(UF, 'Update_StatusBars', BU.ChangePowerBarTexture)

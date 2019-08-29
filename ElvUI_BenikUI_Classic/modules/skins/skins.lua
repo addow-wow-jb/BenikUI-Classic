@@ -15,8 +15,6 @@ local GetQuestLogTitle = GetQuestLogTitle
 local MAX_STATIC_POPUPS = 4
 local SPACING = (E.PixelMode and 1 or 3)
 
-local WarCampaignTooltip = QuestScrollFrame.WarCampaignTooltip
-
 local tooltips = {
 	EmbeddedItemTooltip,
 	FriendsTooltip,
@@ -24,34 +22,7 @@ local tooltips = {
 	ShoppingTooltip1,
 	ShoppingTooltip2,
 	ShoppingTooltip3,
-	FloatingBattlePetTooltip,
-	FloatingPetBattleAbilityTooltip,
-	FloatingGarrisonFollowerAbilityTooltip,
-	WarCampaignTooltip
 }
-
-local overlayedTooltips = {
-	GameTooltip,
-	ShoppingTooltip1,
-	ShoppingTooltip2,
-	ShoppingTooltip3
-}
-
-local function tooltipOverlay(tt) -- Create a blank frame to position the GameTooltip.TopOverlay texture
-	if not tt.style then
-		return
-	end
-
-	tt.style.blank = CreateFrame("Frame", nil, tt.style)
-	tt.style.blank:Size(6, 6)
-	tt.style.blank:Point("BOTTOM", tt.style, "TOP")
-
-	if tt.TopOverlay then
-		tt.TopOverlay:SetParent(tt.style.blank)
-		tt.TopOverlay:ClearAllPoints()
-		tt.TopOverlay:Point("CENTER", tt.style.blank, "CENTER")
-	end
-end
 
 -- Blizzard Styles
 local function styleFreeBlizzardFrames()
@@ -240,12 +211,6 @@ local function styleFreeBlizzardFrames()
 				frame:Style("Outside")
 			end
 		end
-
-		for _, tooltip in pairs(overlayedTooltips) do
-			if tooltip then
-				tooltipOverlay(tooltip)
-			end
-		end
 	end
 
 	if db.trade then
@@ -254,7 +219,7 @@ local function styleFreeBlizzardFrames()
 	
 	ColorPickerFrame:Style("Outside")
 end
-S:AddCallback("BenikUI_styleFreeBlizzardFrames", styleFreeBlizzardFrames)
+--S:AddCallback("BenikUI_styleFreeBlizzardFrames", styleFreeBlizzardFrames)
 
 local function StyleCagedBattlePetTooltip(tooltipFrame)
 	if not tooltipFrame.style then
@@ -560,7 +525,7 @@ local function ObjectiveTrackerQuests()
 	end
 	hooksecurefunc("ObjectiveTracker_Update", QuestNumString)
 end
-S:AddCallback("BenikUI_ObjectiveTracker", ObjectiveTrackerQuests)
+--S:AddCallback("BenikUI_ObjectiveTracker", ObjectiveTrackerQuests)
 
 local function StyleInFlight()
 	if E.db.benikuiSkins.variousSkins.inflight ~= true or E.db.benikui.misc.flightMode == true then
@@ -640,10 +605,10 @@ function mod:LoD_AddOns(_, addon)
 end
 
 function mod:PLAYER_ENTERING_WORLD(...)
-	self:styleAlertFrames()
+	--self:styleAlertFrames()
 	styleAddons()
-	styleWorldMap()
-	StyleAdibags()
+	--styleWorldMap()
+	--StyleAdibags()
 
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
@@ -665,28 +630,25 @@ local function StyleAceTooltip(self)
 end
 
 function mod:Initialize()
-	VehicleExit()
+	--VehicleExit()
 	if E.db.benikui.general.benikuiStyle ~= true then return end
 
-	if E.db.benikui.general.benikuiStyle ~= true then return end
-	if E.db.benikui.general.benikuiStyle ~= true then
-		return
-	end
+	hooksecurefunc(E, "ToggleOptionsUI", StyleElvUIConfig)
 
-	skinDecursive()
-	skinStoryline()
-	StyleAltPowerBar()
+	--skinDecursive()
+	--skinStoryline()
+	--StyleAltPowerBar()
 
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
-	self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
-	self:RegisterEvent("BANKFRAME_OPENED", "StyleAdibagsBank")
+	--self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
+	--self:RegisterEvent("BANKFRAME_OPENED", "StyleAdibagsBank")
 
 	if E.private.skins.blizzard.tooltip ~= true then
 		return
 	end
-	hooksecurefunc(E, "ToggleOptionsUI", StyleElvUIConfig)
-	hooksecurefunc("BattlePetTooltipTemplate_SetBattlePet", StyleCagedBattlePetTooltip)
-	hooksecurefunc(S, "Ace3_StyleTooltip", StyleAceTooltip)
+
+	--hooksecurefunc("BattlePetTooltipTemplate_SetBattlePet", StyleCagedBattlePetTooltip)
+	--hooksecurefunc(S, "Ace3_StyleTooltip", StyleAceTooltip)
 end
 
 BUI:RegisterModule(mod:GetName())

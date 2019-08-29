@@ -164,8 +164,8 @@ end
 
 function mod:Initialize()
 	mod:LoadSystem()
-	mod:LoadProfessions()
-	mod:LoadTokens()
+	--mod:LoadProfessions()
+	--mod:LoadTokens()
 end
 
 BUI:RegisterModule(mod:GetName())

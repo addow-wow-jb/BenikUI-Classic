@@ -37,9 +37,9 @@ end
 function mod:Configure_ReadyCheckIcon(frame)
 	local tex = frame.ReadyCheckIndicator
 
-	tex.readyTexture = [[Interface\AddOns\ElvUI_BenikUI\media\textures\ready]]
-	tex.notReadyTexture = [[Interface\AddOns\ElvUI_BenikUI\media\textures\notready]]
-	tex.waitingTexture = [[Interface\AddOns\ElvUI_BenikUI\media\textures\waiting]]
+	tex.readyTexture = [[Interface\AddOns\ElvUI_BenikUI_Classic\media\textures\ready]]
+	tex.notReadyTexture = [[Interface\AddOns\ElvUI_BenikUI_Classic\media\textures\notready]]
+	tex.waitingTexture = [[Interface\AddOns\ElvUI_BenikUI_Classic\media\textures\waiting]]
 end
 
 -- Unit Shadows
@@ -205,7 +205,6 @@ function mod:Initialize()
 	self:UnitDefaults()
 	self:InitPlayer()
 	self:InitTarget()
-	self:InitFocus()
 	self:InitPet()
 	self:InitTargetTarget()
 
@@ -222,8 +221,6 @@ function mod:Initialize()
 		self:PartyShadows()
 		self:RaidShadows()
 		self:Raid40Shadows()
-		self:BossShadows()
-		self:ArenaShadows()
 		self:TankShadows()
 		self:TankTargetShadows()
 	end

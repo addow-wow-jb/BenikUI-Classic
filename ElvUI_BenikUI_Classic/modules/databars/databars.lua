@@ -4,7 +4,7 @@ local LSM = E.LSM;
 
 local UIFrameFadeIn, UIFrameFadeOut = UIFrameFadeIn, UIFrameFadeOut
 local SPACING = (E.PixelMode and 1 or 3)
-local bars = {'experience', 'reputation', 'artifact', 'honor'}
+local bars = {'experience', 'reputation'}
 
 function mod:CreateNotifier(bar)
 	bar.f = CreateFrame('Frame', nil, bar)
@@ -55,8 +55,6 @@ end
 function mod:Initialize()
 	self:LoadXP()
 	self:LoadRep()
-	self:LoadAzerite()
-	self:LoadHonor()
 end
 
 BUI:RegisterModule(mod:GetName())
