@@ -2,7 +2,7 @@ local BUI, E, L, V, P, G = unpack(select(2, ...))
 
 -- GLOBALS: BenikUISplashScreen
 
---local CalendarGetDate = CalendarGetDate
+local date = date
 
 local function HideSplashScreen()
 	BenikUISplashScreen:Hide()
@@ -63,11 +63,11 @@ function BUI:SplashScreen()
 	if not E.db.benikui.general.splashScreen then return end
 	CreateSplashScreen()
 
-	--[[local db = E.private.benikui.session
-	local _, _, day = CalendarGetDate()
-	if day == db.day then return end]]
+	local db = E.private.benikui.session
+	local day = date("%w")
+	if day == db.day then return end
 
 	-- Show Splash Screen only if the install is completed
 	if E.db.benikui.installed == true then E:Delay(6, ShowSplashScreen) end
-	--db.day = day
+	db.day = day
 end
