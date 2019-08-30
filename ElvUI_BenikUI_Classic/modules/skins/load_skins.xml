@@ -3,6 +3,6 @@
 	<!--<script file="elements.lua"/>
 	<script file="blizzard_lod.lua"/>
 	<script file="alerts.lua"/>
-	<script file="addonskins.lua"/>
-	<script file="options.lua"/>-->
+	<script file="addonskins.lua"/>-->
+	<script file="options.lua"/>
 </Ui>

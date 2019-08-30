@@ -15,10 +15,10 @@ function BUI:LoadBigWigsProfile()
 		fontsize = 10
 	end
 
-	if BigWigs3DB['profiles'] == nil then BigWigs3DB['profiles'] = {} end
+	if BigWigsClassicDB['profiles'] == nil then BigWigsClassicDB['profiles'] = {} end
 
-	if BigWigs3DB['profiles'][key] == nil then
-		BigWigs3DB = {
+	if BigWigsClassicDB['profiles'][key] == nil then
+		BigWigsClassicDB = {
 			["namespaces"] = {
 				["BigWigs_Plugins_Alt Power"] = {
 					["profiles"] = {
