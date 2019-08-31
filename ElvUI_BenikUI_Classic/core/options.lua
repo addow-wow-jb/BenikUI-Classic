@@ -370,7 +370,7 @@ local function Core()
 								order = 2,
 								type = 'execute',
 								name = L['Git Ticket tracker'],
-								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "https://git.tukui.org/Benik/ElvUI_BenikUI/issues") end,
+								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "https://git.tukui.org/Benik/benikui_classic/issues") end,
 							},
 							discord = {
 								order = 3,
@@ -390,7 +390,7 @@ local function Core()
 								order = 1,
 								type = 'execute',
 								name = L['Tukui.org'],
-								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "https://www.tukui.org/addons.php?id=11") end,
+								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "https://www.tukui.org/classic-addons.php?id=13") end,
 							},
 							curse = {
 								order = 2,
@@ -402,7 +402,7 @@ local function Core()
 								order = 3,
 								type = 'execute',
 								name = L['Beta versions'],
-								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "https://git.tukui.org/Benik/ElvUI_BenikUI/repository/archive.zip?ref=development") end,
+								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "https://git.tukui.org/Benik/benikui_classic/-/archive/development/benikui_classic-development.zip") end,
 							},
 						},
 					},
@@ -454,15 +454,22 @@ local function Core()
 						name = BUI:cOption(L['My other Addons']),
 						guiInline = true,
 						args = {
-							locplus = {
+							retail = {
 								order = 1,
+								type = 'execute',
+								name = L['BenikUI for Retail'],
+								desc = L['BenikUI is an external ElvUI mod, adding different frame style and new features like detatched portraits, dashboards and many more'],
+								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "https://www.curseforge.com/wow/addons/benikui-v3") end,
+							},
+							locplus = {
+								order = 2,
 								type = 'execute',
 								name = L['LocationPlus for ElvUI'],
 								desc = L['Adds player location, coords + 2 Datatexts and a tooltip with info based on player location/level.'],
-								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "http://www.curse.com/addons/wow/elvui-location-plus") end,
+								func = function() StaticPopup_Show("BENIKUI_CREDITS", nil, nil, "https://www.curseforge.com/wow/addons/elvui-location-plus") end,
 							},
 							nuts = {
-								order = 2,
+								order = 3,
 								type = 'execute',
 								name = L['Nuts & Bolts for ElvUI'],
 								desc = L['ElvUI Nuts & Bolts is a compilation of my addons hosted at tukui.org/Twitch plus some features that are moved from BenikUI'],

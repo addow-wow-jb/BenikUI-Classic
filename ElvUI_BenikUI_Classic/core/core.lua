@@ -27,7 +27,7 @@ end
 -- Check other addons
 BUI.SLE = BUI:IsAddOnEnabled('ElvUI_SLE')
 BUI.PA = BUI:IsAddOnEnabled('ProjectAzilroka')
-BUI.LP = BUI:IsAddOnEnabled('ElvUI_LocPlus')
+BUI.LP = BUI:IsAddOnEnabled('ElvUI_LocationPlus')
 BUI.NB = BUI:IsAddOnEnabled('ElvUI_NutsAndBolts')
 BUI.AS = BUI:IsAddOnEnabled('AddOnSkins')
 BUI.IF = BUI:IsAddOnEnabled('InFlight_Load')
@@ -141,7 +141,7 @@ function BUI:Initialize()
 	end
 
 	if E.db.benikui.general.loginMessage then
-		print(BUI.Title..format('v|cff00c0fa%s|r',BUI.Version)..L[' is loaded. For any issues or suggestions, please visit ']..PrintURL('http://git.tukui.org/Benik/ElvUI_BenikUI/issues'))
+		print(BUI.Title..format('v|cff00c0fa%s|r',BUI.Version)..L[' is loaded. For any issues or suggestions, please visit ']..PrintURL('https://git.tukui.org/Benik/benikui_classic/issues'))
 	end
 
 	if E.db.benikui.general.benikuiStyle and E.db.benikui.general.shadows then

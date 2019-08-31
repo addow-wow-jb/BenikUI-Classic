@@ -1,2 +1,10 @@
+v1.01
+*Fixed BigWigs profile (thurin)
+*BenikUI Classic where needed (thurin)
+*Fixed and re enabled BenikUI Close button
+*Removed the broken fade animation from Chat Edit Box
+*Replaced the LFG button (L) with the (S - Status) button. Includes: AFK, DND and Reload ui (while Shift pressed just in case)
+*Added support Location Plus Classic
+
 v1.00
 Initial release

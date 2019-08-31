@@ -16,6 +16,8 @@ local IsShiftKeyDown = IsShiftKeyDown
 local InCombatLockdown = InCombatLockdown
 local PVEFrame_ToggleFrame = PVEFrame_ToggleFrame
 local GameMenuButtonAddons = GameMenuButtonAddons
+local SendChatMessage = SendChatMessage
+local ReloadUI = ReloadUI
 
 -- GLOBALS: hooksecurefunc, GarrisonLandingPageMinimapButton_OnClick, CloseMenus, CloseAllWindows, selectioncolor
 -- GLOBALS: MainMenuMicroButton_SetNormal, AddOnSkins, MAINMENU_BUTTON, ADDONS, LFG_TITLE, BuiLeftChatDTPanel
@@ -24,7 +26,7 @@ local GameMenuButtonAddons = GameMenuButtonAddons
 -- GLOBALS: GlyphFrame, GlyphFrame_LoadUI, PlayerTalentFrame, TimeManagerFrame
 -- GLOBALS: GameTimeFrame, GuildFrame, GuildFrame_LoadUI, EncounterJournal_LoadUI, EncounterJournal
 -- GLOBALS: LookingForGuildFrame, LookingForGuildFrame_LoadUI, LookingForGuildFrame_Toggle
--- GLOBALS: GameMenuFrame, VideoOptionsFrame, VideoOptionsFrameCancel, AudioOptionsFrame, AudioOptionsFrameCancel
+-- GLOBALS: GameGameMenuFrame, VideoOptionsFrame, VideoOptionsFrameCancel, AudioOptionsFrame, AudioOptionsFrameCancel
 -- GLOBALS: InterfaceOptionsFrame, InterfaceOptionsFrameCancel, GuildFrame_Toggle
 -- GLOBALS: LibStub, StoreMicroButton
 -- GLOBALS: LeftMiniPanel, RightMiniPanel, Minimap
@@ -52,12 +54,29 @@ end
 local Bui_dchat = CreateFrame('Frame', 'BuiDummyChat', E.UIParent)
 local Bui_dthreat = CreateFrame('Frame', 'BuiDummyThreat', E.UIParent)
 
-local menuFrame = CreateFrame('Frame', 'BuiGameClickMenu', E.UIParent)
-menuFrame:SetTemplate('Transparent', true)
+-- GameMenu
+local GameMenuFrame = CreateFrame('Frame', 'BuiGameClickMenu', E.UIParent)
+GameMenuFrame:SetTemplate('Transparent', true)
 
 function BuiGameMenu_OnMouseUp(self)
 	GameTooltip:Hide()
-	BUI:Dropmenu(BUI.MenuList, menuFrame, self:GetName(), 'tLeft', -SPACING, SPACING, 4)
+	BUI:Dropmenu(BUI.MenuList, GameMenuFrame, self:GetName(), 'tLeft', -SPACING, SPACING, 4)
+	PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF);
+end
+
+-- StatusMenu
+local StatusList = {
+	{text = L["AFK"], func = function() SendChatMessage("" ,"AFK" ) end},
+	{text = L["DND"], func = function() SendChatMessage("" ,"DND" ) end},
+	{text = L["Reload (ShiftClick)"], func = function() if IsShiftKeyDown() then ReloadUI() end end},
+}
+
+local StatusMenuFrame = CreateFrame('Frame', 'BuiStatusMenu', E.UIParent)
+StatusMenuFrame:SetTemplate('Transparent', true)
+
+function BuiStatusMenu_OnMouseUp(self)
+	GameTooltip:Hide()
+	BUI:Dropmenu(StatusList, StatusMenuFrame, self:GetName(), 'tRight', SPACING, SPACING, 4)
 	PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF);
 end
 
@@ -389,32 +408,21 @@ function mod:ChangeLayout()
 				GameTooltip:Hide()
 			end)
 
-		-- LFG Button
+		-- Status Button
 		elseif i == 4 then
 			bbuttons[i]:Point('TOPLEFT', Bui_ldtp, 'TOPRIGHT', SPACING, 0)
 			bbuttons[i]:Point('BOTTOMRIGHT', Bui_ldtp, 'BOTTOMRIGHT', PANEL_HEIGHT + SPACING, 0)
-			bbuttons[i].text:SetText('L')
+			bbuttons[i].text:SetText('S')
 
-			bbuttons[i]:SetScript('OnClick', function(self, btn)
-				if btn == "LeftButton" then
-					PVEFrame_ToggleFrame()
-				elseif btn == "RightButton" then
-					if not IsAddOnLoaded('Blizzard_EncounterJournal') then
-						EncounterJournal_LoadUI();
-					end
-					ToggleFrame(EncounterJournal)
-				end
-				PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF);
-			end)
+			bbuttons[i]:SetScript('OnClick', BuiStatusMenu_OnMouseUp)
 			
 			bbuttons[i]:SetScript('OnEnter', function(self)
 				if not E.db.benikui.datatexts.chat.styled then
 					self.sglow:Show()
 				end
-				GameTooltip:SetOwner(self, 'ANCHOR_TOP', 0, 2 )
+				GameTooltip:SetOwner(self, 'ANCHOR_TOPLEFT', 0, 2)
 				GameTooltip:ClearLines()
-				GameTooltip:AddDoubleLine(L['Click :'], LFG_TITLE, 0.7, 0.7, 1)
-				GameTooltip:AddDoubleLine(L['RightClick :'], ADVENTURE_JOURNAL, 0.7, 0.7, 1)
+				GameTooltip:AddLine(L['Set Player Status or Reload'])
 				GameTooltip:Show()
 				if InCombatLockdown() then GameTooltip:Hide() end
 			end)
