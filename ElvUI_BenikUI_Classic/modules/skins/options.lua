@@ -8,7 +8,7 @@ local IsAddOnLoaded = IsAddOnLoaded
 local ADDONS = ADDONS
 
 local DecorElvUIAddons = {
-	{'ElvUI_LocPlus', L['LocationPlus'], 'locplus'},
+	{'ElvUI_LocationPlus', L['LocationPlus'], 'locplus'},
 	{'ElvUI_SLE', L['Shadow & Light'], 'sle'},
 	{'ElvUI_Enhanced', L['ElvUI_Enhanced'], 'enh'},
 	{'ElvUI_DTBars2', L['DT Bars 2'], 'dtb2'},
@@ -36,7 +36,7 @@ local SupportedProfiles = {
 	{'DBM-Core', 'Deadly Boss Mods'},
 	{'Details', 'Details'},
 	{'ElvUI_VisualAuraTimers', 'ElvUI VisualAuraTimers'},
-	{'ElvUI_LocPlus', 'Location Plus'},
+	{'ElvUI_LocationPlus', 'Location Plus'},
 	{'InFlight_Load', 'InFlight'},
 	{'MikScrollingBattleText', "Mik's Scrolling Battle Text"},
 	{'Pawn', 'Pawn'},
@@ -198,7 +198,7 @@ local function SkinTable()
 					else
 						BUI:LoadInFlightProfile(false)
 					end
-				elseif addon == 'ElvUI_LocPlus' then
+				elseif addon == 'ElvUI_LocationPlus' then
 					BUI:LoadLocationPlusProfile()
 				elseif addon == 'MikScrollingBattleText' then
 					BUI:LoadMSBTProfile()
