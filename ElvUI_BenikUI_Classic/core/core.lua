@@ -27,7 +27,7 @@ end
 -- Check other addons
 BUI.SLE = BUI:IsAddOnEnabled('ElvUI_SLE')
 BUI.PA = BUI:IsAddOnEnabled('ProjectAzilroka')
-BUI.LP = BUI:IsAddOnEnabled('ElvUI_LocPlus')
+BUI.LP = BUI:IsAddOnEnabled('ElvUI_LocationPlus')
 BUI.NB = BUI:IsAddOnEnabled('ElvUI_NutsAndBolts')
 BUI.AS = BUI:IsAddOnEnabled('AddOnSkins')
 BUI.IF = BUI:IsAddOnEnabled('InFlight_Load')
