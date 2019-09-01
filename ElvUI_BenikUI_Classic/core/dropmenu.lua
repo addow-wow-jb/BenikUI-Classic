@@ -20,6 +20,18 @@ BUI.MenuList = {
 	{text = COMMUNITIES_FRAME_TITLE, func = function() ToggleGuildFrame() end},
 	{text = MACROS, func = function() GameMenuButtonMacros:Click() end},
 	{text = SOCIAL_BUTTON, func = function() ToggleFriendsFrame() end},
+	{text = TALENTS,
+	func = function()
+		if not TalentFrame then
+			TalentFrame_LoadUI()
+		end
+
+		if not TalentFrame:IsShown() then
+			ShowUIPanel(TalentFrame)
+		else
+			HideUIPanel(TalentFrame)
+		end
+	end},
 	{text = MAINMENU_BUTTON,
 	func = function()
 		if ( not GameMenuFrame:IsShown() ) then
