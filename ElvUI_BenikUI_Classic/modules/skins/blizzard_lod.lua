@@ -8,10 +8,9 @@ local IsAddOnLoaded = IsAddOnLoaded
 
 -- AuctionUI
 local function style_AuctionUI()
-	if
-		E.private.skins.blizzard.auctionhouse ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.auctionhouse ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -23,10 +22,9 @@ S:AddCallbackForAddon("Blizzard_AuctionUI", "BenikUI_AuctionUI", style_AuctionUI
 
 -- BattlefieldMap
 local function style_BattlefieldMap()
-	if
-		E.private.skins.blizzard.bgmap ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.bgmap ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -36,10 +34,9 @@ S:AddCallbackForAddon("Blizzard_BattlefieldMap", "BenikUI_BattlefieldMap", style
 
 -- BindingUI
 local function style_BindingUI()
-	if
-		E.private.skins.blizzard.binding ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.binding ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -49,10 +46,9 @@ S:AddCallbackForAddon("Blizzard_BindingUI", "BenikUI_BindingUI", style_BindingUI
 
 -- Channels
 local function style_Channels()
-	if
-		E.private.skins.blizzard.Channels ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.Channels ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -63,10 +59,9 @@ S:AddCallbackForAddon("Blizzard_Channels", "BenikUI_Channels", style_Channels)
 
 -- Communities
 local function style_Communities()
-	if
-		E.private.skins.blizzard.Communities ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.Communities ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -80,10 +75,9 @@ S:AddCallbackForAddon("Blizzard_Communities", "BenikUI_Communities", style_Commu
 
 -- DebugTools
 local function style_DebugTools()
-	if
-		E.private.skins.blizzard.debug ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.debug ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -113,10 +107,9 @@ end
 
 -- InspectUI
 local function style_InspectUI()
-	if
-		E.private.skins.blizzard.inspect ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.inspect ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -126,10 +119,9 @@ S:AddCallbackForAddon("Blizzard_InspectUI", "BenikUI_InspectUI", style_InspectUI
 
 -- ItemSocketingUI
 local function style_ItemSocketingUI()
-	if
-		E.private.skins.blizzard.socket ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.socket ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -139,10 +131,9 @@ S:AddCallbackForAddon("Blizzard_ItemSocketingUI", "BenikUI_ItemSocketingUI", sty
 
 -- MacroUI
 local function style_MacroUI()
-	if
-		E.private.skins.blizzard.macro ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.macro ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
@@ -187,10 +178,9 @@ S:AddCallbackForAddon("Blizzard_TradeSkillUI", "BenikUI_TradeSkillUI", style_Tra
 
 -- TrainerUI
 local function style_TrainerUI()
-	if
-		E.private.skins.blizzard.trainer ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.trainer ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 

@@ -21,3 +21,13 @@
 		/run StorePurchaseAlertSystem:AddAlert("\124cffa335ee\124Hitem:180545::::::::::\124h[Mystic Runesaber]\124h\124r", "", "", 214)
 		/run DigsiteCompleteAlertSystem:AddAlert(1)
 	]]
+	
+--[[for skillIndex = 1, GetNumSkillLines() do
+  local skillName, isHeader, isExpanded, skillRank, numTempPoints, skillModifier,
+    skillMaxRank, isAbandonable, stepCost, rankCost, minLevel, skillCostType,
+    skillDescription = GetSkillLineInfo(skillIndex)
+  if not isHeader and isAbandonable then
+     print(string.format("Skill: %s - %s/%s", skillName, skillRank, skillMaxRank))
+	 print(skillIndex)
+  end
+end]]
