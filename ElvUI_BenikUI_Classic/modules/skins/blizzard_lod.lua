@@ -73,10 +73,8 @@ local function style_Communities()
 	local frame = _G["CommunitiesFrame"]
 	if frame then
 		frame.backdrop:Style("Outside")
-		frame.GuildMemberDetailFrame.backdrop:Style("Outside")
 		frame.NotificationSettingsDialog.backdrop:Style("Outside")
 	end
-	_G["CommunitiesGuildLogFrame"].backdrop:Style("Outside")
 end
 S:AddCallbackForAddon("Blizzard_Communities", "BenikUI_Communities", style_Communities)
 
