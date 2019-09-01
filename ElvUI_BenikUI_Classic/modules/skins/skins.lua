@@ -45,7 +45,7 @@ local function styleFreeBlizzardFrames()
 	if db.character then
 		CharacterFrame.backdrop:Style("Outside")
 		ReputationDetailFrame:Style("Outside")
-		ReputationFrame:Style("Outside")
+		--ReputationFrame:Style("Outside")
 	end
 
 	if db.friends then
