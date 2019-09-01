@@ -207,18 +207,12 @@ local function styleWorldMap()
 	end
 
 	local mapFrame = _G["WorldMapFrame"]
-	if not mapFrame.backdrop.style then
-		mapFrame.backdrop:Style("Outside")
+	if not mapFrame.style then
+		mapFrame:Style("Outside")
 	end
 
 	if E.private.skins.blizzard.tooltip ~= true then
 		return
-	end
-
-	local questFrame = _G["QuestMapFrame"]
-	questFrame.QuestsFrame.StoryTooltip:SetTemplate("Transparent")
-	if not questFrame.QuestsFrame.StoryTooltip.style then
-		questFrame.QuestsFrame.StoryTooltip:Style("Outside")
 	end
 
 	local shoppingTooltips = {_G["WorldMapCompareTooltip1"], _G["WorldMapCompareTooltip2"]}
@@ -552,7 +546,7 @@ end
 function mod:PLAYER_ENTERING_WORLD(...)
 	--self:styleAlertFrames()
 	styleAddons()
-	--styleWorldMap()
+	styleWorldMap()
 	--StyleAdibags()
 
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
@@ -585,15 +579,13 @@ function mod:Initialize()
 	--StyleAltPowerBar()
 
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
-	--self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
+	self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
 	--self:RegisterEvent("BANKFRAME_OPENED", "StyleAdibagsBank")
 
 	if E.private.skins.blizzard.tooltip ~= true then
 		return
 	end
-
-	--hooksecurefunc("BattlePetTooltipTemplate_SetBattlePet", StyleCagedBattlePetTooltip)
-	--hooksecurefunc(S, "Ace3_StyleTooltip", StyleAceTooltip)
+	hooksecurefunc(S, "Ace3_StyleTooltip", StyleAceTooltip)
 end
 
 BUI:RegisterModule(mod:GetName())
