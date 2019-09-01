@@ -150,7 +150,7 @@ local function style_TalentUI()
 		return
 	end
 
-	_G["PlayerTalentFrame"].backdrop:Style("Outside")
+	_G["TalentFrame"].backdrop:Style("Outside")
 	for i = 1, 5 do
 		local tab = _G["PlayerSpecTab" .. i]
 		if tab then
