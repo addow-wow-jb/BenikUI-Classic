@@ -45,7 +45,6 @@ local function styleFreeBlizzardFrames()
 	if db.character then
 		CharacterFrame.backdrop:Style("Outside")
 		ReputationDetailFrame:Style("Outside")
-		--ReputationFrame:Style("Outside")
 	end
 
 	if db.friends then
@@ -416,36 +415,10 @@ local function StyleDBM_Options()
 		return
 	end
 
-	DBM_GUI_OptionsFrame:HookScript(
-		"OnShow",
-		function()
-			DBM_GUI_OptionsFrame:Style("Outside")
-		end
-	)
+	DBM_GUI_OptionsFrame:HookScript("OnShow", function()
+		DBM_GUI_OptionsFrame:Style("Outside")
+	end)
 end
-
-local function ObjectiveTrackerQuests()
-	local function QuestNumString()
-		local questNum, q, o
-		local block = _G["ObjectiveTrackerBlocksFrame"]
-		local frame = _G["ObjectiveTrackerFrame"]
-
-		if not InCombatLockdown() then
-			questNum = select(2, GetNumQuestLogEntries())
-			if questNum >= (MAX_QUESTS - 5) then -- go red
-				q = format("|cffff0000%d/%d|r %s", questNum, MAX_QUESTS, TRACKER_HEADER_QUESTS)
-				o = format("|cffff0000%d/%d|r %s", questNum, MAX_QUESTS, OBJECTIVES_TRACKER_LABEL)
-			else
-				q = format("%d/%d %s", questNum, MAX_QUESTS, TRACKER_HEADER_QUESTS)
-				o = format("%d/%d %s", questNum, MAX_QUESTS, OBJECTIVES_TRACKER_LABEL)
-			end
-			block.QuestHeader.Text:SetText(q)
-			frame.HeaderMenu.Title:SetText(o)
-		end
-	end
-	hooksecurefunc("ObjectiveTracker_Update", QuestNumString)
-end
---S:AddCallback("BenikUI_ObjectiveTracker", ObjectiveTrackerQuests)
 
 local function StyleInFlight()
 	if E.db.benikuiSkins.variousSkins.inflight ~= true or E.db.benikui.misc.flightMode == true then
@@ -465,30 +438,23 @@ end
 local function LoadInFlight()
 	local f = CreateFrame("Frame")
 	f:RegisterEvent("UPDATE_BONUS_ACTIONBAR")
-	f:RegisterEvent("UPDATE_MULTI_CAST_ACTIONBAR")
-	f:SetScript(
-		"OnEvent",
-		function(self, event)
-			if event then
-				StyleInFlight()
-				f:UnregisterEvent(event)
-			end
+	f:SetScript("OnEvent", function(self, event)
+		if event then
+			StyleInFlight()
+			f:UnregisterEvent(event)
 		end
-	)
+	end)
 end
 
 function mod:StyleAdibagsBank()
 	if not E.db.benikuiSkins.addonSkins.adibags or not BUI.AS then
 		return
 	end
-	E:Delay(
-		0.2,
-		function()
-			if AdiBagsContainer2 then
-				AdiBagsContainer2:Style("Inside")
-			end
+	E:Delay(0.2, function()
+		if AdiBagsContainer2 then
+			AdiBagsContainer2:Style("Inside")
 		end
-	)
+	end)
 end
 
 local function StyleAdibags()
