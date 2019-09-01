@@ -210,17 +210,6 @@ local function styleWorldMap()
 	if not mapFrame.style then
 		mapFrame:Style("Outside")
 	end
-
-	if E.private.skins.blizzard.tooltip ~= true then
-		return
-	end
-
-	local shoppingTooltips = {_G["WorldMapCompareTooltip1"], _G["WorldMapCompareTooltip2"]}
-	for i, tooltip in pairs(shoppingTooltips) do
-		if not tooltip.style then
-			tooltip:Style("Outside")
-		end
-	end
 end
 
 local function styleAddons()
