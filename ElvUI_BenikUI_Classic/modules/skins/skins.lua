@@ -126,6 +126,7 @@ local function styleFreeBlizzardFrames()
 	if db.quest then
 		QuestFrame.backdrop:Style("Outside")
 		QuestNPCModel:Style("Outside")
+		QuestLogFrame.backdrop:Style("Outside")
 
 		if BUI.AS then
 			QuestDetailScrollFrame:SetTemplate("Transparent")
