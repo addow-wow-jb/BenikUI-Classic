@@ -39,41 +39,26 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.bgscore then
-		if not PVPMatchScoreboard then
-			LoadAddOn("Blizzard_PVPMatch")
-		end
-		PVPMatchScoreboard:Style("Outside")
-		PVPMatchResults:Style("Outside")
+		WorldStateScoreFrame.backdrop:Style("Outside")
 	end
+
 	if db.character then
-		GearManagerDialogPopup:Style("Outside")
-		PaperDollFrame:Style("Outside")
+		CharacterFrame.backdrop:Style("Outside")
 		ReputationDetailFrame:Style("Outside")
-		ReputationFrame:Style("Outside")
-		TokenFrame:Style("Outside")
-		TokenFramePopup:Style("Outside")
-	end
-
-	if db.dressingroom then
-		DressUpFrame.backdrop:Style("Outside")
-
-		if not WardrobeOutfitEditFrame.style then
-			WardrobeOutfitEditFrame:Style("Outside")
-		end
 	end
 
 	if db.friends then
-		AddFriendFrame:Style("Outside")
+		AddFriendEntryFrame:Style("Outside")
 		FriendsFrame:Style("Outside")
-		FriendsFriendsFrame.backdrop:Style("Outside")
+		FriendsFriendsFrame:Style("Outside")
 		RecruitAFriendFrame:Style("Outside")
 		RecruitAFriendSentFrame:Style("Outside")
 		RecruitAFriendSentFrame.MoreDetails.Text:FontTemplate()
 	end
 
 	if db.gossip then
-		GossipFrame:Style("Outside")
-		ItemTextFrame:Style("Outside")
+		GossipFrame.backdrop:Style("Outside")
+		ItemTextFrame.backdrop:Style("Outside")
 	end
 
 	if db.guildregistrar then
@@ -85,36 +70,9 @@ local function styleFreeBlizzardFrames()
 		HelpFrameHeader.backdrop:Style("Outside")
 	end
 
-	if db.lfg then
-		LFGInvitePopup:Style("Outside")
-		LFGDungeonReadyDialog:Style("Outside")
-		LFGDungeonReadyStatus:Style("Outside")
-		LFGListApplicationDialog:Style("Outside")
-		LFGListInviteDialog:Style("Outside")
-		PVEFrame.backdrop:Style("Outside")
-		PVPReadyDialog:Style("Outside")
-		RaidBrowserFrame.backdrop:Style("Outside")
-		QuickJoinRoleSelectionFrame:Style("Outside")
-
-		local function forceTabFont(button)
-			if button.isSkinned then
-				return
-			end
-			local text = button:GetFontString()
-			if text then
-				text:FontTemplate(nil, 11)
-			end
-			button.isSkinned = true
-		end
-		forceTabFont(LFGListFrame.ApplicationViewer.NameColumnHeader)
-		forceTabFont(LFGListFrame.ApplicationViewer.RoleColumnHeader)
-		forceTabFont(LFGListFrame.ApplicationViewer.ItemLevelColumnHeader)
-	end
-
 	if db.loot then
 		LootFrame:Style("Outside")
 		MasterLooterFrame:Style("Outside")
-		BonusRollFrame:Style("Outside")
 	end
 
 	if db.mail then
@@ -138,16 +96,10 @@ local function styleFreeBlizzardFrames()
 		DropDownList2MenuBackdrop:Style("Outside")
 		EmoteMenu:Style("Outside")
 		GameMenuFrame:Style("Outside")
-		GhostFrame:Style("Outside")
-		GuildInviteFrame:Style("Outside")
 		InterfaceOptionsFrame:Style("Outside")
 		LanguageMenu:Style("Outside")
-		LFDRoleCheckPopup:Style("Outside")
-		QueueStatusFrame:Style("Outside")
 		ReadyCheckFrame:Style("Outside")
 		ReadyCheckListenerFrame:Style("Outside")
-		SideDressUpFrame:Style("Outside")
-		SplashFrame.backdrop:Style("Outside")
 		StackSplitFrame:Style("Outside")
 		StaticPopup1:Style("Outside")
 		StaticPopup2:Style("Outside")
@@ -173,8 +125,8 @@ local function styleFreeBlizzardFrames()
 
 	if db.quest then
 		QuestFrame.backdrop:Style("Outside")
-		QuestLogPopupDetailFrame:Style("Outside")
-		QuestNPCModel.backdrop:Style("Outside")
+		QuestNPCModel:Style("Outside")
+		QuestLogFrame.backdrop:Style("Outside")
 
 		if BUI.AS then
 			QuestDetailScrollFrame:SetTemplate("Transparent")
@@ -194,7 +146,7 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.spellbook then
-		SpellBookFrame:Style("Outside")
+		SpellBookFrame.backdrop:Style("Outside")
 	end
 
 	if db.tabard then
@@ -219,20 +171,13 @@ local function styleFreeBlizzardFrames()
 	
 	ColorPickerFrame:Style("Outside")
 end
---S:AddCallback("BenikUI_styleFreeBlizzardFrames", styleFreeBlizzardFrames)
-
-local function StyleCagedBattlePetTooltip(tooltipFrame)
-	if not tooltipFrame.style then
-		tooltipFrame:Style("Outside")
-	end
-end
+S:AddCallback("BenikUI_styleFreeBlizzardFrames", styleFreeBlizzardFrames)
 
 -- SpellBook tabs
 local function styleSpellbook()
-	if
-		E.private.skins.blizzard.enable ~= true or E.db.benikui.general.benikuiStyle ~= true or
-			E.private.skins.blizzard.spellbook ~= true
-	 then
+	if E.private.skins.blizzard.enable ~= true or E.db.benikui.general.benikuiStyle ~= true or
+		E.private.skins.blizzard.spellbook ~= true
+	then
 		return
 	end
 
@@ -262,25 +207,8 @@ local function styleWorldMap()
 	end
 
 	local mapFrame = _G["WorldMapFrame"]
-	if not mapFrame.backdrop.style then
-		mapFrame.backdrop:Style("Outside")
-	end
-
-	if E.private.skins.blizzard.tooltip ~= true then
-		return
-	end
-
-	local questFrame = _G["QuestMapFrame"]
-	questFrame.QuestsFrame.StoryTooltip:SetTemplate("Transparent")
-	if not questFrame.QuestsFrame.StoryTooltip.style then
-		questFrame.QuestsFrame.StoryTooltip:Style("Outside")
-	end
-
-	local shoppingTooltips = {_G["WorldMapCompareTooltip1"], _G["WorldMapCompareTooltip2"]}
-	for i, tooltip in pairs(shoppingTooltips) do
-		if not tooltip.style then
-			tooltip:Style("Outside")
-		end
+	if not mapFrame.style then
+		mapFrame:Style("Outside")
 	end
 end
 
@@ -487,45 +415,10 @@ local function StyleDBM_Options()
 		return
 	end
 
-	DBM_GUI_OptionsFrame:HookScript(
-		"OnShow",
-		function()
-			DBM_GUI_OptionsFrame:Style("Outside")
-		end
-	)
+	DBM_GUI_OptionsFrame:HookScript("OnShow", function()
+		DBM_GUI_OptionsFrame:Style("Outside")
+	end)
 end
-
-local function StyleAltPowerBar()
-	if E.db.general.altPowerBar.enable ~= true then
-		return
-	end
-
-	local bar = _G["ElvUI_AltPowerBar"]
-	bar.backdrop:Style("Outside")
-end
-
-local function ObjectiveTrackerQuests()
-	local function QuestNumString()
-		local questNum, q, o
-		local block = _G["ObjectiveTrackerBlocksFrame"]
-		local frame = _G["ObjectiveTrackerFrame"]
-
-		if not InCombatLockdown() then
-			questNum = select(2, GetNumQuestLogEntries())
-			if questNum >= (MAX_QUESTS - 5) then -- go red
-				q = format("|cffff0000%d/%d|r %s", questNum, MAX_QUESTS, TRACKER_HEADER_QUESTS)
-				o = format("|cffff0000%d/%d|r %s", questNum, MAX_QUESTS, OBJECTIVES_TRACKER_LABEL)
-			else
-				q = format("%d/%d %s", questNum, MAX_QUESTS, TRACKER_HEADER_QUESTS)
-				o = format("%d/%d %s", questNum, MAX_QUESTS, OBJECTIVES_TRACKER_LABEL)
-			end
-			block.QuestHeader.Text:SetText(q)
-			frame.HeaderMenu.Title:SetText(o)
-		end
-	end
-	hooksecurefunc("ObjectiveTracker_Update", QuestNumString)
-end
---S:AddCallback("BenikUI_ObjectiveTracker", ObjectiveTrackerQuests)
 
 local function StyleInFlight()
 	if E.db.benikuiSkins.variousSkins.inflight ~= true or E.db.benikui.misc.flightMode == true then
@@ -545,40 +438,23 @@ end
 local function LoadInFlight()
 	local f = CreateFrame("Frame")
 	f:RegisterEvent("UPDATE_BONUS_ACTIONBAR")
-	f:RegisterEvent("UPDATE_MULTI_CAST_ACTIONBAR")
-	f:SetScript(
-		"OnEvent",
-		function(self, event)
-			if event then
-				StyleInFlight()
-				f:UnregisterEvent(event)
-			end
+	f:SetScript("OnEvent", function(self, event)
+		if event then
+			StyleInFlight()
+			f:UnregisterEvent(event)
 		end
-	)
-end
-
-local function VehicleExit()
-	if E.private.actionbar.enable ~= true then
-		return
-	end
-	local f = _G["LeaveVehicleButton"]
-	f:SetNormalTexture("Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\arrow")
-	f:SetPushedTexture("Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\arrow")
-	f:SetHighlightTexture("Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\arrow")
+	end)
 end
 
 function mod:StyleAdibagsBank()
 	if not E.db.benikuiSkins.addonSkins.adibags or not BUI.AS then
 		return
 	end
-	E:Delay(
-		0.2,
-		function()
-			if AdiBagsContainer2 then
-				AdiBagsContainer2:Style("Inside")
-			end
+	E:Delay(0.2, function()
+		if AdiBagsContainer2 then
+			AdiBagsContainer2:Style("Inside")
 		end
-	)
+	end)
 end
 
 local function StyleAdibags()
@@ -607,7 +483,7 @@ end
 function mod:PLAYER_ENTERING_WORLD(...)
 	--self:styleAlertFrames()
 	styleAddons()
-	--styleWorldMap()
+	styleWorldMap()
 	--StyleAdibags()
 
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
@@ -630,25 +506,21 @@ local function StyleAceTooltip(self)
 end
 
 function mod:Initialize()
-	--VehicleExit()
 	if E.db.benikui.general.benikuiStyle ~= true then return end
 
 	hooksecurefunc(E, "ToggleOptionsUI", StyleElvUIConfig)
 
 	--skinDecursive()
 	--skinStoryline()
-	--StyleAltPowerBar()
 
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
-	--self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
+	self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
 	--self:RegisterEvent("BANKFRAME_OPENED", "StyleAdibagsBank")
 
 	if E.private.skins.blizzard.tooltip ~= true then
 		return
 	end
-
-	--hooksecurefunc("BattlePetTooltipTemplate_SetBattlePet", StyleCagedBattlePetTooltip)
-	--hooksecurefunc(S, "Ace3_StyleTooltip", StyleAceTooltip)
+	hooksecurefunc(S, "Ace3_StyleTooltip", StyleAceTooltip)
 end
 
 BUI:RegisterModule(mod:GetName())

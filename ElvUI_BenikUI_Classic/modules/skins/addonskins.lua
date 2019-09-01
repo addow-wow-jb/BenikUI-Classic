@@ -76,15 +76,6 @@ local function RecountDecor()
 	end)
 end
 
-local function TinyDPSDecor()
-	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.tinydps then return end
-	if _G["tdpsFrame"] then
-		if not _G["tdpsFrame"].style then
-			_G["tdpsFrame"]:Style('Outside')
-		end
-	end
-end
-
 local function AtlasLootDecor()
 	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.atlasloot then return end
 	local AtlasLootFrame = _G["AtlasLoot_GUI-Frame"]
@@ -92,46 +83,6 @@ local function AtlasLootDecor()
 		if not AtlasLootFrame.style then
 			AtlasLootFrame:Style('Outside')
 		end
-	end
-end
-
-local function AltoholicDecor()
-	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.altoholic then return end
-	if _G["AltoholicFrame"] then
-		if not _G["AltoholicFrame"].style then
-			_G["AltoholicFrame"]:Style('Outside')
-		end
-	end
-end
-
-local function CliqueDecor()
-	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.clique then return end
-	_G["CliqueConfig"]:Style('Small')
-	_G["CliqueDialog"]:Style('Small')
-	local tab = _G["CliqueSpellTab"]
-	if not tab.style then
-		tab:Style('Inside')
-		tab.style:SetFrameLevel(5)
-	end
-	tab:GetNormalTexture():SetTexCoord(.08, 0.92, 0.08, 0.92)
-end
-
-local function oRA3Decor()
-	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.ora then return end
-	hooksecurefunc(oRA3, "ToggleFrame", function() _G["oRA3Frame"]:Style('Small'); end)
-
-	local ReadyCheckModule = oRA3:GetModule("ReadyCheck")
-	if (ReadyCheckModule) then
-		hooksecurefunc(ReadyCheckModule, "READY_CHECK", function() _G["oRA3ReadyCheck"]:Style('Small'); end)
-	end
-end
-
-local function PawnDecor()
-	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.pawn then return end
-	local frame = PawnUIFrame
-
-	if not frame.style then
-		frame:Style('Outside')
 	end
 end
 
@@ -208,12 +159,6 @@ local function LibrariesDecor()
 	end
 end
 
-local function ZygorDecor()
-	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.zygor then return end
-
-	_G['ZygorGuidesViewerFrame_Border']:Style('Outside')
-end
-
 local function ImmersionDecor()
 	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.immersion then return end
 	local frame = _G['ImmersionFrame']
@@ -253,7 +198,7 @@ function AS:SkinCloseButton(Button, Reposition)
 	Button.Backdrop.img = Button.Backdrop:CreateTexture(nil, 'OVERLAY')
 	Button.Backdrop.img:SetSize(12, 12)
 	Button.Backdrop.img:Point("CENTER")
-	Button.Backdrop.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\Close.tga')
+	Button.Backdrop.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\Close.tga')
 	Button.Backdrop.img:SetVertexColor(1, 1, 1)
 
 	Button:HookScript('OnEnter', function(self)
@@ -279,15 +224,9 @@ end
 
 if AS:CheckAddOn('Skada') then AS:RegisterSkin('Skada', SkadaDecor, 2) end
 if AS:CheckAddOn('Recount') then AS:RegisterSkin('Recount', RecountDecor, 2) end
-if AS:CheckAddOn('TinyDPS') then AS:RegisterSkin('TinyDPS', TinyDPSDecor, 2) end
 if AS:CheckAddOn('AtlasLoot') then AS:RegisterSkin('AtlasLoot', AtlasLootDecor, 2) end
-if AS:CheckAddOn('Altoholic') then AS:RegisterSkin('Altoholic', AltoholicDecor, 2) end
-if AS:CheckAddOn('Clique') then AS:RegisterSkin('Clique', CliqueDecor, 2) end
-if AS:CheckAddOn('oRA3') then AS:RegisterSkin('oRA3', oRA3Decor, 2) end
-if AS:CheckAddOn('Pawn') then AS:RegisterSkin('Pawn', PawnDecor, 2) end
 if (AS:CheckAddOn('DBM-Core') and AS:CheckAddOn('DBM-StatusBarTimers') and AS:CheckAddOn('DBM-DefaultSkin')) then AS:RegisterSkin('DBM', DbmDecor, 'ADDON_LOADED') end
 if AS:CheckAddOn('BugSack') then AS:RegisterSkin('BugSack', BugSackDecor, 2) end
-if AS:CheckAddOn('ZygorGuidesViewer') then AS:RegisterSkin('Zygor', ZygorDecor, 2) end
 if AS:CheckAddOn('Immersion') then AS:RegisterSkin('Immersion', ImmersionDecor, 2) end
 AS:RegisterSkin('Libraries', LibrariesDecor, 2)
 
