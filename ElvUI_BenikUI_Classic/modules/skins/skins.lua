@@ -43,7 +43,7 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.character then
-		PaperDollFrame:Style("Outside")
+		CharacterFrame.backdrop:Style("Outside")
 		ReputationDetailFrame:Style("Outside")
 		ReputationFrame:Style("Outside")
 	end
