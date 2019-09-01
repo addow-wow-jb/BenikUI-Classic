@@ -39,33 +39,18 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.bgscore then
-		if not PVPMatchScoreboard then
-			LoadAddOn("Blizzard_PVPMatch")
-		end
-		PVPMatchScoreboard:Style("Outside")
-		PVPMatchResults:Style("Outside")
+		WorldStateScoreFrame.backdrop:Style("Outside")
 	end
+
 	if db.character then
-		GearManagerDialogPopup:Style("Outside")
 		PaperDollFrame:Style("Outside")
 		ReputationDetailFrame:Style("Outside")
 		ReputationFrame:Style("Outside")
-		TokenFrame:Style("Outside")
-		TokenFramePopup:Style("Outside")
-	end
-
-	if db.dressingroom then
-		DressUpFrame.backdrop:Style("Outside")
-
-		if not WardrobeOutfitEditFrame.style then
-			WardrobeOutfitEditFrame:Style("Outside")
-		end
 	end
 
 	if db.friends then
-		AddFriendFrame:Style("Outside")
 		FriendsFrame:Style("Outside")
-		FriendsFriendsFrame.backdrop:Style("Outside")
+		FriendsFriendsFrame:Style("Outside")
 		RecruitAFriendFrame:Style("Outside")
 		RecruitAFriendSentFrame:Style("Outside")
 		RecruitAFriendSentFrame.MoreDetails.Text:FontTemplate()
@@ -85,36 +70,9 @@ local function styleFreeBlizzardFrames()
 		HelpFrameHeader.backdrop:Style("Outside")
 	end
 
-	if db.lfg then
-		LFGInvitePopup:Style("Outside")
-		LFGDungeonReadyDialog:Style("Outside")
-		LFGDungeonReadyStatus:Style("Outside")
-		LFGListApplicationDialog:Style("Outside")
-		LFGListInviteDialog:Style("Outside")
-		PVEFrame.backdrop:Style("Outside")
-		PVPReadyDialog:Style("Outside")
-		RaidBrowserFrame.backdrop:Style("Outside")
-		QuickJoinRoleSelectionFrame:Style("Outside")
-
-		local function forceTabFont(button)
-			if button.isSkinned then
-				return
-			end
-			local text = button:GetFontString()
-			if text then
-				text:FontTemplate(nil, 11)
-			end
-			button.isSkinned = true
-		end
-		forceTabFont(LFGListFrame.ApplicationViewer.NameColumnHeader)
-		forceTabFont(LFGListFrame.ApplicationViewer.RoleColumnHeader)
-		forceTabFont(LFGListFrame.ApplicationViewer.ItemLevelColumnHeader)
-	end
-
 	if db.loot then
 		LootFrame:Style("Outside")
 		MasterLooterFrame:Style("Outside")
-		BonusRollFrame:Style("Outside")
 	end
 
 	if db.mail then
@@ -138,16 +96,10 @@ local function styleFreeBlizzardFrames()
 		DropDownList2MenuBackdrop:Style("Outside")
 		EmoteMenu:Style("Outside")
 		GameMenuFrame:Style("Outside")
-		GhostFrame:Style("Outside")
-		GuildInviteFrame:Style("Outside")
 		InterfaceOptionsFrame:Style("Outside")
 		LanguageMenu:Style("Outside")
-		LFDRoleCheckPopup:Style("Outside")
-		QueueStatusFrame:Style("Outside")
 		ReadyCheckFrame:Style("Outside")
 		ReadyCheckListenerFrame:Style("Outside")
-		SideDressUpFrame:Style("Outside")
-		SplashFrame.backdrop:Style("Outside")
 		StackSplitFrame:Style("Outside")
 		StaticPopup1:Style("Outside")
 		StaticPopup2:Style("Outside")
@@ -173,8 +125,7 @@ local function styleFreeBlizzardFrames()
 
 	if db.quest then
 		QuestFrame.backdrop:Style("Outside")
-		QuestLogPopupDetailFrame:Style("Outside")
-		QuestNPCModel.backdrop:Style("Outside")
+		QuestNPCModel:Style("Outside")
 
 		if BUI.AS then
 			QuestDetailScrollFrame:SetTemplate("Transparent")
@@ -219,13 +170,7 @@ local function styleFreeBlizzardFrames()
 	
 	ColorPickerFrame:Style("Outside")
 end
---S:AddCallback("BenikUI_styleFreeBlizzardFrames", styleFreeBlizzardFrames)
-
-local function StyleCagedBattlePetTooltip(tooltipFrame)
-	if not tooltipFrame.style then
-		tooltipFrame:Style("Outside")
-	end
-end
+S:AddCallback("BenikUI_styleFreeBlizzardFrames", styleFreeBlizzardFrames)
 
 -- SpellBook tabs
 local function styleSpellbook()
