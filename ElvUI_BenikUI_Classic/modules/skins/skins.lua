@@ -57,7 +57,7 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.gossip then
-		GossipFrame:Style("Outside")
+		GossipFrame.backdrop:Style("Outside")
 		ItemTextFrame.backdrop:Style("Outside")
 	end
 
