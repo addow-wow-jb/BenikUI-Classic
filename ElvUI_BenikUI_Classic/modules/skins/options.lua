@@ -17,17 +17,10 @@ local DecorElvUIAddons = {
 local DecorAddons = {
 	{'Skada', L['Skada'], 'skada'},
 	{'Recount', L['Recount'], 'recount'},
-	{'TinyDPS', L['TinyDPS'], 'tinydps'},
 	{'AtlasLoot', L['AtlasLoot'], 'atlasloot'},
-	{'Altoholic', L['Altoholic'], 'altoholic'},
-	{'Clique', L['Clique'], 'clique'},
-	{'oRA3', L['oRA3'], 'ora'},
-	{'Pawn', L['Pawn'], 'pawn'},
 	{'DBM-Core', L['Deadly Boss Mods'], 'dbm'},
 	{'BigWigs', L['BigWigs'], 'bigwigs'},
-	{'ZygorGuidesViewer', L['Zygor Guides'], 'zygor'},
 	{'Immersion', L['Immersion'], 'immersion'},
-	{'AdiBags', L['AdiBags'], 'adibags'},
 }
 
 local SupportedProfiles = {
