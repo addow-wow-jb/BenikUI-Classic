@@ -253,7 +253,7 @@ function AS:SkinCloseButton(Button, Reposition)
 	Button.Backdrop.img = Button.Backdrop:CreateTexture(nil, 'OVERLAY')
 	Button.Backdrop.img:SetSize(12, 12)
 	Button.Backdrop.img:Point("CENTER")
-	Button.Backdrop.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\Close.tga')
+	Button.Backdrop.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\Close.tga')
 	Button.Backdrop.img:SetVertexColor(1, 1, 1)
 
 	Button:HookScript('OnEnter', function(self)
