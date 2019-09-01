@@ -153,8 +153,8 @@ S:AddCallbackForAddon("Blizzard_MacroUI", "BenikUI_MacroUI", style_MacroUI)
 
 -- TalentUI
 local function style_TalentUI()
-	if E.private.skins.blizzard.talent ~= true or E.private.skins.blizzard.enable ~= true
-	or E.db.benikui.general.benikuiStyle ~= true
+	if E.private.skins.blizzard.talent ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
 	then
 		return
 	end
@@ -174,16 +174,14 @@ S:AddCallbackForAddon("Blizzard_TalentUI", "BenikUI_TalentUI", style_TalentUI)
 
 -- TradeSkillUI
 local function style_TradeSkillUI()
-	if
-		E.private.skins.blizzard.trade ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.trade ~= true or E.private.skins.blizzard.enable ~= true or
+		E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
 	local frame = _G["TradeSkillFrame"]
-	frame:Style("Outside")
-	frame.DetailsFrame.GuildFrame:Style("Outside")
+	frame.backdrop:Style("Outside")
 end
 S:AddCallbackForAddon("Blizzard_TradeSkillUI", "BenikUI_TradeSkillUI", style_TradeSkillUI)
 

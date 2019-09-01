@@ -176,10 +176,9 @@ S:AddCallback("BenikUI_styleFreeBlizzardFrames", styleFreeBlizzardFrames)
 
 -- SpellBook tabs
 local function styleSpellbook()
-	if
-		E.private.skins.blizzard.enable ~= true or E.db.benikui.general.benikuiStyle ~= true or
-			E.private.skins.blizzard.spellbook ~= true
-	 then
+	if E.private.skins.blizzard.enable ~= true or E.db.benikui.general.benikuiStyle ~= true or
+		E.private.skins.blizzard.spellbook ~= true
+	then
 		return
 	end
 
