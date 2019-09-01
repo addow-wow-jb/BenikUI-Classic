@@ -153,15 +153,14 @@ S:AddCallbackForAddon("Blizzard_MacroUI", "BenikUI_MacroUI", style_MacroUI)
 
 -- TalentUI
 local function style_TalentUI()
-	if
-		E.private.skins.blizzard.talent ~= true or E.private.skins.blizzard.enable ~= true or
-			E.db.benikui.general.benikuiStyle ~= true
-	 then
+	if E.private.skins.blizzard.talent ~= true or E.private.skins.blizzard.enable ~= true
+	or E.db.benikui.general.benikuiStyle ~= true
+	then
 		return
 	end
 
-	_G["PlayerTalentFrame"]:Style("Outside")
-	for i = 1, 2 do
+	_G["PlayerTalentFrame"].backdrop:Style("Outside")
+	for i = 1, 5 do
 		local tab = _G["PlayerSpecTab" .. i]
 		if tab then
 			tab:Style("Inside")
@@ -170,7 +169,6 @@ local function style_TalentUI()
 			tab:GetNormalTexture():SetInside()
 		end
 	end
-	PlayerTalentFrameTalents.PvpTalentFrame.TalentList.backdrop:Style("Outside")
 end
 S:AddCallbackForAddon("Blizzard_TalentUI", "BenikUI_TalentUI", style_TalentUI)
 
@@ -198,6 +196,6 @@ local function style_TrainerUI()
 		return
 	end
 
-	_G["ClassTrainerFrame"]:Style("Outside")
+	_G["ClassTrainerFrame"].backdrop:Style("Outside")
 end
 S:AddCallbackForAddon("Blizzard_TrainerUI", "BenikUI_TrainerUI", style_TrainerUI)

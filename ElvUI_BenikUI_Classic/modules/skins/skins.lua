@@ -49,6 +49,7 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.friends then
+		AddFriendEntryFrame:Style("Outside")
 		FriendsFrame:Style("Outside")
 		FriendsFriendsFrame:Style("Outside")
 		RecruitAFriendFrame:Style("Outside")
@@ -146,7 +147,7 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.spellbook then
-		SpellBookFrame:Style("Outside")
+		SpellBookFrame.backdrop:Style("Outside")
 	end
 
 	if db.tabard then
