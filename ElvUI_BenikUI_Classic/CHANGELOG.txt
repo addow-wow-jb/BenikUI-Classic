@@ -1,3 +1,7 @@
+v1.021
+*Fixed BenikUI Shadows that caused issues on Unitframes. (Credit: Azilroka)
+*Updated the donor list. Thank you Christian <3
+
 v1.02
 *Since ElvUI 1.06 has enabled skins, BenikUI tried to style them all again.
 *Removed more skins/styles/mods that are not in WoW Classic.
