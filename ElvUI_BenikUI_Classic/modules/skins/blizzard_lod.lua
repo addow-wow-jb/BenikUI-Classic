@@ -113,7 +113,7 @@ local function style_InspectUI()
 		return
 	end
 
-	_G["InspectFrame"]:Style("Outside")
+	_G["InspectFrame"].backdrop:Style("Outside")
 end
 S:AddCallbackForAddon("Blizzard_InspectUI", "BenikUI_InspectUI", style_InspectUI)
 
