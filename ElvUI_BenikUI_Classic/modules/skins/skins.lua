@@ -49,7 +49,7 @@ local function styleFreeBlizzardFrames()
 
 	if db.friends then
 		AddFriendEntryFrame:Style("Outside")
-		FriendsFrame:Style("Outside")
+		FriendsFrame.backdrop:Style("Outside")
 		FriendsFriendsFrame:Style("Outside")
 		RecruitAFriendFrame:Style("Outside")
 		RecruitAFriendSentFrame:Style("Outside")
