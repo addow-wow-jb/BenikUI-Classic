@@ -62,7 +62,7 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.guildregistrar then
-		GuildRegistrarFrame:Style("Outside")
+		GuildRegistrarFrame.backdrop:Style("Outside")
 	end
 
 	if db.help then
@@ -142,7 +142,7 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.stable then
-		PetStableFrame:Style("Outside")
+		PetStableFrame.backdrop:Style("Outside")
 	end
 
 	if db.spellbook then
