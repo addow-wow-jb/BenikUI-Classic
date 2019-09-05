@@ -113,7 +113,7 @@ function mod:UpdateProfessions()
 					end)
 
 					self.ProFrame:SetScript('OnClick', function(self)
-						if skillLine == 186 then
+						--[[if skillLine == 186 then
 							CastSpellByID(2656) -- mining skills
 						elseif skillLine == 182 then
 							CastSpellByID(193290) -- herbalism skills
@@ -123,7 +123,7 @@ function mod:UpdateProfessions()
 							CastSpellByID(271990) -- fishing
 						else
 							CastSpellByName(skillName)
-						end
+						end]]
 					end)
 
 					self.ProFrame.skillName = skillName
