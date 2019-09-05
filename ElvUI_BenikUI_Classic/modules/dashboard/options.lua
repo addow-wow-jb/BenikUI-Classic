@@ -231,45 +231,46 @@ end
 
 local function UpdateProfessionOptions()
 	local optionOrder = 1
-		E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions = {
-			order = 50,
-			type = 'group',
-			guiInline = true,
-			name = L['Select Professions'],
-			disabled = function() return not E.db.dashboards.professions.enableProfessions end,
-			args = {
-			},
-		}
-	for skillIndex = 1, GetNumSkillLines() do
-		local skillName, isHeader, isExpanded, skillRank, numTempPoints, skillModifier,
-			skillMaxRank, isAbandonable, stepCost, rankCost, minLevel, skillCostType,
-			skillDescription = GetSkillLineInfo(skillIndex)
-		if skillName and isAbandonable then
-			E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions.args[skillName] = {
-				order = optionOrder + 1,
-				type = 'toggle',
-				name = skillName,
-				desc = L['Enable/Disable ']..skillName,
-				get = function(info) return E.private.dashboards.professions.choosePofessions[skillIndex] end,
-				set = function(info, value) E.private.dashboards.professions.choosePofessions[skillIndex] = value; BUID:UpdateProfessions(); BUID:UpdateProfessionSettings(); end,
-			}
-		else
-			--[[E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions = {
-				order = 30,
-				type = 'group',
-				guiInline = true,
-				name = L['Select Professions'],
-				disabled = function() return not E.db.dashboards.professions.enableProfessions end,
-				args = {
-					noprof = {
-						order = 1,
-						type = 'description',
-						name = PROFESSIONS_MISSING_PROFESSION,
-					},
-				},
-			}]]
-		end
-	end
+	E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions = {
+		order = 50,
+		type = 'group',
+		guiInline = true,
+		name = L['Select Professions'],
+		disabled = function() return not E.db.dashboards.professions.enableProfessions end,
+		args = {
+		},
+	}
+
+	local hasSecondary = false
+    for skillIndex = 1, GetNumSkillLines() do
+        local skillName, isHeader, _, skillRank, _, skillModifier, skillMaxRank, isAbandonable = GetSkillLineInfo(skillIndex)
+
+        if hasSecondary and isHeader then
+            hasSecondary = false
+        end
+
+        if (skillName and isAbandonable) or hasSecondary then
+            E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions.args[skillName] = {
+                order = optionOrder + 1,
+                type = 'toggle',
+                name = skillName,
+                desc = L['Enable/Disable '] .. skillName,
+                get = function(info)
+                    return E.private.dashboards.professions.choosePofessions[skillIndex]
+                end,
+                set = function(info, value)
+                    E.private.dashboards.professions.choosePofessions[skillIndex] = value;
+                    BUID:UpdateProfessions();
+                    BUID:UpdateProfessionSettings();
+                end,
+            }
+        end
+        if isHeader then
+            if skillName == BUI.SecondarySkill then
+                hasSecondary = true
+            end
+        end
+    end
 end
 
 local function dashboardsTable()

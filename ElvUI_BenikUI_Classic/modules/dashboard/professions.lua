@@ -54,14 +54,16 @@ function mod:UpdateProfessions()
 		end
 	end)
 
+	local hasSecondary = false
 	for skillIndex = 1, GetNumSkillLines() do
-		local skillName, isHeader, isExpanded, skillRank, numTempPoints, skillModifier,
-			skillMaxRank, isAbandonable, stepCost, rankCost, minLevel, skillCostType,
-			skillDescription = GetSkillLineInfo(skillIndex)
+		local skillName, isHeader, _, skillRank, _, skillModifier, skillMaxRank, isAbandonable = GetSkillLineInfo(skillIndex)
 
-		if not isHeader and isAbandonable then
-			print(skillName, skillIndex)
-			if skillName then--and (skillRank < skillMaxskillRank or (not db.capped)) then
+        if hasSecondary and isHeader then
+            hasSecondary = false
+        end
+
+		if (skillName and isAbandonable) or hasSecondary then
+			if skillName and (skillRank < skillMaxRank or (not db.capped)) then
 				if E.private.dashboards.professions.choosePofessions[skillIndex] == true then
 					holder:Show()
 					holder:Height(((DASH_HEIGHT + (E.PixelMode and 1 or DASH_SPACING)) * (#BUI.ProfessionsDB + 1)) + DASH_SPACING + (E.PixelMode and 0 or 2))
@@ -130,6 +132,12 @@ function mod:UpdateProfessions()
 				end
 			end
 		end
+
+        if isHeader then
+            if skillName == BUI.SecondarySkill then
+                hasSecondary = true
+            end
+        end
 	end
 
 	tsort(BUI.ProfessionsDB, sortFunction)

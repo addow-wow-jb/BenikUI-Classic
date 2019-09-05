@@ -4,6 +4,7 @@ local LSM = E.LSM
 local DT = E:GetModule('DataTexts')
 
 local CreateFrame = CreateFrame
+local SECONDARY_SKILLS = SECONDARY_SKILLS
 
 local DASH_HEIGHT = 20
 local DASH_SPACING = 3
@@ -15,6 +16,7 @@ local classColor = E.myclass == 'PRIEST' and E.PriestColors or (CUSTOM_CLASS_COL
 BUI.SystemDB = {}
 --BUI.TokensDB = {}
 BUI.ProfessionsDB = {}
+BUI.SecondarySkill = SECONDARY_SKILLS:gsub(":", '')
 
 function mod:EnableDisableCombat(holder, option)
 	local db = E.db.dashboards[option]
