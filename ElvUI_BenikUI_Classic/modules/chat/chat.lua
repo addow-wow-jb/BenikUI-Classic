@@ -1,5 +1,6 @@
 ﻿local BUI, E, L, V, P, G = unpack(select(2, ...))
 local CH = E:GetModule('Chat')
+local BL = BUI:GetModule('Layout')
 
 local _G = _G
 local pairs = pairs
@@ -25,6 +26,12 @@ function CH:UpdateAnchors()
 			frame:SetAllPoints(BuiDummyChat)
 		elseif E.db.benikui.datatexts.middle.enable and E.db.benikui.datatexts.chat.editBoxPosition == 'MIDDLE_DT' then
 			frame:SetAllPoints(BuiMiddleDTPanel)
+		elseif E.ActionBars.Initialized and E.db.actionbar.bar1.backdrop == true and E.db.benikui.datatexts.chat.editBoxPosition == 'EAB_1' then
+			BL:PositionEditBoxHolder(ElvUI_Bar1)
+			frame:SetAllPoints(BuiDummyEditBoxHolder)
+		elseif E.ActionBars.Initialized and E.db.actionbar.bar2.backdrop == true and E.db.benikui.datatexts.chat.editBoxPosition == 'EAB_2' then
+			BL:PositionEditBoxHolder(ElvUI_Bar2)
+			frame:SetAllPoints(BuiDummyEditBoxHolder)
 		else
 			frame:SetAllPoints(LeftChatTab)
 		end
