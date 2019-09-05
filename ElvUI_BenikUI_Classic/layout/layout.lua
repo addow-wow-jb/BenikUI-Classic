@@ -268,7 +268,7 @@ function mod:ChangeLayout()
 
 	E:CreateMover(Bui_mdtp, "BuiMiddleDtMover", L['BenikUI Middle DataText'], nil, nil, nil, 'ALL,BenikUI', nil, 'benikui,datatexts')
 
-	-- dummy frame for chat/threat (left)
+	-- dummy frame for chat (left)
 	Bui_dchat:SetFrameStrata('LOW')
 	Bui_dchat:Point('TOPLEFT', LeftChatPanel, 'BOTTOMLEFT', 0, -SPACING)
 	Bui_dchat:Point('BOTTOMRIGHT', LeftChatPanel, 'BOTTOMRIGHT', 0, -PANEL_HEIGHT -SPACING)

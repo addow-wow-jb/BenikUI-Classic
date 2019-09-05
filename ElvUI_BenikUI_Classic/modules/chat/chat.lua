@@ -23,6 +23,8 @@ function CH:UpdateAnchors()
 			frame:SetAllPoints(LeftChatDataPanel)
 		elseif E.db.benikui.datatexts.chat.enable and BuiDummyChat and E.db.benikui.datatexts.chat.editBoxPosition == 'BELOW_CHAT' then
 			frame:SetAllPoints(BuiDummyChat)
+		elseif E.db.benikui.datatexts.middle.enable and E.db.benikui.datatexts.chat.editBoxPosition == 'MIDDLE_DT' then
+			frame:SetAllPoints(BuiMiddleDTPanel)
 		else
 			frame:SetAllPoints(LeftChatTab)
 		end
