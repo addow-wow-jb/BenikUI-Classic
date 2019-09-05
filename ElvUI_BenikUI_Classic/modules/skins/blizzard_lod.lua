@@ -14,7 +14,10 @@ local function style_AuctionUI()
 		return
 	end
 
-	_G["AuctionFrame"].backdrop:Style("Outside")
+	if _G["AuctionFrame"].backdrop then
+		_G["AuctionFrame"].backdrop:Style("Outside")
+	end
+
 	_G["AuctionProgressFrame"]:Style("Outside")
 	_G["WowTokenGameTimeTutorial"]:Style("Small")
 end
@@ -28,7 +31,9 @@ local function style_BattlefieldMap()
 		return
 	end
 
-	_G["BattlefieldMapFrame"].backdrop:Style("Outside")
+	if _G["BattlefieldMapFrame"].backdrop then
+		_G["BattlefieldMapFrame"].backdrop:Style("Outside")
+	end
 end
 S:AddCallbackForAddon("Blizzard_BattlefieldMap", "BenikUI_BattlefieldMap", style_BattlefieldMap)
 
@@ -52,7 +57,9 @@ local function style_Channels()
 		return
 	end
 
-	_G["ChannelFrame"].backdrop:Style("Outside")
+	if _G["ChannelFrame"].backdrop then
+		_G["ChannelFrame"].backdrop:Style("Outside")
+	end
 	_G["CreateChannelPopup"]:Style("Outside")
 end
 S:AddCallbackForAddon("Blizzard_Channels", "BenikUI_Channels", style_Channels)
@@ -88,17 +95,14 @@ local function style_DebugTools()
 	end
 
 	SkinTableAttributeDisplay(TableAttributeDisplay)
-	hooksecurefunc(
-		TableInspectorMixin,
-		"OnLoad",
-		function(self)
-			if self and self.ScrollFrameArt and not self.styled then
-				SkinTableAttributeDisplay(self)
-				self.styled = true
-			end
+	hooksecurefunc(TableInspectorMixin, "OnLoad", function(self)
+		if self and self.ScrollFrameArt and not self.styled then
+			SkinTableAttributeDisplay(self)
+			self.styled = true
 		end
-	)
+	end)
 end
+
 if IsAddOnLoaded("Blizzard_DebugTools") then
 	S:AddCallback("BenikUI_DebugTools", style_DebugTools)
 else
@@ -113,7 +117,9 @@ local function style_InspectUI()
 		return
 	end
 
-	_G["InspectFrame"].backdrop:Style("Outside")
+	if _G["InspectFrame"].backdrop then
+		_G["InspectFrame"].backdrop:Style("Outside")
+	end
 end
 S:AddCallbackForAddon("Blizzard_InspectUI", "BenikUI_InspectUI", style_InspectUI)
 
@@ -150,7 +156,10 @@ local function style_TalentUI()
 		return
 	end
 
-	_G["TalentFrame"].backdrop:Style("Outside")
+	if _G["TalentFrame"].backdrop then
+		_G["TalentFrame"].backdrop:Style("Outside")
+	end
+
 	for i = 1, 5 do
 		local tab = _G["PlayerSpecTab" .. i]
 		if tab then
@@ -172,7 +181,9 @@ local function style_TradeSkillUI()
 	end
 
 	local frame = _G["TradeSkillFrame"]
-	frame.backdrop:Style("Outside")
+	if frame and frame.backdrop then
+		frame.backdrop:Style("Outside")
+	end
 end
 S:AddCallbackForAddon("Blizzard_TradeSkillUI", "BenikUI_TradeSkillUI", style_TradeSkillUI)
 
@@ -184,6 +195,8 @@ local function style_TrainerUI()
 		return
 	end
 
-	_G["ClassTrainerFrame"].backdrop:Style("Outside")
+	if _G["ClassTrainerFrame"].backdrop then
+		_G["ClassTrainerFrame"].backdrop:Style("Outside")
+	end
 end
 S:AddCallbackForAddon("Blizzard_TrainerUI", "BenikUI_TrainerUI", style_TrainerUI)
