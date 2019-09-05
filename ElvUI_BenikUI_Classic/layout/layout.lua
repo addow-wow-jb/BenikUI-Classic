@@ -52,7 +52,6 @@ local function RegDataTexts()
 end
 
 local Bui_dchat = CreateFrame('Frame', 'BuiDummyChat', E.UIParent)
-local Bui_dthreat = CreateFrame('Frame', 'BuiDummyThreat', E.UIParent)
 
 -- GameMenu
 local GameMenuFrame = CreateFrame('Frame', 'BuiGameClickMenu', E.UIParent)
@@ -273,11 +272,6 @@ function mod:ChangeLayout()
 	Bui_dchat:SetFrameStrata('LOW')
 	Bui_dchat:Point('TOPLEFT', LeftChatPanel, 'BOTTOMLEFT', 0, -SPACING)
 	Bui_dchat:Point('BOTTOMRIGHT', LeftChatPanel, 'BOTTOMRIGHT', 0, -PANEL_HEIGHT -SPACING)
-
-	-- dummy frame for threat (right)
-	Bui_dthreat:SetFrameStrata('LOW')
-	Bui_dthreat:Point('TOPLEFT', RightChatPanel, 'BOTTOMLEFT', 0, -SPACING)
-	Bui_dthreat:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', 0, -PANEL_HEIGHT -SPACING)
 
 	-- Buttons
 	for i = 1, BUTTON_NUM do
