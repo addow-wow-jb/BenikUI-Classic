@@ -202,7 +202,7 @@ S:AddCallback("BenikUI_Spellbook", styleSpellbook)
 
 -- WorldMap
 local function styleWorldMap()
-	if E.private.skins.blizzard.enable ~= true or E.private.skins.blizzard.worldmap ~= true then
+	if E.private.skins.blizzard.enable ~= true or E.private.skins.blizzard.worldmap ~= true or E.global.general.smallerWorldMap ~= true then
 		return
 	end
 
