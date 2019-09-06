@@ -298,6 +298,15 @@ local function styleAddons()
 	end
 end
 
+local function skinZygor()
+	if not BUI.ZG or not E.db.benikuiSkins.variousSkins.zygor then
+		return
+	end
+	_G["ZygorGuidesViewerFrame"]:StripTextures()
+	_G["ZygorGuidesViewerFrame"]:CreateBackdrop("Transparent")
+	_G["ZygorGuidesViewerFrame"].backdrop:Style("Outside")
+end
+
 local function skinDecursive()
 	if not IsAddOnLoaded("Decursive") or not E.db.benikuiSkins.variousSkins.decursive then
 		return
@@ -512,6 +521,8 @@ function mod:Initialize()
 
 	--skinDecursive()
 	--skinStoryline()
+
+	skinZygor()
 
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
