@@ -141,6 +141,10 @@ local function styleFreeBlizzardFrames()
 		end
 	end
 
+	if db.questtimers then
+		QuestTimerFrame:Style("Outside")
+	end
+
 	if db.stable then
 		PetStableFrame.backdrop:Style("Outside")
 	end
