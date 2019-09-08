@@ -491,7 +491,7 @@ local function SetupActionbars(layout)
 		E.db["movers"]["PetAB"] = "BOTTOM,ElvUIParent,BOTTOM,0,85"
 		E.db["movers"]["ShiftAB"] = "BOTTOM,ElvUIParent,BOTTOM,0,141"
 		E.db["movers"]["BuiMiddleDtMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,2"
-		E.db["movers"]["ExperienceBarMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,65"
+		E.db["movers"]["ExperienceBarMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,67"
 	end
 	BUI:GetModule('Actionbars'):ToggleStyle()
 	BUI:GetModule('Layout'):MiddleDatatextDimensions()
@@ -1924,7 +1924,7 @@ local function SetupDataTexts(role)
 	-- Data Texts
 	if BUI.LP then
 		E.db["datatexts"]["panels"]["RightCoordDtPanel"] = 'Time'
-		E.db["datatexts"]["panels"]["LeftCoordDtPanel"] = 'Quick Join'
+		E.db["datatexts"]["panels"]["LeftCoordDtPanel"] = ' '
 	end
 
 	if role == 'tank' then
@@ -1941,12 +1941,12 @@ local function SetupDataTexts(role)
 		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["right"] = 'Crit Chance'
 	end
 
-	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["middle"] = 'BfA Missions (BenikUI)'
+	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["middle"] = ''
 	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["right"] = 'BuiMail'
 
-	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["left"] = 'Spec Switch (BenikUI)'
+	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["left"] = 'Bags'
 	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["right"] = 'Gold'
-	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["middle"] = 'Bags'
+	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["middle"] = ''
 
 	E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["middle"] = 'Mastery'
 
