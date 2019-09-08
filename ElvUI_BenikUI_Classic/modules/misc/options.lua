@@ -14,14 +14,14 @@ local function miscTable()
 				type = 'header',
 				name = BUI:cOption(L["Miscellaneous"]),
 			},
-			--[[flightMode = {
+			flightMode = {
 				order = 2,
 				type = 'toggle',
 				name = L['Flight Mode'],
 				desc = L['Display the Flight Mode screen when taking flight paths'],
 				get = function(info) return E.db.benikui.misc[ info[#info] ] end,
 				set = function(info, value) E.db.benikui.misc[ info[#info] ] = value; BUI:GetModule('FlightMode'):Toggle() E:StaticPopup_Show('PRIVATE_RL') end,
-			},]]
+			},
 			afkMode = {
 				order = 3,
 				type = 'toggle',

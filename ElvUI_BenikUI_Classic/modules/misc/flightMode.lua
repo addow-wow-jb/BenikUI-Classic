@@ -21,6 +21,7 @@ local TaxiRequestEarlyLanding = TaxiRequestEarlyLanding
 local ToggleAllBags = ToggleAllBags
 local UIFrameFadeIn, UIFrameFadeOut, PlaySound = UIFrameFadeIn, UIFrameFadeOut, PlaySound
 local TAXI_CANCEL_DESCRIPTION, UNKNOWN = TAXI_CANCEL_DESCRIPTION, UNKNOWN
+local WorldMapFrame = _G.WorldMapFrame
 
 -- GLOBALS: UIParent, FlightModeLocation, selectioncolor, LeftChatPanel, ElvUI_ContainerFrame
 -- GLOBALS: FlightModeMenuBtn, CreateAnimationGroup, LeftChatMover, BuiDummyChat, Minimap, AddOnSkins
@@ -171,6 +172,7 @@ function mod:SetFlightMode(status)
 		self.FlightMode.bottom.map:EnableMouse(true)
 		self.FlightMode.top.menuButton:EnableMouse(true)
 
+		WorldMapFrame:SetParent(self.FlightMode)
 		-- Bags
 		if ElvUI_ContainerFrame then
 			ElvUI_ContainerFrame:SetParent(self.FlightMode)
@@ -271,6 +273,8 @@ function mod:SetFlightMode(status)
 		self.FlightMode.message:Width(10)
 		self.FlightMode.message.text:SetAlpha(0)
 
+		WorldMapFrame:SetParent(E.UIParent)
+
 		-- Revert Bags
 		if ElvUI_ContainerFrame then
 			ElvUI_ContainerFrame:SetParent(E.UIParent)
@@ -328,7 +332,7 @@ function mod:SetFlightMode(status)
 			LeftChatPanel_Bui.styleShadow:SetFrameStrata('BACKGROUND') -- it loses its framestrata somehow. Needs digging
 		end
 
-		BuiTaxiButton:SetParent(E.UIParent)
+		--BuiTaxiButton:SetParent(E.UIParent)
 
 		self.inFlightMode = false
 	end
@@ -363,15 +367,15 @@ end
 function mod:Toggle()
 	if(E.db.benikui.misc.flightMode) then
 		self:RegisterEvent("UPDATE_BONUS_ACTIONBAR", "OnEvent")
-		self:RegisterEvent("UPDATE_MULTI_CAST_ACTIONBAR", "OnEvent")
-		self:RegisterEvent("LFG_PROPOSAL_SHOW", "OnEvent")
-		self:RegisterEvent("UPDATE_BATTLEFIELD_STATUS", "OnEvent")
+		--self:RegisterEvent("UPDATE_MULTI_CAST_ACTIONBAR", "OnEvent")
+		--self:RegisterEvent("LFG_PROPOSAL_SHOW", "OnEvent")
+		--self:RegisterEvent("UPDATE_BATTLEFIELD_STATUS", "OnEvent")
 		BUI:LoadInFlightProfile(true)
 	else
 		self:UnregisterEvent("UPDATE_BONUS_ACTIONBAR")
-		self:UnregisterEvent("UPDATE_MULTI_CAST_ACTIONBAR")
-		self:UnregisterEvent("LFG_PROPOSAL_SHOW")
-		self:UnregisterEvent("UPDATE_BATTLEFIELD_STATUS")
+		--self:UnregisterEvent("UPDATE_MULTI_CAST_ACTIONBAR")
+		--self:UnregisterEvent("LFG_PROPOSAL_SHOW")
+		--self:UnregisterEvent("UPDATE_BATTLEFIELD_STATUS")
 		BUI:LoadInFlightProfile(false)
 	end
 end
@@ -401,7 +405,7 @@ function mod:Initialize()
 
 	self.FlightMode.top.menuButton.img = self.FlightMode.top.menuButton:CreateTexture(nil, 'OVERLAY')
 	self.FlightMode.top.menuButton.img:Point("CENTER")
-	self.FlightMode.top.menuButton.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\menu.tga')
+	self.FlightMode.top.menuButton.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\flightMode\\menu.tga')
 	self.FlightMode.top.menuButton.img:SetVertexColor(1, 1, 1, .7)
 
 	self.FlightMode.top.menuButton:SetScript('OnEnter', function()
@@ -435,7 +439,7 @@ function mod:Initialize()
 
 	self.FlightMode.top.closeButton.img = self.FlightMode.top.closeButton:CreateTexture(nil, 'OVERLAY')
 	self.FlightMode.top.closeButton.img:Point("CENTER")
-	self.FlightMode.top.closeButton.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\close.tga')
+	self.FlightMode.top.closeButton.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\flightMode\\close.tga')
 	self.FlightMode.top.closeButton.img:SetVertexColor(1, 1, 1, .7)
 
 	self.FlightMode.top.closeButton:SetScript('OnEnter', function()
@@ -517,7 +521,7 @@ function mod:Initialize()
 	self.FlightMode.bottom.logo = self.FlightMode:CreateTexture(nil, 'OVERLAY')
 	self.FlightMode.bottom.logo:Size(420, 105)
 	self.FlightMode.bottom.logo:Point("BOTTOM", self.FlightMode.bottom, "CENTER", 0, -20)
-	self.FlightMode.bottom.logo:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\logo_benikui.tga')
+	self.FlightMode.bottom.logo:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\logo_benikui.tga')
 
 	-- BenikUI version
 	self.FlightMode.bottom.benikui = self.FlightMode.bottom:CreateFontString(nil, 'OVERLAY')
@@ -553,7 +557,7 @@ function mod:Initialize()
 
 	self.FlightMode.bottom.requestStop.img = self.FlightMode.bottom.requestStop:CreateTexture(nil, 'OVERLAY')
 	self.FlightMode.bottom.requestStop.img:Point("CENTER")
-	self.FlightMode.bottom.requestStop.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\arrow.tga')
+	self.FlightMode.bottom.requestStop.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\flightMode\\arrow.tga')
 	self.FlightMode.bottom.requestStop.img:SetVertexColor(1, 1, 1, .7)
 
 	self.FlightMode.bottom.requestStop:SetScript('OnEnter', function()
@@ -599,7 +603,7 @@ function mod:Initialize()
 
 	self.FlightMode.bottom.info.img = self.FlightMode.bottom.info:CreateTexture(nil, 'OVERLAY')
 	self.FlightMode.bottom.info.img:Point("CENTER")
-	self.FlightMode.bottom.info.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\info.tga')
+	self.FlightMode.bottom.info.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\flightMode\\info.tga')
 	self.FlightMode.bottom.info.img:SetVertexColor(1, 1, 1, .7)
 
 	self.FlightMode.bottom.info:SetScript('OnEnter', function()
@@ -637,7 +641,7 @@ function mod:Initialize()
 
 	self.FlightMode.bottom.map.img = self.FlightMode.bottom.map:CreateTexture(nil, 'OVERLAY')
 	self.FlightMode.bottom.map.img:Point("CENTER")
-	self.FlightMode.bottom.map.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\map.tga')
+	self.FlightMode.bottom.map.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\flightMode\\map.tga')
 	self.FlightMode.bottom.map.img:SetVertexColor(1, 1, 1, .7)
 
 	self.FlightMode.bottom.map:SetScript('OnEnter', function()
@@ -671,7 +675,7 @@ function mod:Initialize()
 
 	self.FlightMode.bottom.bags.img = self.FlightMode.bottom.bags:CreateTexture(nil, 'OVERLAY')
 	self.FlightMode.bottom.bags.img:Point("CENTER")
-	self.FlightMode.bottom.bags.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI\\media\\textures\\flightMode\\bags.tga')
+	self.FlightMode.bottom.bags.img:SetTexture('Interface\\AddOns\\ElvUI_BenikUI_Classic\\media\\textures\\flightMode\\bags.tga')
 	self.FlightMode.bottom.bags.img:SetVertexColor(1, 1, 1, .7)
 
 	self.FlightMode.bottom.bags:SetScript('OnEnter', function()
