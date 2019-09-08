@@ -3,6 +3,6 @@
 	<script file="auras.lua"/>
 	<script file="tooltip.lua"/>
 	<script file="afk.lua"/>
-	<!--<script file="flightMode.lua"/>-->
+	<script file="flightMode.lua"/>
 	<script file="options.lua"/>
 </Ui>

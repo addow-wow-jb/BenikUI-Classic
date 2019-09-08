@@ -49,7 +49,7 @@ local function styleFreeBlizzardFrames()
 
 	if db.friends then
 		AddFriendEntryFrame:Style("Outside")
-		FriendsFrame:Style("Outside")
+		FriendsFrame.backdrop:Style("Outside")
 		FriendsFriendsFrame:Style("Outside")
 		RecruitAFriendFrame:Style("Outside")
 		RecruitAFriendSentFrame:Style("Outside")
@@ -62,7 +62,7 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.guildregistrar then
-		GuildRegistrarFrame:Style("Outside")
+		GuildRegistrarFrame.backdrop:Style("Outside")
 	end
 
 	if db.help then
@@ -141,8 +141,12 @@ local function styleFreeBlizzardFrames()
 		end
 	end
 
+	if db.questtimers then
+		QuestTimerFrame:Style("Outside")
+	end
+
 	if db.stable then
-		PetStableFrame:Style("Outside")
+		PetStableFrame.backdrop:Style("Outside")
 	end
 
 	if db.spellbook then
@@ -202,7 +206,7 @@ S:AddCallback("BenikUI_Spellbook", styleSpellbook)
 
 -- WorldMap
 local function styleWorldMap()
-	if E.private.skins.blizzard.enable ~= true or E.private.skins.blizzard.worldmap ~= true then
+	if E.private.skins.blizzard.enable ~= true or E.private.skins.blizzard.worldmap ~= true or E.global.general.smallerWorldMap ~= true then
 		return
 	end
 
@@ -296,6 +300,15 @@ local function styleAddons()
 			stAMAddOns:SetTemplate("Transparent")
 		end
 	end
+end
+
+local function skinZygor()
+	if not BUI.ZG or not E.db.benikuiSkins.variousSkins.zygor then
+		return
+	end
+	_G["ZygorGuidesViewerFrame"]:StripTextures()
+	_G["ZygorGuidesViewerFrame"]:CreateBackdrop("Transparent")
+	_G["ZygorGuidesViewerFrame"].backdrop:Style("Outside")
 end
 
 local function skinDecursive()
@@ -512,6 +525,8 @@ function mod:Initialize()
 
 	--skinDecursive()
 	--skinStoryline()
+
+	skinZygor()
 
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")

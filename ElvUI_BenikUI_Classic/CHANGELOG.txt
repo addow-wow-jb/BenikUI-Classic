@@ -1,3 +1,20 @@
+v1.03
+*Styled the QuestTimerFrame
+*Removed AddonSkins BugReportFrame styling
+*Enabled FlightMode (thurin)
+*Support for the forthcoming Nuts & Bolts Classic
+*Disable tooltip mods if TinyTooltip is enabled
+*Added Zygor skin/style (thurin)
+*Add additional check for frame.backdrop's (Merathilis)
+*New: The Chat Edit box can now also be positioned either under Actionbar1 or Actionbar2 backdrops. (user request)
+*Enabled Professions Dashboard. Click on professions is currently disabled
+*Various frame styling fixes
+*Install adjustments
+
+v1.021
+*Fixed BenikUI Shadows that caused issues on Unitframes. (Credit: Azilroka)
+*Updated the donor list. Thank you Christian <3
+
 v1.02
 *Since ElvUI 1.06 has enabled skins, BenikUI tried to style them all again.
 *Removed more skins/styles/mods that are not in WoW Classic.

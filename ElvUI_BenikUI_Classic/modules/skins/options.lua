@@ -157,6 +157,12 @@ local function SkinTable()
 					E:StaticPopup_Show('PRIVATE_RL') end,
 				disabled = function() return not IsAddOnLoaded('InFlight_Load') end,
 			},
+			zygor = {
+				order = 5,
+				type = 'toggle',
+				name = L['Zygor Guides'],
+				disabled = function() return not BUI.ZG end,
+			},
 		},
 	}
 

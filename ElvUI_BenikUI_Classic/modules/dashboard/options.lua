@@ -230,47 +230,47 @@ local function UpdateTokenOptions()
 end
 
 local function UpdateProfessionOptions()
-	local prof1, prof2, archy, fishing, cooking = GetProfessions()
 	local optionOrder = 1
-	if (prof1 or prof2 or archy or fishing or cooking) then
-		E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions = {
-			order = 50,
-			type = 'group',
-			guiInline = true,
-			name = L['Select Professions'],
-			disabled = function() return not E.db.dashboards.professions.enableProfessions end,
-			args = {
-			},
-		}
-		local proftable = { GetProfessions() }
-		for _, id in pairs(proftable) do
-			local pname, icon = GetProfessionInfo(id)
-			if pname then
-				E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions.args[pname] = {
-					order = optionOrder + 1,
-					type = 'toggle',
-					name = '|T'..icon..':18|t '..pname,
-					desc = L['Enable/Disable ']..pname,
-					get = function(info) return E.private.dashboards.professions.choosePofessions[id] end,
-					set = function(info, value) E.private.dashboards.professions.choosePofessions[id] = value; BUID:UpdateProfessions(); BUID:UpdateProfessionSettings(); end,
-				}
+	E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions = {
+		order = 50,
+		type = 'group',
+		guiInline = true,
+		name = L['Select Professions'],
+		disabled = function() return not E.db.dashboards.professions.enableProfessions end,
+		args = {
+		},
+	}
+
+	local hasSecondary = false
+	for skillIndex = 1, GetNumSkillLines() do
+		local skillName, isHeader, _, skillRank, _, skillModifier, skillMaxRank, isAbandonable = GetSkillLineInfo(skillIndex)
+
+		if hasSecondary and isHeader then
+			hasSecondary = false
+		end
+
+		if (skillName and isAbandonable) or hasSecondary then
+			E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions.args[skillName] = {
+				order = optionOrder + 1,
+				type = 'toggle',
+				name = skillName,
+				desc = L['Enable/Disable '] .. skillName,
+				get = function(info)
+					return E.private.dashboards.professions.choosePofessions[skillIndex]
+				end,
+				set = function(info, value)
+					E.private.dashboards.professions.choosePofessions[skillIndex] = value;
+					BUID:UpdateProfessions();
+					BUID:UpdateProfessionSettings();
+				end,
+			}
+		end
+
+		if isHeader then
+			if skillName == BUI.SecondarySkill then
+				hasSecondary = true
 			end
 		end
-	else
-		E.Options.args.benikui.args.dashboards.args.professions.args.choosePofessions = {
-			order = 5,
-			type = 'group',
-			guiInline = true,
-			name = L['Select Professions'],
-			disabled = function() return not E.db.dashboards.professions.enableProfessions end,
-			args = {
-				noprof = {
-					order = 1,
-					type = 'description',
-					name = PROFESSIONS_MISSING_PROFESSION,
-				},
-			},
-		}
 	end
 end
 
@@ -303,7 +303,7 @@ local function dashboardsTable()
 						set = function(info, value) E.db.dashboards[ info[#info] ] = value;
 							if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end
 							--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
-							--if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
+							if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
 						end,
 					},
 					customBarColor = {
@@ -323,7 +323,7 @@ local function dashboardsTable()
 							t.r, t.g, t.b, t.a = r, g, b, a
 							if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end
 							--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
-							--if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
+							if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
 						end,
 					},
 					spacer = {
@@ -343,7 +343,7 @@ local function dashboardsTable()
 						set = function(info, value) E.db.dashboards[ info[#info] ] = value;
 							if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end
 							--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
-							--if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
+							if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
 						end,
 					},
 					customTextColor = {
@@ -362,7 +362,7 @@ local function dashboardsTable()
 							t.r, t.g, t.b, t.a = r, g, b, a
 							if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end
 							--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end
-							--if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
+							if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end
 						end,
 					},
 				},
@@ -376,7 +376,7 @@ local function dashboardsTable()
 				get = function(info) return E.db.dashboards.dashfont[ info[#info] ] end,
 				set = function(info, value) E.db.dashboards.dashfont[ info[#info] ] = value;
 					if E.db.dashboards.system.enableSystem then BUID:UpdateSystemSettings(); end;
-					--if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end;
+					if E.db.dashboards.professions.enableProfessions then BUID:UpdateProfessionSettings(); end;
 					--if E.db.dashboards.tokens.enableTokens then BUID:UpdateTokenSettings(); end;
 					end,
 				args = {
@@ -662,7 +662,7 @@ local function dashboardsTable()
 						},
 					},
 				},
-			},
+			},]]
 			professions = {
 				order = 6,
 				type = 'group',
@@ -744,7 +744,7 @@ local function dashboardsTable()
 						set = function(info, value) E.db.dashboards.professions.capped = value; BUID:UpdateProfessions(); BUID:UpdateProfessionSettings(); end,
 					},
 				},
-			},]]
+			},
 		},
 	}
 	--[[ update the options, when ElvUI Config fires
@@ -755,4 +755,4 @@ end
 tinsert(BUI.Config, dashboardsTable)
 tinsert(BUI.Config, UpdateSystemOptions)
 --tinsert(BUI.Config, UpdateTokenOptions)
---tinsert(BUI.Config, UpdateProfessionOptions)
+tinsert(BUI.Config, UpdateProfessionOptions)

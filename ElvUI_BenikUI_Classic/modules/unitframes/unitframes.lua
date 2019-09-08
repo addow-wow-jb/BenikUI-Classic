@@ -156,24 +156,9 @@ function mod:TankTargetShadows()
 	end
 end
 
-function mod:PostUpdateAura(unit, button, index, position, duration, expiration, debuffType, isStealable, unitCaster, spellID, name)
+function mod:PostUpdateAura(unit, button, index)
 	if not button.shadow then
 		button:CreateSoftShadow()
-	end
-
-	if duration == 0 and expiration == 0 then
-		duration, expiration = E.Libs.LCD:GetAuraDurationByUnit(unit, spellID, unitCaster, name)
-
-		button.IsLibClassicDuration = true
-	end
-
-	if (button.cd) and (button.IsLibClassicDuration) then
-		if (duration and duration > 0) then
-			button.cd:SetCooldown(expiration - duration, duration)
-			button.cd:Show()
-		else
-			button.cd:Hide()
-		end
 	end
 
 	if button.isDebuff then
@@ -226,7 +211,7 @@ function mod:Initialize()
 	self:InitParty()
 	self:InitRaid()
 	self:InitRaid40()
-	
+
 	self:ChangePowerBarTexture()
 	self:ChangeHealthBarTexture()
 	self:InfoPanelColor()

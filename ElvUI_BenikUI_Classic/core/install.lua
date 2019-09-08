@@ -22,7 +22,6 @@ local function SetupLayout(layout)
 	E.db["bags"]["itemLevelCustomColorEnable"] = false
 	E.db["bags"]["sortInverted"] = false
 	E.db["bags"]["bagWidth"] = 412
-	E.db["bags"]["scrapIcon"] = true
 	E.db["bags"]["countFontOutline"] = "OUTLINE"
 	E.db["bags"]["bankSize"] = 32
 	E.db["bags"]["itemLevelFontOutline"] = "OUTLINE"
@@ -30,24 +29,12 @@ local function SetupLayout(layout)
 	E.db["chat"]["panelBackdrop"] = 'SHOWBOTH'
 	E.db["chat"]["timeStampFormat"] = "%H:%M "
 	E.db["chat"]["panelWidth"] = 412
-	E.db["databars"]["azerite"]["enable"] = true
-	E.db["databars"]["azerite"]["height"] = 150
-	E.db["databars"]["azerite"]["orientation"] = 'VERTICAL'
-	E.db["databars"]["azerite"]["textFormat"] = 'NONE'
-	E.db["databars"]["azerite"]["textSize"] = 9
-	E.db["databars"]["azerite"]["width"] = 8
 	E.db["databars"]["experience"]["font"] = "Expressway"
 	E.db["databars"]["experience"]["textYoffset"] = 10
 	E.db["databars"]["experience"]["textFormat"] = "CURPERC"
 	E.db["databars"]["experience"]["height"] = 6
 	E.db["databars"]["experience"]["orientation"] = "HORIZONTAL"
 	E.db["databars"]["experience"]["textSize"] = 10
-	E.db["databars"]["honor"]["enable"] = true
-	E.db["databars"]["honor"]["height"] = 152
-	E.db["databars"]["honor"]["textFormat"] = 'NONE'
-	E.db["databars"]["honor"]["textSize"] = 9
-	E.db["databars"]["honor"]["width"] = 8
-	E.db["databars"]["honor"]["orientation"] = 'VERTICAL'
 	E.db["databars"]["reputation"]["enable"] = true
 	E.db["databars"]["reputation"]["height"] = 150
 	E.db["databars"]["reputation"]["orientation"] = 'VERTICAL'
@@ -84,22 +71,14 @@ local function SetupLayout(layout)
 	E.db["general"]["altPowerBar"]['textFormat'] = 'NAMECURMAX'
 	E.db["general"]["altPowerBar"]['statusBarColorGradient'] = false
 	E.db["general"]["altPowerBar"]['statusBarColor'] = { r = 0.2, g = 0.4, b = 0.8 }
-	E.db["general"]["itemLevel"]["displayCharacterInfo"] = false
-	E.db["general"]["itemLevel"]["displayInspectInfo"] = true
-	E.db["general"]["itemLevel"]["itemLevelFontSize"] = 12
-	E.db["general"]["itemLevel"]["itemLevelFontOutline"] = 'OUTLINE'
 	
 	E.db["hideTutorial"] = true
 	E.private["skins"]["blizzard"]["alertframes"] = true
 	E.private["skins"]["blizzard"]["questChoice"] = true
 	E.private["skins"]["parchmentRemover"]["enable"] = true
 
-	E.db["benikuiDatabars"]["azerite"]["buttonStyle"] = "DEFAULT"
-	E.db["benikuiDatabars"]["azerite"]["notifiers"]["position"] = "RIGHT"
 	E.db["benikuiDatabars"]["reputation"]["buttonStyle"] = "DEFAULT"
 	E.db["benikuiDatabars"]["reputation"]["notifiers"]["position"] = "LEFT"
-	E.db["benikuiDatabars"]["honor"]["buttonStyle"] = "TRANSPARENT"
-	E.db["benikuiDatabars"]["honor"]["notifiers"]["position"] = "LEFT"
 	E.db["benikuiDatabars"]["experience"]["buiStyle"] = false
 	E.db["benikui"]["general"]["auras"] = false
 
@@ -111,13 +90,10 @@ local function SetupLayout(layout)
 	
 	-- common movers
 	E.db["movers"]["AlertFrameMover"] = "TOP,ElvUIParent,TOP,0,-140"
-	E.db["movers"]["AzeriteBarMover"] = "BOTTOMLEFT,ElvUIParent,BOTTOMLEFT,415,22"
 	E.db["movers"]["BelowMinimapContainerMover"] = "TOP,ElvUIParent,TOP,0,-192"
 	E.db["movers"]["BNETMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-156,-200"
 	E.db["movers"]["BuiDashboardMover"] = "TOPLEFT,ElvUIParent,TOPLEFT,4,-8"
-	E.db["movers"]["DigSiteProgressBarMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,315"
 	E.db["movers"]["GMMover"] = "TOPLEFT,ElvUIParent,TOPLEFT,158,-38"
-	E.db["movers"]["HonorBarMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-157,-6"
 	E.db["movers"]["LeftChatMover"] = "BOTTOMLEFT,ElvUIParent,BOTTOMLEFT,2,22"
 	E.db["movers"]["LocationMover"] = "TOP,ElvUIParent,TOP,0,-7"
 	E.db["movers"]["MicrobarMover"] = "TOPLEFT,ElvUIParent,TOPLEFT,158,-5"
@@ -138,7 +114,6 @@ local function SetupLayout(layout)
 		E.db["general"]["fontSize"] = 10
 		E.db["general"]["altPowerBar"]["font"] = "Bui Prototype"
 		E.db["general"]["altPowerBar"]["fontSize"] = 10
-		E.db["general"]["itemLevel"]["itemLevelFont"] = "Bui Prototype"
 
 		E.db["chat"]["tabFont"] = "Bui Visitor1"
 		E.db["chat"]["tabFontSize"] = 10
@@ -225,7 +200,7 @@ local function SetupLayout(layout)
 
 		E.db["benikui"]["misc"]["ilevel"]["font"] = "Expressway"
 		E.db["benikui"]["misc"]["ilevel"]["fontsize"] = 10
-		E.db["benikui"]["datatexts"]["middle"]["width"] = 415
+		E.db["benikui"]["datatexts"]["middle"]["width"] = 414
 		BUI:GetModule('Layout'):MiddleDatatextDimensions()
 
 		E.db["benikui"]["general"]["shadows"] = true
@@ -375,8 +350,8 @@ local function SetupActionbars(layout)
 		E.db["actionbar"]["stanceBar"]["buttonsize"] = 24
 
 		E.db["benikui"]["actionbars"]["style"]["bar2"] = true
-		E.db["benikui"]["datatexts"]["middle"]["width"] = 415
-		E.db["databars"]["experience"]["width"] = 415
+		E.db["benikui"]["datatexts"]["middle"]["width"] = 414
+		E.db["databars"]["experience"]["width"] = 414
 
 		-- movers
 		E.db["movers"]["ElvAB_1"] = "BOTTOM,ElvUIParent,BOTTOM,0,97"
@@ -392,7 +367,6 @@ local function SetupActionbars(layout)
 		E.db["movers"]["BuffsMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-181,-3"
 		E.db["movers"]["DebuffsMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-181,-128"
 		E.db["movers"]["ExperienceBarMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,20"
-		E.db["movers"]["TalkingHeadFrameMover"] = "TOP,ElvUIParent,TOP,0,-128"
 
 	elseif layout == 'v2' then
 		E.db["actionbar"]["font"] = "Bui Visitor1"
@@ -460,7 +434,6 @@ local function SetupActionbars(layout)
 		E.db["movers"]["PetAB"] = "BOTTOMRIGHT,ElvUIParent,BOTTOMRIGHT,-150,177"
 		E.db["movers"]["ShiftAB"] = "TOPLEFT,ElvUIParent,BOTTOMLEFT,832,128"
 		E.db["movers"]["ExperienceBarMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,97"
-		E.db["movers"]["TalkingHeadFrameMover"] = "TOP,ElvUIParent,TOP,0,-128"
 
 	elseif layout == 'v3' then
 		E.db["actionbar"]["backdropSpacingConverted"] = true
@@ -502,15 +475,14 @@ local function SetupActionbars(layout)
 		E.db["actionbar"]["fontOutline"] = "OUTLINE"
 		E.db["actionbar"]["stanceBar"]["buttonsize"] = 24
 		E.db["benikui"]["actionbars"]["style"]["bar2"] = false
-		E.db["benikui"]["datatexts"]["middle"]["width"] = 415
-		E.db["databars"]["experience"]["width"] = 415
+		E.db["benikui"]["datatexts"]["middle"]["width"] = 414
+		E.db["databars"]["experience"]["width"] = 414
 		-- movers
 		E.db["movers"]["ArenaHeaderMover"] = "BOTTOMRIGHT,ElvUIParent,BOTTOMRIGHT,-56,346"
 		E.db["movers"]["BossButton"] = "BOTTOM,ElvUIParent,BOTTOM,0,362"
 		E.db["movers"]["BossHeaderMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-56,-397"
 		E.db["movers"]["BuffsMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-181,-3"
 		E.db["movers"]["DebuffsMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-181,-128"
-		E.db["movers"]["DigSiteProgressBarMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,315"
 		E.db["movers"]["ElvAB_1"] = "BOTTOM,ElvUIParent,BOTTOM,0,309"
 		E.db["movers"]["ElvAB_2"] = "BOTTOM,ElvUIParent,BOTTOM,0,268"
 		E.db["movers"]["ElvAB_3"] = "BOTTOM,ElvUIParent,BOTTOM,0,22"
@@ -519,8 +491,7 @@ local function SetupActionbars(layout)
 		E.db["movers"]["PetAB"] = "BOTTOM,ElvUIParent,BOTTOM,0,85"
 		E.db["movers"]["ShiftAB"] = "BOTTOM,ElvUIParent,BOTTOM,0,141"
 		E.db["movers"]["BuiMiddleDtMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,2"
-		E.db["movers"]["ExperienceBarMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,65"
-		E.db["movers"]["TalkingHeadFrameMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,116"
+		E.db["movers"]["ExperienceBarMover"] = "BOTTOM,ElvUIParent,BOTTOM,0,67"
 	end
 	BUI:GetModule('Actionbars'):ToggleStyle()
 	BUI:GetModule('Layout'):MiddleDatatextDimensions()
@@ -648,7 +619,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["player"]["threatStyle"] = 'GLOW'
 		E.db["unitframe"]["units"]["player"]["power"]["height"] = 5
 		E.db["unitframe"]["units"]["player"]["power"]["width"] = 'fill'
-		E.db["unitframe"]["units"]["player"]["power"]["detachedWidth"] = 367
+		E.db["unitframe"]["units"]["player"]["power"]["detachedWidth"] = 366
 		E.db["unitframe"]["units"]["player"]["power"]["detachFromFrame"] = false
 		E.db["unitframe"]["units"]["player"]["power"]["yOffset"] = 0
 		E.db["unitframe"]["units"]["player"]["power"]["yOffset"] = 0
@@ -1555,7 +1526,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["player"]["portrait"]["enable"] = false
 		E.db["unitframe"]["units"]["player"]["power"]["attachTextTo"] = "Power"
 		E.db["unitframe"]["units"]["player"]["power"]["detachFromFrame"] = true
-		E.db["unitframe"]["units"]["player"]["power"]["detachedWidth"] = 367
+		E.db["unitframe"]["units"]["player"]["power"]["detachedWidth"] = 366
 		E.db["unitframe"]["units"]["player"]["power"]["height"] = 7
 		E.db["unitframe"]["units"]["player"]["power"]["hideonnpc"] = true
 		E.db["unitframe"]["units"]["player"]["power"]["position"] = "CENTER"
@@ -1953,7 +1924,7 @@ local function SetupDataTexts(role)
 	-- Data Texts
 	if BUI.LP then
 		E.db["datatexts"]["panels"]["RightCoordDtPanel"] = 'Time'
-		E.db["datatexts"]["panels"]["LeftCoordDtPanel"] = 'Quick Join'
+		E.db["datatexts"]["panels"]["LeftCoordDtPanel"] = ' '
 	end
 
 	if role == 'tank' then
@@ -1970,12 +1941,12 @@ local function SetupDataTexts(role)
 		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["right"] = 'Crit Chance'
 	end
 
-	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["middle"] = 'BfA Missions (BenikUI)'
+	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["middle"] = ''
 	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["right"] = 'BuiMail'
 
-	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["left"] = 'Spec Switch (BenikUI)'
+	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["left"] = 'Bags'
 	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["right"] = 'Gold'
-	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["middle"] = 'Bags'
+	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["middle"] = ''
 
 	E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["middle"] = 'Mastery'
 

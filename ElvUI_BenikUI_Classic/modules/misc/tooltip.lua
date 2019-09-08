@@ -48,7 +48,7 @@ end
 
 function mod:Initialize()
 	if E.private.skins.blizzard.enable ~= true or E.private.skins.blizzard.tooltip ~= true then return end
-	if E.db.benikui.general.benikuiStyle ~= true then return end
+	if BUI:IsAddOnEnabled('TinyTooltip') or E.db.benikui.general.benikuiStyle ~= true then return end
 
 	StyleTooltip()
 

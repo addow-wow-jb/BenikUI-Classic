@@ -52,7 +52,7 @@ local function RegDataTexts()
 end
 
 local Bui_dchat = CreateFrame('Frame', 'BuiDummyChat', E.UIParent)
-local Bui_dthreat = CreateFrame('Frame', 'BuiDummyThreat', E.UIParent)
+local Bui_deb = CreateFrame('Frame', 'BuiDummyEditBoxHolder', E.UIParent)
 
 -- GameMenu
 local GameMenuFrame = CreateFrame('Frame', 'BuiGameClickMenu', E.UIParent)
@@ -230,6 +230,12 @@ function mod:MiddleDatatextDimensions()
 	DT:UpdateAllDimensions()
 end
 
+function mod:PositionEditBoxHolder(bar)
+	Bui_deb:ClearAllPoints()
+	Bui_deb:Point('TOPLEFT', bar.backdrop, 'BOTTOMLEFT', 0, -SPACING)
+	Bui_deb:Point('BOTTOMRIGHT', bar.backdrop, 'BOTTOMRIGHT', 0, -(PANEL_HEIGHT + 6))
+end
+
 local function updateButtonFont()
 	for i = 1, BUTTON_NUM do
 		if bbuttons[i].text then
@@ -269,15 +275,10 @@ function mod:ChangeLayout()
 
 	E:CreateMover(Bui_mdtp, "BuiMiddleDtMover", L['BenikUI Middle DataText'], nil, nil, nil, 'ALL,BenikUI', nil, 'benikui,datatexts')
 
-	-- dummy frame for chat/threat (left)
+	-- dummy frame for chat (left)
 	Bui_dchat:SetFrameStrata('LOW')
 	Bui_dchat:Point('TOPLEFT', LeftChatPanel, 'BOTTOMLEFT', 0, -SPACING)
 	Bui_dchat:Point('BOTTOMRIGHT', LeftChatPanel, 'BOTTOMRIGHT', 0, -PANEL_HEIGHT -SPACING)
-
-	-- dummy frame for threat (right)
-	Bui_dthreat:SetFrameStrata('LOW')
-	Bui_dthreat:Point('TOPLEFT', RightChatPanel, 'BOTTOMLEFT', 0, -SPACING)
-	Bui_dthreat:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', 0, -PANEL_HEIGHT -SPACING)
 
 	-- Buttons
 	for i = 1, BUTTON_NUM do
