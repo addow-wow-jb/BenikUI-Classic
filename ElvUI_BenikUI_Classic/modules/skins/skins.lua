@@ -435,6 +435,46 @@ local function StyleDBM_Options()
 	end)
 end
 
+local function StyleXtoLevel()
+	if not E.db.benikuiSkins.variousSkins.xtoLevel or not IsAddOnLoaded('XToLevel') then return end
+
+	local profileKey = XToLevelDB.profileKeys[E.myname..' - '..E.myrealm]
+	if profileKey then
+		XToLevelDB["profiles"][profileKey]["averageDisplay"] = {}
+		XToLevelDB["profiles"][profileKey]["averageDisplay"]["backdrop"] = {}
+		XToLevelDB["profiles"][profileKey]["averageDisplay"]["backdrop"] = false
+	end
+
+	local frame = _G["XToLevel_AverageFrame_Classic"]
+	if frame then
+		frame:StripTextures()
+		frame:CreateBackdrop("Transparent", true)
+		frame.backdrop:Style("Outside")
+	end
+	
+	local XtoLevelFrames = {
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterKills"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterQuests"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterDungeons"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterBattles"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterObjectives"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterPetBattles"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterGathering"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterDigs"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterProgress"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterTimer"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterGuildProgress"],
+	}
+
+	for _, bframe in pairs(XtoLevelFrames) do
+		S:HandleButton(bframe)
+		bframe:SetTemplate('Transparent')
+		if BUI.ShadowMode then
+			bframe:CreateSoftShadow()
+		end
+	end
+end
+
 local function StyleInFlight()
 	if E.db.benikuiSkins.variousSkins.inflight ~= true or E.db.benikui.misc.flightMode == true then
 		return
@@ -476,14 +516,11 @@ local function StyleAdibags()
 	if not E.db.benikuiSkins.addonSkins.adibags or not BUI.AS then
 		return
 	end
-	E:Delay(
-		1.1,
-		function()
-			if AdiBagsContainer1 then
-				AdiBagsContainer1:Style("Outside")
-			end
+	E:Delay(1.1, function()
+		if AdiBagsContainer1 then
+			AdiBagsContainer1:Style("Outside")
 		end
-	)
+	end)
 end
 
 function mod:LoD_AddOns(_, addon)
@@ -500,7 +537,7 @@ function mod:PLAYER_ENTERING_WORLD(...)
 	styleAddons()
 	styleWorldMap()
 	--StyleAdibags()
-
+	
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
@@ -529,7 +566,7 @@ function mod:Initialize()
 	--skinStoryline()
 
 	skinZygor()
-
+	StyleXtoLevel()
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
 	--self:RegisterEvent("BANKFRAME_OPENED", "StyleAdibagsBank")

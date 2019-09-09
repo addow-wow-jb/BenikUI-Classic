@@ -247,6 +247,7 @@ P['benikuiSkins'] = {
 		['decursive'] = true,
 		['storyline'] = true,
 		['inflight'] = true,
+		['xtoLevel'] = true,
 	},
 }
 
