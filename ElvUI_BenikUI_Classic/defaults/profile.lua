@@ -122,6 +122,7 @@ P['benikui'] = {
 			['portraitStyle'] = false,
 			['portraitStyleHeight'] = 6,
 			['portraitFrameStrata'] = "MEDIUM",
+			['portraitBackdrop'] = true,
 		},
 		['target'] = {
 			['detachPortrait'] = false,
@@ -133,6 +134,7 @@ P['benikui'] = {
 			['portraitStyle'] = false,
 			['portraitStyleHeight'] = 6,
 			['portraitFrameStrata'] = "MEDIUM",
+			['portraitBackdrop'] = true,
 		},
 		['targettarget'] = {
 			['detachPortrait'] = false,
