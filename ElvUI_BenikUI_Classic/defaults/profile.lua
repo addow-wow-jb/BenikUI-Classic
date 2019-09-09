@@ -83,10 +83,6 @@ P['benikui'] = {
 		['mail'] = {
 			['toggle'] = true,
 		},
-		['garrison'] = {
-			['currency'] = false,
-			['oil'] = false,
-		},
 	},
 
 	['actionbars'] = {
@@ -137,14 +133,6 @@ P['benikui'] = {
 			['portraitBackdrop'] = true,
 		},
 		['targettarget'] = {
-			['detachPortrait'] = false,
-			['portraitWidth'] = 110,
-			['portraitHeight'] = 85,
-			['portraitShadow'] = false,
-			['portraitTransparent'] = true,
-			['portraitFrameStrata'] = "MEDIUM",
-		},
-		['focus'] = {
 			['detachPortrait'] = false,
 			['portraitWidth'] = 110,
 			['portraitHeight'] = 85,
@@ -275,28 +263,6 @@ P['benikuiDatabars'] = {
 			['enable'] = true,
 			['combat'] = false,
 			['position'] = 'LEFT',
-		},
-	},
-	
-	['azerite'] = {
-		['enable'] = true,
-		['buiStyle'] = true,
-		['buttonStyle'] = "TRANSPARENT",
-		['notifiers'] = {
-			['enable'] = true,
-			['combat'] = false,
-			['position'] = 'LEFT',
-		},
-	},
-	
-	['honor'] = {
-		['enable'] = true,
-		['buiStyle'] = true,
-		['buttonStyle'] = "TRANSPARENT",
-		['notifiers'] = {
-			['enable'] = true,
-			['combat'] = false,
-			['position'] = 'RIGHT',
 		},
 	},
 }
