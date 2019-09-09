@@ -39,7 +39,9 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.bgscore then
-		WorldStateScoreFrame.backdrop:Style("Outside")
+		if WorldStateScoreFrame.backdrop then
+			WorldStateScoreFrame.backdrop:Style("Outside")
+		end
 	end
 
 	if db.character then
