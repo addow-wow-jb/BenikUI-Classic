@@ -237,7 +237,6 @@ P['benikuiSkins'] = {
 		['pawn'] = true,
 		['dbm'] = true,
 		['bigwigs'] = true,
-		['zygor'] = true,
 		['immersion'] = true,
 		['adibags'] = true,
 	},
@@ -248,6 +247,7 @@ P['benikuiSkins'] = {
 		['storyline'] = true,
 		['inflight'] = true,
 		['xtoLevel'] = true,
+		['zygor'] = true,
 	},
 }
 
