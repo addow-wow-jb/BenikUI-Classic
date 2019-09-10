@@ -184,7 +184,6 @@ L['Health statusbar texture. Applies only on Group Frames'] = true
 L['Ignore Transparency'] = true
 L['Lower InfoPanel width when potraits are enabled.'] = true
 L['Makes the portrait backdrop transparent'] = true
-L['Overlayed Portraits Alpha'] = true
 L['Player Size'] = true
 L['Power statusbar texture.'] = true
 L['Replaces the default role icons with SVUI ones.'] = true

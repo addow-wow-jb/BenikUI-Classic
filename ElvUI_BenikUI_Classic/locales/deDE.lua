@@ -184,7 +184,6 @@ L['Health statusbar texture. Applies only on Group Frames'] = "Gesundheit Status
 L['Ignore Transparency'] = "Ignoriere Transparenz"
 L['Lower InfoPanel width when potraits are enabled.'] = "Verringert die InfoPanel Breite, wenn Portraits aktiviert sind."
 L['Makes the portrait backdrop transparent'] = "Dadurch wird der Portrait Hintergrund transparent"
-L['Overlayed Portraits Alpha'] = "Überlappende Portrait Alpha"
 L['Player Size'] = "Spieler Größe"
 L['Power statusbar texture.'] = "Kraft Statusleiste Textur."
 L['Replaces the default role icons with SVUI ones.'] = "Ersetzt die Standard Rollen Symbole mit denen von SVUI."

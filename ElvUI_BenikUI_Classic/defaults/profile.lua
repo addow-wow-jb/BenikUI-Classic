@@ -181,7 +181,6 @@ P['benikui'] = {
 		},
 		['misc'] = {
 			['svui'] = true,
-			['portraitTransparency'] = 0.70,
 		},
 	},
 }
