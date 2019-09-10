@@ -438,13 +438,6 @@ end
 local function StyleXtoLevel()
 	if not E.db.benikuiSkins.variousSkins.xtoLevel or not IsAddOnLoaded('XToLevel') then return end
 
-	local profileKey = XToLevelDB.profileKeys[E.myname..' - '..E.myrealm]
-	if profileKey then
-		XToLevelDB["profiles"][profileKey]["averageDisplay"] = {}
-		XToLevelDB["profiles"][profileKey]["averageDisplay"]["backdrop"] = {}
-		XToLevelDB["profiles"][profileKey]["averageDisplay"]["backdrop"] = false
-	end
-
 	local frame = _G["XToLevel_AverageFrame_Classic"]
 	if frame then
 		frame:StripTextures()
