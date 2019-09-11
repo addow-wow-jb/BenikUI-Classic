@@ -311,6 +311,12 @@ local function skinZygor()
 	_G["ZygorGuidesViewerFrame"]:StripTextures()
 	_G["ZygorGuidesViewerFrame"]:CreateBackdrop("Transparent")
 	_G["ZygorGuidesViewerFrame"].backdrop:Style("Outside")
+	
+	local function SkinPopup()
+		if _G["ZygorItemPopup"].style then return end
+		_G["ZygorItemPopup"]:Style("Outside")
+	end
+	hooksecurefunc(ZGV.PopupHandler, "ShowPopup", SkinPopup)
 end
 
 local function skinDecursive()
