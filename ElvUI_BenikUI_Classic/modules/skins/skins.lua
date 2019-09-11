@@ -320,6 +320,12 @@ local function skinZygor()
 	end
 	hooksecurefunc(ZGV.GuideMenu, "Show", SkinGuideMenu)
 	
+	local function SkinFindNearest()
+		if ZGV.WhoWhere.NPCFrame.style then return end
+		ZGV.WhoWhere.NPCFrame:Style("Outside")
+	end
+	hooksecurefunc(ZGV.WhoWhere, "CreateMenuFrame", SkinFindNearest)
+	
 	local function SkinActionbar()
 		if not _G["ZygorGuidesViewer_Actionbar"] or not _G["ZygorGuidesViewer_Actionbar"].style then return end
 		_G["ZygorGuidesViewer_Actionbar"]:Style("Outside")
