@@ -327,8 +327,10 @@ local function skinZygor()
 	hooksecurefunc(ZGV.WhoWhere, "CreateMenuFrame", SkinFindNearest)
 	
 	local function SkinActionbar()
-		if not _G["ZygorGuidesViewer_Actionbar"] or not _G["ZygorGuidesViewer_Actionbar"].style then return end
-		_G["ZygorGuidesViewer_Actionbar"]:Style("Outside")
+		if ZGV.ActionBar.Frame.style then return end
+		ZGV.ActionBar.Frame:StripTextures()
+		ZGV.ActionBar.Frame:CreateBackdrop("Transparent")
+		ZGV.ActionBar.Frame.backdrop:Style("Outside")
 	end
 	hooksecurefunc(ZGV.ActionBar, "ApplySkin", SkinActionbar)
 	
