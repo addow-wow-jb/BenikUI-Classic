@@ -312,6 +312,14 @@ local function skinZygor()
 	_G["ZygorGuidesViewerFrame"]:CreateBackdrop("Transparent")
 	_G["ZygorGuidesViewerFrame"].backdrop:Style("Outside")
 	
+	local function SkinGuideMenu()
+		if _G["ZygorGuidesViewer_GuideMenuNew"].style then return end
+		_G["ZygorGuidesViewer_GuideMenuNew"]:StripTextures()
+		_G["ZygorGuidesViewer_GuideMenuNew"]:CreateBackdrop("Transparent")
+		_G["ZygorGuidesViewer_GuideMenuNew"].backdrop:Style("Outside")
+	end
+	hooksecurefunc(ZGV.GuideMenu, "Show", SkinGuideMenu)
+	
 	local function SkinActionbar()
 		if not _G["ZygorGuidesViewer_Actionbar"] or not _G["ZygorGuidesViewer_Actionbar"].style then return end
 		_G["ZygorGuidesViewer_Actionbar"]:Style("Outside")
