@@ -312,6 +312,12 @@ local function skinZygor()
 	_G["ZygorGuidesViewerFrame"]:CreateBackdrop("Transparent")
 	_G["ZygorGuidesViewerFrame"].backdrop:Style("Outside")
 	
+	local function SkinActionbar()
+		if not _G["ZygorGuidesViewer_Actionbar"] or not _G["ZygorGuidesViewer_Actionbar"].style then return end
+		_G["ZygorGuidesViewer_Actionbar"]:Style("Outside")
+	end
+	hooksecurefunc(ZGV.ActionBar, "ApplySkin", SkinActionbar)
+	
 	local function SkinPopup()
 		if _G["ZygorItemPopup"].style then return end
 		_G["ZygorItemPopup"]:Style("Outside")
