@@ -308,35 +308,63 @@ local function skinZygor()
 	if not BUI.ZG or not E.db.benikuiSkins.variousSkins.zygor then
 		return
 	end
-	_G["ZygorGuidesViewerFrame"]:StripTextures()
-	_G["ZygorGuidesViewerFrame"]:CreateBackdrop("Transparent")
-	_G["ZygorGuidesViewerFrame"].backdrop:Style("Outside")
+	
+	local zygorFrame = _G["ZygorGuidesViewerFrame"]
+	if not zygorFrame then return end
+
+	zygorFrame:StripTextures()
+	zygorFrame:CreateBackdrop("Transparent")
+	zygorFrame.backdrop:Style("Outside")
 	
 	local function SkinGuideMenu()
-		if _G["ZygorGuidesViewer_GuideMenuNew"].style then return end
-		_G["ZygorGuidesViewer_GuideMenuNew"]:StripTextures()
-		_G["ZygorGuidesViewer_GuideMenuNew"]:CreateBackdrop("Transparent")
-		_G["ZygorGuidesViewer_GuideMenuNew"].backdrop:Style("Outside")
+		local frame = ZGV.GuideMenu.MainFrame
+		if not frame then return end
+
+		if not frame.isStyled then
+			frame:StripTextures()
+			frame:CreateBackdrop("Transparent")
+			frame.backdrop:Style("Outside")
+			frame.isStyled = true
+		end
 	end
 	hooksecurefunc(ZGV.GuideMenu, "Show", SkinGuideMenu)
 	
 	local function SkinFindNearest()
-		if ZGV.WhoWhere.NPCFrame.style then return end
-		ZGV.WhoWhere.NPCFrame:Style("Outside")
+		local frame = ZGV.WhoWhere.NPCFrame
+		if not frame then return end
+
+		if not frame.isStyled then
+			frame:StripTextures()
+			frame:CreateBackdrop("Transparent")
+			frame.backdrop:Style("Outside")
+			frame.isStyled = true
+		end
 	end
 	hooksecurefunc(ZGV.WhoWhere, "CreateMenuFrame", SkinFindNearest)
 	
 	local function SkinActionbar()
-		if ZGV.ActionBar.Frame.style then return end
-		ZGV.ActionBar.Frame:StripTextures()
-		ZGV.ActionBar.Frame:CreateBackdrop("Transparent")
-		ZGV.ActionBar.Frame.backdrop:Style("Outside")
+		local frame = ZGV.ActionBar.Frame
+		if not frame then return end
+
+		if not frame.isStyled then
+			frame:StripTextures()
+			frame:CreateBackdrop("Transparent")
+			frame.backdrop:Style("Outside")
+			frame.isStyled = true
+		end
 	end
 	hooksecurefunc(ZGV.ActionBar, "ApplySkin", SkinActionbar)
 	
 	local function SkinPopup()
-		if _G["ZygorItemPopup"].style then return end
-		_G["ZygorItemPopup"]:Style("Outside")
+		local frame = ZGV.ItemScore.Upgrades.EquipPopup
+		if not frame then return end
+
+		if not frame.isStyled then
+			frame:StripTextures()
+			frame:CreateBackdrop("Transparent")
+			frame.backdrop:Style("Outside")
+			frame.isStyled = true
+		end
 	end
 	hooksecurefunc(ZGV.PopupHandler, "ShowPopup", SkinPopup)
 end
