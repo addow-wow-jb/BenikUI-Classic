@@ -38,7 +38,7 @@ local function OnEvent(self, event, ...)
 		end
 	end
 
-	if newMail then
+	if unreadMail then
 		self.text:SetFormattedText("|cff00ff00%s|r", L['New Mail'])
 		Read = false;
 	else
