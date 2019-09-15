@@ -594,6 +594,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["player"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["player"]["portrait"]["camDistanceScale"] = 1
 		E.db["unitframe"]["units"]["player"]["portrait"]["overlay"] = true
+		E.db["unitframe"]["units"]["player"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["player"]["castbar"]["icon"] = false
 		E.db["unitframe"]["units"]["player"]["castbar"]["width"] = 300
 		E.db["unitframe"]["units"]["player"]["castbar"]["insideInfoPanel"] = true
@@ -664,6 +665,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["target"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["target"]["portrait"]["camDistanceScale"] = 1
 		E.db["unitframe"]["units"]["target"]["portrait"]["overlay"] = true
+		E.db["unitframe"]["units"]["target"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["target"]["power"]["enable"] = true
 		E.db["unitframe"]["units"]["target"]["power"]["detachFromFrame"] = false
 		E.db["unitframe"]["units"]["target"]["power"]["detachedWidth"] = 300
@@ -694,6 +696,7 @@ local function SetupUnitframes(layout)
 
 		-- pet
 		E.db["unitframe"]["units"]["pet"]["portrait"]["overlay"] = true
+		E.db["unitframe"]["units"]["pet"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["pet"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["pet"]["castbar"]["enable"] = false
 		E.db["unitframe"]["units"]["pet"]["infoPanel"]["enable"] = false
@@ -725,6 +728,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["targettarget"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["targettarget"]["portrait"]["camDistanceScale"] = 1
 		E.db["unitframe"]["units"]["targettarget"]["portrait"]["overlay"] = true
+		E.db["unitframe"]["units"]["targettarget"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["targettarget"]["power"]["enable"] = true
 		E.db["unitframe"]["units"]["targettarget"]["power"]["height"] = 5
 		E.db["unitframe"]["units"]["targettarget"]["power"]["width"] = 'fill'
@@ -766,6 +770,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["party"]["petsGroup"]["xOffset"] = 0
 		E.db["unitframe"]["units"]["party"]["petsGroup"]["yOffset"] = -1
 		E.db["unitframe"]["units"]["party"]["portrait"]["overlay"] = true
+		E.db["unitframe"]["units"]["party"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["party"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["party"]["portrait"]["camDistanceScale"] = 1
 		E.db["unitframe"]["units"]["party"]["portrait"]["rotation"] = 0
@@ -815,6 +820,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["raid"]["colorOverride"] = "FORCE_ON"
 		E.db["unitframe"]["units"]["raid"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["raid"]["portrait"]["overlay"] = true
+		E.db["unitframe"]["units"]["raid"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["raid"]["roleIcon"]["enable"] = true
 		E.db["unitframe"]["units"]["raid"]["roleIcon"]["damager"] = true
 		E.db["unitframe"]["units"]["raid"]["roleIcon"]["healer"] = true
@@ -1074,6 +1080,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["player"]["portrait"]["camDistanceScale"] = 1
 		E.db["unitframe"]["units"]["player"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["player"]["portrait"]["overlay"] = false
+		E.db["unitframe"]["units"]["player"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["player"]["power"]["detachFromFrame"] = true
 		E.db["unitframe"]["units"]["player"]["power"]["detachedWidth"] = 240
 		E.db["unitframe"]["units"]["player"]["power"]["height"] = 6
@@ -1147,6 +1154,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["target"]["portrait"]["camDistanceScale"] = 1
 		E.db["unitframe"]["units"]["target"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["target"]["portrait"]["overlay"] = false
+		E.db["unitframe"]["units"]["target"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["target"]["power"]["enable"] = true
 		E.db["unitframe"]["units"]["target"]["power"]["detachFromFrame"] = true
 		E.db["unitframe"]["units"]["target"]["power"]["detachedWidth"] = 240
@@ -1169,6 +1177,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["pet"]["infoPanel"]["enable"] = false
 		E.db["unitframe"]["units"]["pet"]["infoPanel"]["transparent"] = true
 		E.db["unitframe"]["units"]["pet"]["portrait"]["overlay"] = true
+		E.db["unitframe"]["units"]["pet"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["pet"]["power"]["height"] = 5
 		E.db["unitframe"]["units"]["pet"]["power"]["width"] = 'fill'
 		E.db["unitframe"]["units"]["pet"]["width"] = 130
@@ -1225,6 +1234,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["party"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["party"]["portrait"]["height"] = 15
 		E.db["unitframe"]["units"]["party"]["portrait"]["overlay"] = false
+		E.db["unitframe"]["units"]["party"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["party"]["portrait"]["style"] = '3D'
 		E.db["unitframe"]["units"]["party"]["portrait"]["transparent"] = true
 		E.db["unitframe"]["units"]["party"]["portrait"]["width"] = 60
@@ -1272,6 +1282,7 @@ local function SetupUnitframes(layout)
 		E.db["unitframe"]["units"]["raid"]["colorOverride"] = "FORCE_ON"
 		E.db["unitframe"]["units"]["raid"]["portrait"]["enable"] = true
 		E.db["unitframe"]["units"]["raid"]["portrait"]["overlay"] = true
+		E.db["unitframe"]["units"]["raid"]["portrait"]["overlayAlpha"] = 0.75
 		E.db["unitframe"]["units"]["raid"]["roleIcon"]["enable"] = true
 		E.db["unitframe"]["units"]["raid"]["roleIcon"]["damager"] = true
 		E.db["unitframe"]["units"]["raid"]["roleIcon"]["healer"] = true

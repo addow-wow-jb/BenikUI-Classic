@@ -83,10 +83,6 @@ P['benikui'] = {
 		['mail'] = {
 			['toggle'] = true,
 		},
-		['garrison'] = {
-			['currency'] = false,
-			['oil'] = false,
-		},
 	},
 
 	['actionbars'] = {
@@ -122,6 +118,7 @@ P['benikui'] = {
 			['portraitStyle'] = false,
 			['portraitStyleHeight'] = 6,
 			['portraitFrameStrata'] = "MEDIUM",
+			['portraitBackdrop'] = true,
 		},
 		['target'] = {
 			['detachPortrait'] = false,
@@ -133,16 +130,9 @@ P['benikui'] = {
 			['portraitStyle'] = false,
 			['portraitStyleHeight'] = 6,
 			['portraitFrameStrata'] = "MEDIUM",
+			['portraitBackdrop'] = true,
 		},
 		['targettarget'] = {
-			['detachPortrait'] = false,
-			['portraitWidth'] = 110,
-			['portraitHeight'] = 85,
-			['portraitShadow'] = false,
-			['portraitTransparent'] = true,
-			['portraitFrameStrata'] = "MEDIUM",
-		},
-		['focus'] = {
 			['detachPortrait'] = false,
 			['portraitWidth'] = 110,
 			['portraitHeight'] = 85,
@@ -191,7 +181,6 @@ P['benikui'] = {
 		},
 		['misc'] = {
 			['svui'] = true,
-			['portraitTransparency'] = 0.70,
 		},
 	},
 }
@@ -237,7 +226,6 @@ P['benikuiSkins'] = {
 		['pawn'] = true,
 		['dbm'] = true,
 		['bigwigs'] = true,
-		['zygor'] = true,
 		['immersion'] = true,
 		['adibags'] = true,
 	},
@@ -247,6 +235,8 @@ P['benikuiSkins'] = {
 		['decursive'] = true,
 		['storyline'] = true,
 		['inflight'] = true,
+		['xtoLevel'] = true,
+		['zygor'] = true,
 	},
 }
 
@@ -272,28 +262,6 @@ P['benikuiDatabars'] = {
 			['enable'] = true,
 			['combat'] = false,
 			['position'] = 'LEFT',
-		},
-	},
-	
-	['azerite'] = {
-		['enable'] = true,
-		['buiStyle'] = true,
-		['buttonStyle'] = "TRANSPARENT",
-		['notifiers'] = {
-			['enable'] = true,
-			['combat'] = false,
-			['position'] = 'LEFT',
-		},
-	},
-	
-	['honor'] = {
-		['enable'] = true,
-		['buiStyle'] = true,
-		['buttonStyle'] = "TRANSPARENT",
-		['notifiers'] = {
-			['enable'] = true,
-			['combat'] = false,
-			['position'] = 'RIGHT',
 		},
 	},
 }

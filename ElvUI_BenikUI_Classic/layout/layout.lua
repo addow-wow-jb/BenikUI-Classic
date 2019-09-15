@@ -293,6 +293,9 @@ function mod:ChangeLayout()
 		bbuttons[i].text:SetPoint('CENTER', 1, 0)
 		bbuttons[i].text:SetJustifyH('CENTER')
 		bbuttons[i].text:SetTextColor(BUI:unpackColor(E.db.general.valuecolor))
+		if (i == 1 or i == 3) then
+			bbuttons[i]:RegisterEvent('MODIFIER_STATE_CHANGED')
+		end
 
 		-- ElvUI Config
 		if i == 1 then
@@ -300,6 +303,16 @@ function mod:ChangeLayout()
 			bbuttons[i]:Point('BOTTOMRIGHT', Bui_rdtp, 'BOTTOMRIGHT', PANEL_HEIGHT + SPACING, 0)
 			bbuttons[i].parent = RightChatPanel
 			bbuttons[i].text:SetText('C')
+
+            bbuttons[i]:SetScript('OnEvent', function(self, event)
+                if event then
+                    if IsShiftKeyDown() then
+                        self.text:SetText('>')
+                    else
+                        self.text:SetText('C')
+                    end
+                end
+            end)
 
 			bbuttons[i]:SetScript('OnEnter', function(self)
 				GameTooltip:SetOwner(self, 'ANCHOR_TOPRIGHT', 0, 2 )
@@ -315,7 +328,6 @@ function mod:ChangeLayout()
 				end
 
 				if IsShiftKeyDown() then
-					self.text:SetText('>')
 					self:SetScript('OnClick', ChatButton_OnClick)
 				else
 					self.text:SetText('C')
@@ -347,7 +359,6 @@ function mod:ChangeLayout()
 			end)
 
 			bbuttons[i]:SetScript('OnLeave', function(self)
-				self.text:SetText('C')
 				self.sglow:Hide()
 				GameTooltip:Hide()
 			end)
@@ -383,12 +394,21 @@ function mod:ChangeLayout()
 			bbuttons[i].parent = LeftChatPanel
 			bbuttons[i].text:SetText('A')
 
+            bbuttons[i]:SetScript('OnEvent', function(self, event)
+                if event then
+                    if IsShiftKeyDown() then
+                        self.text:SetText('<')
+                    else
+                        self.text:SetText('A')
+                    end
+                end
+            end)
+
 			bbuttons[i]:SetScript('OnEnter', function(self)
 				if not E.db.benikui.datatexts.chat.styled then
 					self.sglow:Show()
 				end
 				if IsShiftKeyDown() then
-					self.text:SetText('<')
 					self:SetScript('OnClick', ChatButton_OnClick)
 				else
 					self:SetScript('OnClick', function(self)
@@ -404,7 +424,6 @@ function mod:ChangeLayout()
 			end)
 
 			bbuttons[i]:SetScript('OnLeave', function(self)
-				self.text:SetText('A')
 				self.sglow:Hide()
 				GameTooltip:Hide()
 			end)

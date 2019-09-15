@@ -39,7 +39,9 @@ local function styleFreeBlizzardFrames()
 	end
 
 	if db.bgscore then
-		WorldStateScoreFrame.backdrop:Style("Outside")
+		if WorldStateScoreFrame.backdrop then
+			WorldStateScoreFrame.backdrop:Style("Outside")
+		end
 	end
 
 	if db.character then
@@ -306,9 +308,65 @@ local function skinZygor()
 	if not BUI.ZG or not E.db.benikuiSkins.variousSkins.zygor then
 		return
 	end
-	_G["ZygorGuidesViewerFrame"]:StripTextures()
-	_G["ZygorGuidesViewerFrame"]:CreateBackdrop("Transparent")
-	_G["ZygorGuidesViewerFrame"].backdrop:Style("Outside")
+	
+	local zygorFrame = _G["ZygorGuidesViewerFrame"]
+	if not zygorFrame then return end
+
+	zygorFrame:StripTextures()
+	zygorFrame:CreateBackdrop("Transparent")
+	zygorFrame.backdrop:Style("Outside")
+	
+	local function SkinGuideMenu()
+		local frame = ZGV.GuideMenu.MainFrame
+		if not frame then return end
+
+		if not frame.isStyled then
+			frame:StripTextures()
+			frame:CreateBackdrop("Transparent")
+			frame.backdrop:Style("Outside")
+			frame.isStyled = true
+		end
+	end
+	hooksecurefunc(ZGV.GuideMenu, "Show", SkinGuideMenu)
+	
+	local function SkinFindNearest()
+		local frame = ZGV.WhoWhere.NPCFrame
+		if not frame then return end
+
+		if not frame.isStyled then
+			frame:StripTextures()
+			frame:CreateBackdrop("Transparent")
+			frame.backdrop:Style("Outside")
+			frame.isStyled = true
+		end
+	end
+	hooksecurefunc(ZGV.WhoWhere, "CreateMenuFrame", SkinFindNearest)
+	
+	local function SkinActionbar()
+		local frame = ZGV.ActionBar.Frame
+		if not frame then return end
+
+		if not frame.isStyled then
+			frame:StripTextures()
+			frame:CreateBackdrop("Transparent")
+			frame.backdrop:Style("Outside")
+			frame.isStyled = true
+		end
+	end
+	hooksecurefunc(ZGV.ActionBar, "ApplySkin", SkinActionbar)
+	
+	local function SkinPopup()
+		local frame = ZGV.ItemScore.Upgrades.EquipPopup
+		if not frame then return end
+
+		if not frame.isStyled then
+			frame:StripTextures()
+			frame:CreateBackdrop("Transparent")
+			frame.backdrop:Style("Outside")
+			frame.isStyled = true
+		end
+	end
+	hooksecurefunc(ZGV.PopupHandler, "ShowPopup", SkinPopup)
 end
 
 local function skinDecursive()
@@ -433,6 +491,39 @@ local function StyleDBM_Options()
 	end)
 end
 
+local function StyleXtoLevel()
+	if not E.db.benikuiSkins.variousSkins.xtoLevel or not IsAddOnLoaded('XToLevel') then return end
+
+	local frame = _G["XToLevel_AverageFrame_Classic"]
+	if frame then
+		frame:StripTextures()
+		frame:CreateBackdrop("Transparent", true)
+		frame.backdrop:Style("Outside")
+	end
+	
+	local XtoLevelFrames = {
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterKills"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterQuests"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterDungeons"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterBattles"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterObjectives"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterPetBattles"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterGathering"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterDigs"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterProgress"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterTimer"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterGuildProgress"],
+	}
+
+	for _, bframe in pairs(XtoLevelFrames) do
+		S:HandleButton(bframe)
+		bframe:SetTemplate('Transparent')
+		if BUI.ShadowMode then
+			bframe:CreateSoftShadow()
+		end
+	end
+end
+
 local function StyleInFlight()
 	if E.db.benikuiSkins.variousSkins.inflight ~= true or E.db.benikui.misc.flightMode == true then
 		return
@@ -474,14 +565,11 @@ local function StyleAdibags()
 	if not E.db.benikuiSkins.addonSkins.adibags or not BUI.AS then
 		return
 	end
-	E:Delay(
-		1.1,
-		function()
-			if AdiBagsContainer1 then
-				AdiBagsContainer1:Style("Outside")
-			end
+	E:Delay(1.1, function()
+		if AdiBagsContainer1 then
+			AdiBagsContainer1:Style("Outside")
 		end
-	)
+	end)
 end
 
 function mod:LoD_AddOns(_, addon)
@@ -498,7 +586,7 @@ function mod:PLAYER_ENTERING_WORLD(...)
 	styleAddons()
 	styleWorldMap()
 	--StyleAdibags()
-
+	
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
@@ -527,7 +615,7 @@ function mod:Initialize()
 	--skinStoryline()
 
 	skinZygor()
-
+	StyleXtoLevel()
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
 	--self:RegisterEvent("BANKFRAME_OPENED", "StyleAdibagsBank")
