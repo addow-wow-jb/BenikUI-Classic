@@ -18,7 +18,6 @@ local C_Map_GetPlayerMapPosition = C_Map.GetPlayerMapPosition
 local GetScreenWidth = GetScreenWidth
 local InCombatLockdown = InCombatLockdown
 local TaxiRequestEarlyLanding = TaxiRequestEarlyLanding
-local ToggleAllBags = ToggleAllBags
 local UIFrameFadeIn, UIFrameFadeOut, PlaySound = UIFrameFadeIn, UIFrameFadeOut, PlaySound
 local TAXI_CANCEL_DESCRIPTION, UNKNOWN = TAXI_CANCEL_DESCRIPTION, UNKNOWN
 local WorldMapFrame = _G.WorldMapFrame
@@ -156,6 +155,7 @@ function mod:SkinInFlight()
 end
 
 local zygorVisible
+local XToLevelClassicVisible, XToLevelBlockyVisible
 
 function mod:SetFlightMode(status)
 	if(InCombatLockdown()) then return end
@@ -228,6 +228,21 @@ function mod:SetFlightMode(status)
 		if IsAddOnLoaded("XIV_Databar") then
 			XIV_Databar:Hide()
 		end
+
+        if IsAddOnLoaded('XToLevel') then
+            if _G["XToLevel_AverageFrame_Classic"]:IsVisible() then
+                XToLevelClassicVisible = true
+                _G["XToLevel_AverageFrame_Classic"]:Hide()
+            else
+                XToLevelClassicVisible = false
+            end
+            if _G["XToLevel_AverageFrame_Blocky_PlayerFrame"]:IsVisible() then
+                XToLevelBlockyVisible = true
+                _G["XToLevel_AverageFrame_Blocky_PlayerFrame"]:Hide()
+            else
+                XToLevelBlockyVisible = false
+            end
+        end
 
 		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
 			LeftChatPanel_Bui.styleShadow:Hide()
@@ -302,6 +317,19 @@ function mod:SetFlightMode(status)
 				if _G['Zygor_Notification_Center'] then _G['Zygor_Notification_Center']:Show() end
 			end
 		end
+
+        if IsAddOnLoaded('XToLevel') then
+            if XToLevelClassicVisible then
+                if _G["XToLevel_AverageFrame_Classic"] then
+                    _G["XToLevel_AverageFrame_Classic"]:Show()
+                end
+            end
+            if XToLevelBlockyVisible then
+                if _G["XToLevel_AverageFrame_Blocky_PlayerFrame"] then
+                    _G["XToLevel_AverageFrame_Blocky_PlayerFrame"]:Show()
+                end
+            end
+        end
 
 		-- revert Left Chat
 		if E.private.chat.enable then
@@ -699,7 +727,7 @@ function mod:Initialize()
 
 	self.FlightMode.bottom.bags:SetScript('OnClick', function()
 		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF);
-		ToggleAllBags()
+		_G.ToggleAllBags()
 	end)
 
 	-- Time flying
