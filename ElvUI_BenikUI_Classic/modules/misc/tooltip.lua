@@ -1,5 +1,5 @@
 local BUI, E, L, V, P, G = unpack(select(2, ...))
-local mod = BUI:NewModule('Tooltip', 'AceHook-3.0', "AceEvent-3.0");
+local mod = BUI:NewModule('Tooltip', 'AceHook-3.0');
 local TT = E:GetModule('Tooltip');
 
 local GameTooltip, GameTooltipStatusBar = _G["GameTooltip"], _G["GameTooltipStatusBar"]
@@ -18,6 +18,12 @@ local function StyleTooltip()
 		GameTooltip.style:ClearAllPoints()
 		GameTooltip.style:Point('TOPLEFT', GameTooltip, 'TOPLEFT', (E.PixelMode and 1 or 0), (E.PixelMode and -1 or 7))
 		GameTooltip.style:Point('BOTTOMRIGHT', GameTooltip, 'TOPRIGHT', (E.PixelMode and -1 or 0), (E.PixelMode and -6 or 1))
+	end
+
+	if not BUI.ShadowMode then return end
+
+	if not GameTooltipStatusBar.backdrop.shadow then
+		GameTooltipStatusBar.backdrop:CreateSoftShadow()
 	end
 end
 
@@ -40,24 +46,14 @@ function mod:RecolorTooltipStyle()
 	end
 end
 
-function mod:PLAYER_ENTERING_WORLD()
-	StyleTooltip()
-	mod:CheckTooltipStyleColor()
-	
-	if BUI.ShadowMode then
-		if not GameTooltipStatusBar.backdrop.shadow then
-			GameTooltipStatusBar.backdrop:CreateSoftShadow()
-		end
-	end
-	mod:UnregisterEvent('PLAYER_ENTERING_WORLD')
-end
-
 function mod:Initialize()
 	if E.private.skins.blizzard.enable ~= true or E.private.skins.blizzard.tooltip ~= true then return end
 	if BUI:IsAddOnEnabled('TinyTooltip') or E.db.benikui.general.benikuiStyle ~= true then return end
 
+	StyleTooltip()
+
+	mod:CheckTooltipStyleColor()
 	mod:SecureHookScript(GameTooltip, 'OnUpdate', 'RecolorTooltipStyle')
-	mod:RegisterEvent('PLAYER_ENTERING_WORLD')
 end
 
 BUI:RegisterModule(mod:GetName())
