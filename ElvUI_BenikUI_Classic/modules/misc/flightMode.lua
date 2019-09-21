@@ -205,6 +205,8 @@ function mod:SetFlightMode(status)
 			end
 		end
 
+		_G.MainMenuBarVehicleLeaveButton:Hide()
+
 		-- Hide Zygor
 		if BUI.ZG then
 			if ZygorGuidesViewer.db.profile.visible then
@@ -305,6 +307,8 @@ function mod:SetFlightMode(status)
 			local AS = unpack(AddOnSkins) or nil
 			if AS.db.EmbedSystem or AS.db.EmbedSystemDual then AS:Embed_Show() end
 		end
+
+		_G.MainMenuBarVehicleLeaveButton:Show()
 
 		-- Show Zygor
 		if BUI.ZG then
