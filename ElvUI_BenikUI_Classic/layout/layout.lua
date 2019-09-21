@@ -304,41 +304,15 @@ function mod:ChangeLayout()
 			bbuttons[i].parent = RightChatPanel
 			bbuttons[i].text:SetText('C')
 
-			bbuttons[i]:SetScript('OnEvent', function(self, event)
-				if event then
-					if IsShiftKeyDown() then
-						self.text:SetText('>')
-					else
-						self.text:SetText('C')
-					end
-				end
-			end)
-
-			bbuttons[i]:SetScript('OnClick', function(self, btn)
-				if IsShiftKeyDown() then
-					ChatButton_OnClick(self)
-				else
-					if btn == 'LeftButton' then
-						E:ToggleOptionsUI()
-					else
-						if BUI.AS then
-							local AS = unpack(AddOnSkins) or nil
-							if AS:CheckOption('EmbedRightChat') and EmbedSystem_MainWindow then
-								if EmbedSystem_MainWindow:IsShown() then
-									AS:SetOption('EmbedIsHidden', true)
-									EmbedSystem_MainWindow:Hide()
-								else
-									AS:SetOption('EmbedIsHidden', false)
-									EmbedSystem_MainWindow:Show()
-								end
-							end
-						else
-							E:BGStats()
-						end
-					end
-					PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF);
-				end
-			end)
+            bbuttons[i]:SetScript('OnEvent', function(self, event)
+                if event then
+                    if IsShiftKeyDown() then
+                        self.text:SetText('>')
+                    else
+                        self.text:SetText('C')
+                    end
+                end
+            end)
 
 			bbuttons[i]:SetScript('OnEnter', function(self)
 				GameTooltip:SetOwner(self, 'ANCHOR_TOPRIGHT', 0, 2 )
@@ -351,6 +325,33 @@ function mod:ChangeLayout()
 
 				if not E.db.benikui.datatexts.chat.styled then
 					self.sglow:Show()
+				end
+
+				if IsShiftKeyDown() then
+					self:SetScript('OnClick', ChatButton_OnClick)
+				else
+					self.text:SetText('C')
+					self:SetScript('OnClick', function(self, btn)
+						if btn == 'LeftButton' then
+							E:ToggleOptionsUI()
+						else
+							if BUI.AS then
+								local AS = unpack(AddOnSkins) or nil
+								if AS:CheckOption('EmbedRightChat') and EmbedSystem_MainWindow then
+									if EmbedSystem_MainWindow:IsShown() then
+										AS:SetOption('EmbedIsHidden', true)
+										EmbedSystem_MainWindow:Hide()
+									else
+										AS:SetOption('EmbedIsHidden', false)
+										EmbedSystem_MainWindow:Show()
+									end
+								end
+							else
+								E:BGStats()
+							end
+						end
+						PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF);
+					end)
 				end
 
 				GameTooltip:Show()
@@ -393,27 +394,26 @@ function mod:ChangeLayout()
 			bbuttons[i].parent = LeftChatPanel
 			bbuttons[i].text:SetText('A')
 
-			bbuttons[i]:SetScript('OnEvent', function(self, event)
-				if event then
-					if IsShiftKeyDown() then
-						self.text:SetText('<')
-					else
-						self.text:SetText('A')
-					end
-				end
-			end)
-
-			bbuttons[i]:SetScript('OnClick', function(self)
-				if IsShiftKeyDown() then
-					ChatButton_OnClick(self)
-				else
-					GameMenuButtonAddons:Click()
-				end
-			end)
+            bbuttons[i]:SetScript('OnEvent', function(self, event)
+                if event then
+                    if IsShiftKeyDown() then
+                        self.text:SetText('<')
+                    else
+                        self.text:SetText('A')
+                    end
+                end
+            end)
 
 			bbuttons[i]:SetScript('OnEnter', function(self)
 				if not E.db.benikui.datatexts.chat.styled then
 					self.sglow:Show()
+				end
+				if IsShiftKeyDown() then
+					self:SetScript('OnClick', ChatButton_OnClick)
+				else
+					self:SetScript('OnClick', function(self)
+						GameMenuButtonAddons:Click()
+					end)
 				end
 				GameTooltip:SetOwner(self, 'ANCHOR_TOP', 64, 2 )
 				GameTooltip:ClearLines()
