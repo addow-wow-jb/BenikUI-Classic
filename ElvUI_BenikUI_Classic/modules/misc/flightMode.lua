@@ -205,8 +205,6 @@ function mod:SetFlightMode(status)
 			end
 		end
 
-		_G.MainMenuBarVehicleLeaveButton:Hide()
-
 		-- Hide Zygor
 		if BUI.ZG then
 			if ZygorGuidesViewer.db.profile.visible then
@@ -307,8 +305,6 @@ function mod:SetFlightMode(status)
 			local AS = unpack(AddOnSkins) or nil
 			if AS.db.EmbedSystem or AS.db.EmbedSystemDual then AS:Embed_Show() end
 		end
-
-		_G.MainMenuBarVehicleLeaveButton:Show()
 
 		-- Show Zygor
 		if BUI.ZG then
@@ -767,6 +763,9 @@ function mod:Initialize()
 	LeftChatPanel.backdrop:CreateWideShadow()
 	LeftChatPanel.backdrop.wideshadow:Hide()
 	LeftChatPanel.backdrop.wideshadow:SetFrameLevel(LeftChatPanel.backdrop:GetFrameLevel() - 1)
+
+	-- Hide ElvUI Leave Vehicle button
+	_G.MainMenuBarVehicleLeaveButton:Hide()
 
 	self:Toggle()
 	ToggleWorldMap()
