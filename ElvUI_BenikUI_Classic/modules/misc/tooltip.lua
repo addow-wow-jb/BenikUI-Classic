@@ -49,7 +49,6 @@ function mod:PLAYER_ENTERING_WORLD()
 			GameTooltipStatusBar.backdrop:CreateSoftShadow()
 		end
 	end
-	mod:UnregisterEvent('PLAYER_ENTERING_WORLD')
 end
 
 function mod:Initialize()
