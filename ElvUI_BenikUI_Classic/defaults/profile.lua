@@ -18,9 +18,7 @@ P['unitframe']['units']['raid40']['classHover'] = false
 
 -- Databars text yOffset
 P['databars']['experience']['textYoffset'] = 0
-P['databars']['azerite']['textYoffset'] = 0
 P['databars']['reputation']['textYoffset'] = 0
-P['databars']['honor']['textYoffset'] = 0
 
 -- Add Minimap styling toggle default
 P['general']['minimap']['benikuiStyle'] = true

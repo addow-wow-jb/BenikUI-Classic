@@ -1,3 +1,10 @@
+v1.05
+*Fixed mailframe style/shadow glitch
+*Fixed issue #10 - chat toggle will work even when shift is pressed while hovering over button
+*Fixed the tooltip error for good this time
+*Fps tweaks
+*Control the tooltip update
+
 v1.04
 *Better button behavior (shift+Click). Credit: Demonik. This may also fix #10
 *Fix Mail Datatext. Credit: Runew0lf

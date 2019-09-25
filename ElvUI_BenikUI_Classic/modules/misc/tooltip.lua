@@ -1,6 +1,7 @@
 local BUI, E, L, V, P, G = unpack(select(2, ...))
 local mod = BUI:NewModule('Tooltip', 'AceHook-3.0');
 local TT = E:GetModule('Tooltip');
+local S = E:GetModule('Skins')
 
 local GameTooltip, GameTooltipStatusBar = _G["GameTooltip"], _G["GameTooltipStatusBar"]
 local IsAddOnLoaded = IsAddOnLoaded
@@ -33,27 +34,41 @@ function mod:CheckTooltipStyleColor()
 	ttr, ttg, ttb = r, g, b
 end
 
-function mod:RecolorTooltipStyle()
-	local r, g, b = 0, 0, 0
+function mod:GameTooltip_OnTooltipCleared(tt)
+	if tt:IsForbidden() then return end
+	tt.buiUpdated = nil
+end
 
-	if GameTooltipStatusBar:IsShown() then
-		r, g, b = GameTooltipStatusBar:GetStatusBarColor()	
-	else
-		r, g, b = ttr, ttg, ttb
+function mod:RecolorTooltipStyle()
+	if not GameTooltip.buiUpdated then
+		local r, g, b = 0, 0, 0
+
+		if GameTooltipStatusBar:IsShown() then
+			r, g, b = GameTooltipStatusBar:GetStatusBarColor()	
+		else
+			r, g, b = ttr, ttg, ttb
+		end
+
+		if (r and g and b) then
+			GameTooltip.style:SetBackdropColor(r, g, b, (E.db.benikui.colors.styleAlpha or 1))
+		end
+
+		GameTooltip.buiUpdated = true
 	end
-	if (r and g and b) then
-		GameTooltip.style:SetBackdropColor(r, g, b, (E.db.benikui.colors.styleAlpha or 1))
-	end
+end
+
+local function Hooks()
+	StyleTooltip()
+	mod:CheckTooltipStyleColor()
 end
 
 function mod:Initialize()
 	if E.private.skins.blizzard.enable ~= true or E.private.skins.blizzard.tooltip ~= true then return end
 	if BUI:IsAddOnEnabled('TinyTooltip') or E.db.benikui.general.benikuiStyle ~= true then return end
 
-	StyleTooltip()
-
-	mod:CheckTooltipStyleColor()
 	mod:SecureHookScript(GameTooltip, 'OnUpdate', 'RecolorTooltipStyle')
+	mod:SecureHookScript(GameTooltip, 'OnTooltipCleared', 'GameTooltip_OnTooltipCleared')
+	S:AddCallback('BenikUI_SkinTooltip', Hooks)
 end
 
 BUI:RegisterModule(mod:GetName())
