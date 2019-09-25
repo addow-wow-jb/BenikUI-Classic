@@ -34,16 +34,26 @@ function mod:CheckTooltipStyleColor()
 	ttr, ttg, ttb = r, g, b
 end
 
-function mod:RecolorTooltipStyle()
-	local r, g, b = 0, 0, 0
+function mod:GameTooltip_OnTooltipCleared(tt)
+	if tt:IsForbidden() then return end
+	tt.buiUpdated = nil
+end
 
-	if GameTooltipStatusBar:IsShown() then
-		r, g, b = GameTooltipStatusBar:GetStatusBarColor()	
-	else
-		r, g, b = ttr, ttg, ttb
-	end
-	if (r and g and b) then
-		GameTooltip.style:SetBackdropColor(r, g, b, (E.db.benikui.colors.styleAlpha or 1))
+function mod:RecolorTooltipStyle()
+	if not GameTooltip.buiUpdated then
+		local r, g, b = 0, 0, 0
+
+		if GameTooltipStatusBar:IsShown() then
+			r, g, b = GameTooltipStatusBar:GetStatusBarColor()	
+		else
+			r, g, b = ttr, ttg, ttb
+		end
+
+		if (r and g and b) then
+			GameTooltip.style:SetBackdropColor(r, g, b, (E.db.benikui.colors.styleAlpha or 1))
+		end
+
+		GameTooltip.buiUpdated = true
 	end
 end
 
@@ -57,6 +67,7 @@ function mod:Initialize()
 	if BUI:IsAddOnEnabled('TinyTooltip') or E.db.benikui.general.benikuiStyle ~= true then return end
 
 	mod:SecureHookScript(GameTooltip, 'OnUpdate', 'RecolorTooltipStyle')
+	mod:SecureHookScript(GameTooltip, 'OnTooltipCleared', 'GameTooltip_OnTooltipCleared')
 	S:AddCallback('BenikUI_SkinTooltip', Hooks)
 end
 
