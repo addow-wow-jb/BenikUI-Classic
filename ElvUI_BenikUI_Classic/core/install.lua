@@ -71,6 +71,7 @@ local function SetupLayout(layout)
 	E.db["general"]["altPowerBar"]['textFormat'] = 'NAMECURMAX'
 	E.db["general"]["altPowerBar"]['statusBarColorGradient'] = false
 	E.db["general"]["altPowerBar"]['statusBarColor'] = { r = 0.2, g = 0.4, b = 0.8 }
+	E.db["tooltip"]["itemQualityBorderColor"] = false
 	
 	E.db["hideTutorial"] = true
 	E.private["skins"]["blizzard"]["alertframes"] = true
