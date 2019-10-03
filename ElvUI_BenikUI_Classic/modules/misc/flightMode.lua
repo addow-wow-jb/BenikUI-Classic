@@ -54,6 +54,7 @@ local function AutoColoring()
 end
 
 function mod:CreateCoords()
+	local x, y
 	local mapID = C_Map_GetBestMapForUnit("player")
 	local mapPos = mapID and C_Map_GetPlayerMapPosition(mapID, "player")
 	if mapPos then x, y = mapPos:GetXY() end
