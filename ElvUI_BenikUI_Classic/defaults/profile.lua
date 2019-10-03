@@ -220,12 +220,12 @@ P['benikuiSkins'] = {
 		['atlasloot'] = true,
 		['altoholic'] = true,
 		['clique'] = true,
-		['ora'] = true,
 		['pawn'] = true,
 		['dbm'] = true,
 		['bigwigs'] = true,
 		['immersion'] = true,
 		['adibags'] = true,
+		['spy'] = true,
 	},
 	
 	['variousSkins'] = {

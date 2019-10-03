@@ -183,6 +183,12 @@ local function ImmersionDecor()
 	end)
 end
 
+local function StyleSpyAddon()
+    Spy.MainWindow:CreateBackdrop("Transparent")
+    Spy.MainWindow.backdrop:Style("Outside")
+	AS:Desaturate(Spy_MainWindow.StatsButton) -- remove if added in AddonSkins
+end
+
 -- Replace the close button
 function AS:SkinCloseButton(Button, Reposition)
 	if Button.Backdrop then return end
@@ -228,6 +234,7 @@ if AS:CheckAddOn('AtlasLoot') then AS:RegisterSkin('AtlasLoot', AtlasLootDecor, 
 if (AS:CheckAddOn('DBM-Core') and AS:CheckAddOn('DBM-StatusBarTimers') and AS:CheckAddOn('DBM-DefaultSkin')) then AS:RegisterSkin('DBM', DbmDecor, 'ADDON_LOADED') end
 if AS:CheckAddOn('BugSack') then AS:RegisterSkin('BugSack', BugSackDecor, 2) end
 if AS:CheckAddOn('Immersion') then AS:RegisterSkin('Immersion', ImmersionDecor, 2) end
+if AS:CheckAddOn('Spy') then AS:RegisterSkin('Spy', StyleSpyAddon, 2) end
 AS:RegisterSkin('Libraries', LibrariesDecor, 2)
 
 hooksecurefunc(AS, 'AcceptFrame', function(self)

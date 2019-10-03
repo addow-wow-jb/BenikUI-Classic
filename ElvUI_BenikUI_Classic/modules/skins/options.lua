@@ -21,6 +21,7 @@ local DecorAddons = {
 	{'DBM-Core', L['Deadly Boss Mods'], 'dbm'},
 	{'BigWigs', L['BigWigs'], 'bigwigs'},
 	{'Immersion', L['Immersion'], 'immersion'},
+	{'Spy', L['Spy'], 'spy'},
 }
 
 local SupportedProfiles = {
