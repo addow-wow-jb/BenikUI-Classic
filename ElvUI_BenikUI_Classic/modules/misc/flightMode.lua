@@ -157,6 +157,8 @@ end
 
 local zygorVisible
 local XToLevelClassicVisible, XToLevelBlockyVisible
+local spyVisible
+local monkeyQuestVisible
 
 function mod:SetFlightMode(status)
 	if(InCombatLockdown()) then return end
@@ -245,6 +247,24 @@ function mod:SetFlightMode(status)
             end
         end
 
+        if IsAddOnLoaded('Spy') then
+            if Spy.MainWindow:IsVisible() then
+                spyVisible = true
+                Spy:EnableSpy(false, true)
+            else
+                spyVisible = false
+            end
+        end
+
+        if IsAddOnLoaded('MonkeyQuest') then
+            if MonkeyQuestFrame:IsVisible() then
+                monkeyQuestVisible = true
+                MonkeyQuest_Hide()
+            else
+                monkeyQuestVisible = false
+            end
+        end
+
 		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
 			LeftChatPanel_Bui.styleShadow:Hide()
 		end
@@ -329,6 +349,18 @@ function mod:SetFlightMode(status)
                 if _G["XToLevel_AverageFrame_Blocky_PlayerFrame"] then
                     _G["XToLevel_AverageFrame_Blocky_PlayerFrame"]:Show()
                 end
+            end
+        end
+
+        if IsAddOnLoaded('Spy') then
+            if spyVisible then
+                Spy:EnableSpy(true, true)
+            end
+        end
+
+        if IsAddOnLoaded('MonkeyQuest') then
+            if monkeyQuestVisible then
+                MonkeyQuest_Show()
             end
         end
 
