@@ -184,8 +184,8 @@ local function ImmersionDecor()
 end
 
 local function StyleSpyAddon()
-    Spy.MainWindow:CreateBackdrop("Transparent")
-    Spy.MainWindow.backdrop:Style("Outside")
+	--Spy_MainWindow:CreateBackdrop("Transparent")
+	Spy_MainWindow:Style("Outside")
 	AS:Desaturate(Spy_MainWindow.StatsButton) -- remove if added in AddonSkins
 end
 
