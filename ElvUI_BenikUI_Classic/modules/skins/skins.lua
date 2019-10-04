@@ -174,7 +174,7 @@ local function styleFreeBlizzardFrames()
 	if db.trade then
 		TradeFrame:Style("Outside")
 	end
-	
+
 	ColorPickerFrame:Style("Outside")
 end
 S:AddCallback("BenikUI_styleFreeBlizzardFrames", styleFreeBlizzardFrames)
@@ -187,22 +187,19 @@ local function styleSpellbook()
 		return
 	end
 
-	hooksecurefunc(
-		"SpellBookFrame_UpdateSkillLineTabs",
-		function()
-			for i = 1, MAX_SKILLLINE_TABS do
-				local tab = _G["SpellBookSkillLineTab" .. i]
-				if not tab.style then
-					tab:Style("Inside")
-					tab.style:SetFrameLevel(5)
-					if tab:GetNormalTexture() then
-						tab:GetNormalTexture():SetTexCoord(unpack(BUI.TexCoords))
-						tab:GetNormalTexture():SetInside()
-					end
+	hooksecurefunc("SpellBookFrame_UpdateSkillLineTabs", function()
+		for i = 1, MAX_SKILLLINE_TABS do
+			local tab = _G["SpellBookSkillLineTab" .. i]
+			if not tab.style then
+				tab:Style("Inside")
+				tab.style:SetFrameLevel(5)
+				if tab:GetNormalTexture() then
+					tab:GetNormalTexture():SetTexCoord(unpack(BUI.TexCoords))
+					tab:GetNormalTexture():SetInside()
 				end
 			end
 		end
-	)
+	end)
 end
 S:AddCallback("BenikUI_Spellbook", styleSpellbook)
 
@@ -308,14 +305,14 @@ local function skinZygor()
 	if not BUI.ZG or not E.db.benikuiSkins.variousSkins.zygor then
 		return
 	end
-	
+
 	local zygorFrame = _G["ZygorGuidesViewerFrame"]
 	if not zygorFrame then return end
 
 	zygorFrame:StripTextures()
 	zygorFrame:CreateBackdrop("Transparent")
 	zygorFrame.backdrop:Style("Outside")
-	
+
 	local function SkinGuideMenu()
 		local frame = ZGV.GuideMenu.MainFrame
 		if not frame then return end
@@ -328,7 +325,7 @@ local function skinZygor()
 		end
 	end
 	hooksecurefunc(ZGV.GuideMenu, "Show", SkinGuideMenu)
-	
+
 	local function SkinFindNearest()
 		local frame = ZGV.WhoWhere.NPCFrame
 		if not frame then return end
@@ -341,7 +338,7 @@ local function skinZygor()
 		end
 	end
 	hooksecurefunc(ZGV.WhoWhere, "CreateMenuFrame", SkinFindNearest)
-	
+
 	local function SkinActionbar()
 		local frame = ZGV.ActionBar.Frame
 		if not frame then return end
@@ -354,7 +351,7 @@ local function skinZygor()
 		end
 	end
 	hooksecurefunc(ZGV.ActionBar, "ApplySkin", SkinActionbar)
-	
+
 	local function SkinPopup()
 		local frame = ZGV.ItemScore.Upgrades.EquipPopup
 		if not frame then return end
@@ -496,11 +493,9 @@ local function StyleXtoLevel()
 
 	local frame = _G["XToLevel_AverageFrame_Classic"]
 	if frame then
-		frame:StripTextures()
-		frame:CreateBackdrop("Transparent", true)
-		frame.backdrop:Style("Outside")
+		frame:Style("Outside")
 	end
-	
+
 	local XtoLevelFrames = {
 		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterKills"],
 		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterQuests"],
@@ -516,8 +511,6 @@ local function StyleXtoLevel()
 	}
 
 	for _, bframe in pairs(XtoLevelFrames) do
-		S:HandleButton(bframe)
-		bframe:SetTemplate('Transparent')
 		if BUI.ShadowMode then
 			bframe:CreateSoftShadow()
 		end
@@ -586,7 +579,7 @@ function mod:PLAYER_ENTERING_WORLD(...)
 	styleAddons()
 	styleWorldMap()
 	--StyleAdibags()
-	
+
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
