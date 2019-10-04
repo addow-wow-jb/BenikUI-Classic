@@ -22,6 +22,7 @@ local DecorAddons = {
 	{'BigWigs', L['BigWigs'], 'bigwigs'},
 	{'Immersion', L['Immersion'], 'immersion'},
 	{'Spy', L['Spy'], 'spy'},
+	{'XToLevel', L['XToLevel'], 'xtoLevel'},
 }
 
 local SupportedProfiles = {

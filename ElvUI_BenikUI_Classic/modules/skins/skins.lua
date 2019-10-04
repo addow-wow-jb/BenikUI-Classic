@@ -488,35 +488,6 @@ local function StyleDBM_Options()
 	end)
 end
 
-local function StyleXtoLevel()
-	if not E.db.benikuiSkins.variousSkins.xtoLevel or not IsAddOnLoaded('XToLevel') then return end
-
-	local frame = _G["XToLevel_AverageFrame_Classic"]
-	if frame then
-		frame:Style("Outside")
-	end
-
-	local XtoLevelFrames = {
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterKills"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterQuests"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterDungeons"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterBattles"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterObjectives"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterPetBattles"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterGathering"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterDigs"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterProgress"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterTimer"],
-		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterGuildProgress"],
-	}
-
-	for _, bframe in pairs(XtoLevelFrames) do
-		if BUI.ShadowMode then
-			bframe:CreateSoftShadow()
-		end
-	end
-end
-
 local function StyleInFlight()
 	if E.db.benikuiSkins.variousSkins.inflight ~= true or E.db.benikui.misc.flightMode == true then
 		return
@@ -608,7 +579,6 @@ function mod:Initialize()
 	--skinStoryline()
 
 	skinZygor()
-	StyleXtoLevel()
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("ADDON_LOADED", "LoD_AddOns")
 	--self:RegisterEvent("BANKFRAME_OPENED", "StyleAdibagsBank")
