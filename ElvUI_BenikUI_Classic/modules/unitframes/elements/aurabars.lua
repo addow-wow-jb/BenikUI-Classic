@@ -2,7 +2,6 @@ local BUI, E, L, V, P, G = unpack(select(2, ...))
 local UF = E:GetModule('UnitFrames');
 local BU = BUI:GetModule('Units');
 
---Replace ElvUI AuraBars creation. Don't want to create shadows on PostUpdate
 function BU:Create_AuraBarsWithShadow(statusBar)
 	statusBar:CreateBackdrop(nil, nil, nil, UF.thinBorders, true)
 	statusBar:CreateSoftShadow()
@@ -42,6 +41,5 @@ function BU:Configure_AuraBars(frame)
 
 	if db.aurabar.enable then
 		auraBars.PostCreateBar = BU.Create_AuraBarsWithShadow
-		--auraBars.spacing = frame.BORDER*2
 	end
 end
