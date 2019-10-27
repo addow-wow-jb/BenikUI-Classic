@@ -79,7 +79,7 @@ local function styleFreeBlizzardFrames()
 
 	if db.mail then
 		MailFrame.backdrop:Style("Outside")
-		OpenMailFrame:Style("Outside")
+		OpenMailFrame.backdrop:Style("Outside")
 	end
 
 	if db.merchant then
