@@ -1,3 +1,7 @@
+v1.07
+*Remove outdated stuff
+*Style 10 Actionbars
+
 v1.06
 *Remove VAT profile
 *Disable itemQualityBorderColor during install
