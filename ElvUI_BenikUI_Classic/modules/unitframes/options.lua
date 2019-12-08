@@ -184,83 +184,6 @@ local function ufTable()
 						name = L['Show InfoPanel text'],
 						desc = L['Force show any text placed on the InfoPanel, while casting.'],
 					},
-					castText = {
-						type = 'toggle',
-						order = 2,
-						name = L['Show Castbar text'],
-					},
-					forceTargetText = {
-						type = 'toggle',
-						order = 3,
-						name = L['Show on Target'],
-						disabled = function() return E.db.benikui.unitframes.castbar.text.castText end,
-					},
-					player = {
-						order = 4,
-						type = 'group',
-						name = L["Player"],
-						args = {
-							yOffset = {
-								order = 1,
-								type = 'range',
-								name = L['Y Offset'],
-								desc = L['Adjust castbar text Y Offset'],
-								min = -40, max = 40, step = 1,
-								get = function(info) return E.db.benikui.unitframes.castbar.text.player[ info[#info] ] end,
-								set = function(info, value) E.db.benikui.unitframes.castbar.text.player[ info[#info] ] = value; BC:UpdateAllCastbars(); end,
-							},
-							textColor = {
-								order = 2,
-								type = "color",
-								name = L["Text Color"],
-								hasAlpha = true,
-								get = function(info)
-									local t = E.db.benikui.unitframes.castbar.text.player[ info[#info] ]
-									local d = P.benikui.unitframes.castbar.text.player[info[#info]]
-									return t.r, t.g, t.b, t.a, d.r, d.g, d.b, d.a
-									end,
-								set = function(info, r, g, b, a)
-									E.db.benikui.unitframes.castbar.text.player[ info[#info] ] = {}
-									local t = E.db.benikui.unitframes.castbar.text.player[ info[#info] ]
-									t.r, t.g, t.b, t.a = r, g, b, a
-									BC:CastBarHooks();
-								end,
-							},
-						},
-					},
-					target = {
-						order = 5,
-						type = 'group',
-						name = L["Target"],
-						args = {
-							yOffset = {
-								order = 1,
-								type = 'range',
-								name = L['Y Offset'],
-								desc = L['Adjust castbar text Y Offset'],
-								min = -40, max = 40, step = 1,
-								get = function(info) return E.db.benikui.unitframes.castbar.text.target[ info[#info] ] end,
-								set = function(info, value) E.db.benikui.unitframes.castbar.text.target[ info[#info] ] = value; BC:UpdateAllCastbars(); end,
-							},
-							textColor = {
-								order = 2,
-								type = "color",
-								name = L["Text Color"],
-								hasAlpha = true,
-								get = function(info)
-									local t = E.db.benikui.unitframes.castbar.text.target[ info[#info] ]
-									local d = P.benikui.unitframes.castbar.text.target[info[#info]]
-									return t.r, t.g, t.b, t.a, d.r, d.g, d.b, d.a
-									end,
-								set = function(info, r, g, b, a)
-									E.db.benikui.unitframes.castbar.text.target[ info[#info] ] = {}
-									local t = E.db.benikui.unitframes.castbar.text.target[ info[#info] ]
-									t.r, t.g, t.b, t.a = r, g, b, a
-									BC:CastBarHooks();
-								end,
-							},
-						},
-					},
 				},
 			},
 			misc = {
@@ -286,7 +209,7 @@ tinsert(BUI.Config, ufTable)
 
 local function ufPlayerTable()
 	E.Options.args.unitframe.args.player.args.portrait.args.benikui = {
-		order = 10,
+		order = 20,
 		type = 'group',
 		name = BUI.Title,
 		guiInline = true,
@@ -389,7 +312,7 @@ tinsert(BUI.Config, ufPlayerTable)
 
 local function ufTargetTable()
 	E.Options.args.unitframe.args.target.args.portrait.args.benikui = {
-		order = 10,
+		order = 20,
 		type = 'group',
 		name = BUI.Title,
 		guiInline = true,
@@ -499,7 +422,7 @@ tinsert(BUI.Config, ufTargetTable)
 
 local function ufTargetTargetTable()
 	E.Options.args.unitframe.args.targettarget.args.portrait.args.benikui = {
-		order = 10,
+		order = 20,
 		type = 'group',
 		name = BUI.Title,
 		guiInline = true,
@@ -569,7 +492,7 @@ tinsert(BUI.Config, ufTargetTargetTable)
 
 local function ufPetTable()
 	E.Options.args.unitframe.args.pet.args.portrait.args.benikui = {
-		order = 10,
+		order = 20,
 		type = 'group',
 		name = BUI.Title,
 		guiInline = true,
