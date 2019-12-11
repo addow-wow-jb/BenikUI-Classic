@@ -21,45 +21,47 @@ local displayString = ''
 
 local dataLayout = {
 	['LeftChatDataPanel'] = {
-		['left'] = 10,
 		['middle'] = 5,
 		['right'] = 2,
 	},
 	['RightChatDataPanel'] = {
 		['left'] = 4,
 		['middle'] = 3,
-		['right'] = 11,
 	},
 	['BuiLeftChatDTPanel'] = {
-		['left'] = 10,
 		['middle'] = 5,
 		['right'] = 2,
 	},
 	['BuiRightChatDTPanel'] = {
 		['left'] = 4,
 		['middle'] = 3,
-		['right'] = 11,
 	},
 }
 
 local dataStrings = {
-	[10] = DAMAGE,
-	[5] = HONOR,
-	[2] = KILLING_BLOWS,
-	[4] = DEATHS,
-	[3] = HONORABLE_KILLS,
-	[11] = SHOW_COMBAT_HEALING,
+	[5] = _G.HONOR,
+	[2] = _G.KILLING_BLOWS,
+	[4] = _G.DEATHS,
+	[3] = _G.KILLS,
 }
 
 local name
 
 function mod:UPDATE_BATTLEFIELD_SCORE()
 	lastPanel = self
+
 	local pointIndex = dataLayout[self:GetParent():GetName()][self.pointIndex]
-	for i=1, GetNumBattlefieldScores() do
-		name = GetBattlefieldScore(i)
+	for i = 1, GetNumBattlefieldScores() do
+		local name = GetBattlefieldScore(i)
 		if name == E.myname then
-			self.text:SetFormattedText(displayString, dataStrings[pointIndex], E:ShortValue(select(pointIndex, GetBattlefieldScore(i))))
+			if pointIndex then
+				local val = select(pointIndex, GetBattlefieldScore(i))
+
+				if val then
+					self.text:SetFormattedText(displayString, dataStrings[pointIndex], E:ShortValue(val))
+				end
+			end
+
 			break
 		end
 	end
