@@ -1,3 +1,8 @@
+v1.08 - Dec 14 2019
+*Follow ElvUI fixes for Battleground errors
+*toc update for the new patch
+*Set min ElvUI version to 1.19
+
 v1.07
 *Remove outdated stuff
 *Style 10 Actionbars
