@@ -54,6 +54,7 @@ local function AutoColoring()
 end
 
 function mod:CreateCoords()
+	local x, y
 	local mapID = C_Map_GetBestMapForUnit("player")
 	local mapPos = mapID and C_Map_GetPlayerMapPosition(mapID, "player")
 	if mapPos then x, y = mapPos:GetXY() end
@@ -154,18 +155,24 @@ function mod:SkinInFlight()
 	end
 end
 
-local zygorVisible
-local XToLevelClassicVisible, XToLevelBlockyVisible
+local AddonsToHide = {
+	-- addon, frame
+	{'ZygorGuidesViewerClassic', 'ZygorGuidesViewerFrame'},
+	{'ZygorGuidesViewerClassic', 'Zygor_Notification_Center'},
+	{'ProjectAzilroka', 'SquareMinimapButtonBar'},
+	{'XToLevel', 'XToLevel_AverageFrame_Classic'},
+	{'XToLevel', 'XToLevel_AverageFrame_Blocky_PlayerFrame'},
+	{'Spy', 'Spy_MainWindow'},
+	{'MonkeyQuest', 'MonkeyQuestFrame'},
+}
 
 function mod:SetFlightMode(status)
 	if(InCombatLockdown()) then return end
 
 	if(status) then
 		self.FlightMode:Show()
-		E.UIParent:Hide()
 
 		-- Hide some frames
-		if ObjectiveTrackerFrame then ObjectiveTrackerFrame:Hide() end
 		if E.private.general.minimap.enable then
 			Minimap:Hide()
 		end
@@ -196,53 +203,20 @@ function mod:SetFlightMode(status)
 			LeftChatPanel:ClearAllPoints()
 			LeftChatPanel:Point("BOTTOMLEFT", self.FlightMode.bottom, "TOPLEFT", 24, 24)
 		end
-
-		-- Hide SquareMinimapButtonBar
-		if (BUI.PA and not BUI.SLE) then
-			if SquareMinimapButtonBar then
-				_G.SquareMinimapButtons:CancelAllTimers()
-				SquareMinimapButtonBar:SetAlpha(0)
-			end
-		end
-
-		-- Hide Zygor
-		if BUI.ZG then
-			if ZygorGuidesViewer.db.profile.visible then
-				if _G['ZygorGuidesViewerFrame']:IsVisible() then
-					zygorVisible = true
-				else
-					zygorVisible = false
+		
+		for i, v in ipairs(AddonsToHide) do
+			local addon, frame = unpack(v)
+			if IsAddOnLoaded(addon) then
+				if _G[frame] then
+					_G[frame]:SetParent(E.UIParent)
 				end
-
-				if _G['ZygorGuidesViewerFrame'] then _G['ZygorGuidesViewerFrame']:Hide() end
-			end
-
-			if ZygorGuidesViewer.db.profile.n_nc_enabled then
-				if _G['Zygor_Notification_Center'] then _G['Zygor_Notification_Center']:Hide() end
 			end
 		end
+		
+		_G['MainMenuBarVehicleLeaveButton']:SetParent(E.UIParent)
 
 		-- Disable Blizz location messsages
 		ZoneTextFrame:UnregisterAllEvents()
-
-		if IsAddOnLoaded("XIV_Databar") then
-			XIV_Databar:Hide()
-		end
-
-        if IsAddOnLoaded('XToLevel') then
-            if _G["XToLevel_AverageFrame_Classic"]:IsVisible() then
-                XToLevelClassicVisible = true
-                _G["XToLevel_AverageFrame_Classic"]:Hide()
-            else
-                XToLevelClassicVisible = false
-            end
-            if _G["XToLevel_AverageFrame_Blocky_PlayerFrame"]:IsVisible() then
-                XToLevelBlockyVisible = true
-                _G["XToLevel_AverageFrame_Blocky_PlayerFrame"]:Hide()
-            else
-                XToLevelBlockyVisible = false
-            end
-        end
 
 		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
 			LeftChatPanel_Bui.styleShadow:Hide()
@@ -256,12 +230,10 @@ function mod:SetFlightMode(status)
 
 		self:SkinInFlight()
 
+		E.UIParent:Hide()
 		self.inFlightMode = true
 	elseif(self.inFlightMode) then
-		E.UIParent:Show()
-
 		-- Show hidden frames
-		if ObjectiveTrackerFrame then ObjectiveTrackerFrame:Show() end
 		if E.private.general.minimap.enable then
 			Minimap:Show()
 		end
@@ -305,31 +277,17 @@ function mod:SetFlightMode(status)
 			local AS = unpack(AddOnSkins) or nil
 			if AS.db.EmbedSystem or AS.db.EmbedSystemDual then AS:Embed_Show() end
 		end
-
-		-- Show Zygor
-		if BUI.ZG then
-			if ZygorGuidesViewer.db.profile.visible then
-				if zygorVisible then
-					if _G['ZygorGuidesViewerFrame'] then _G['ZygorGuidesViewerFrame']:Show() end
+		
+		for i, v in ipairs(AddonsToHide) do
+			local addon, frame = unpack(v)
+			if IsAddOnLoaded(addon) then
+				if _G[frame] then
+					_G[frame]:SetParent(UIParent)
 				end
-			end
-			if ZygorGuidesViewer.db.profile.n_nc_enabled then
-				if _G['Zygor_Notification_Center'] then _G['Zygor_Notification_Center']:Show() end
 			end
 		end
 
-        if IsAddOnLoaded('XToLevel') then
-            if XToLevelClassicVisible then
-                if _G["XToLevel_AverageFrame_Classic"] then
-                    _G["XToLevel_AverageFrame_Classic"]:Show()
-                end
-            end
-            if XToLevelBlockyVisible then
-                if _G["XToLevel_AverageFrame_Blocky_PlayerFrame"] then
-                    _G["XToLevel_AverageFrame_Blocky_PlayerFrame"]:Show()
-                end
-            end
-        end
+		_G['MainMenuBarVehicleLeaveButton']:SetParent(UIParent)
 
 		-- revert Left Chat
 		if E.private.chat.enable then
@@ -343,25 +301,13 @@ function mod:SetFlightMode(status)
 			LeftChatPanel:Point("BOTTOMLEFT", LeftChatMover, "BOTTOMLEFT")
 		end
 
-		-- Show SquareMinimapButtonBar
-		if (BUI.PA and not BUI.SLE) then
-			if SquareMinimapButtonBar then
-				_G.SquareMinimapButtons:ScheduleRepeatingTimer('GrabMinimapButtons', 5)
-				SquareMinimapButtonBar:SetAlpha(1)
-			end
-		end
-
-		if IsAddOnLoaded("XIV_Databar") then
-			XIV_Databar:Show()
-		end
-
 		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
 			LeftChatPanel_Bui.styleShadow:Show()
 			LeftChatPanel_Bui.styleShadow:SetFrameStrata('BACKGROUND') -- it loses its framestrata somehow. Needs digging
 		end
 
 		--BuiTaxiButton:SetParent(E.UIParent)
-
+		E.UIParent:Show()
 		self.inFlightMode = false
 	end
 end
@@ -763,9 +709,6 @@ function mod:Initialize()
 	LeftChatPanel.backdrop:CreateWideShadow()
 	LeftChatPanel.backdrop.wideshadow:Hide()
 	LeftChatPanel.backdrop.wideshadow:SetFrameLevel(LeftChatPanel.backdrop:GetFrameLevel() - 1)
-
-	-- Hide ElvUI Leave Vehicle button
-	_G.MainMenuBarVehicleLeaveButton:Hide()
 
 	self:Toggle()
 	ToggleWorldMap()

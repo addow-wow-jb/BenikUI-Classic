@@ -12,58 +12,18 @@ local LSM = LibStub("LibSharedMedia-3.0");
 
 local _G = _G
 
-local units = {"Player", "Target", "Pet"}
+local units = {"Player", "Target", "Focus", "Pet"}
 
 -- GLOBALS: hooksecurefunc
 
---Configure castbar text position and alpha
-local function ConfigureText(unit, castbar)
-	local db = E.db.benikui.unitframes.castbar.text
-	
-	if not castbar then return end
-
-	if db.castText then
-		castbar.Text:Show()
-		castbar.Time:Show()
-	else
-		if (unit == 'target' and db.forceTargetText) then
-			castbar.Text:Show()
-			castbar.Time:Show()
-		else
-			castbar.Text:Hide()
-			castbar.Time:Hide()
-		end
-	end
-
-	-- Set position of castbar text according to chosen offsets
-	castbar.Text:ClearAllPoints()
-	castbar.Time:ClearAllPoints()
-	if db[unit].yOffset ~= 0 then
-		if unit == 'player' then
-			castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, db.player.yOffset)
-			castbar.Time:SetPoint("RIGHT", castbar, "RIGHT", -4, db.player.yOffset)
-		elseif unit == 'target' then
-			castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, db.target.yOffset)
-			castbar.Time:SetPoint("RIGHT", castbar, "RIGHT", -4, db.target.yOffset)
-		end
-	else
-		castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0)
-		castbar.Time:SetPoint("RIGHT", castbar, "RIGHT", -4, 0)
-	end
-end
-
 local function changeCastbarLevel(unit, unitframe)
-	local castbar = unitframe.Castbar
-	if not castbar then return end
-	castbar:SetFrameStrata("LOW")
-	castbar:SetFrameLevel(unitframe.InfoPanel:GetFrameLevel() + 10)
+	unitframe.Castbar:SetFrameStrata("LOW")
+	unitframe.Castbar:SetFrameLevel(unitframe.InfoPanel:GetFrameLevel() + 10)
 end
 
 local function resetCastbarLevel(unit, unitframe)
-	local castbar = unitframe.Castbar
-	if not castbar then return end
-	castbar:SetFrameStrata("HIGH")
-	castbar:SetFrameLevel(6)
+	unitframe.Castbar:SetFrameStrata("HIGH")
+	unitframe.Castbar:SetFrameLevel(6)
 end
 
 local function ConfigureCastbarShadow(unit, unitframe)
@@ -72,7 +32,7 @@ local function ConfigureCastbarShadow(unit, unitframe)
 	local db = E.db.unitframe.units[unit].castbar;
 	local castbar = unitframe.Castbar
 
-	if not castbar or not castbar.backdrop.shadow then return end
+	if not castbar.backdrop.shadow then return end
 
 	if unitframe.USE_INFO_PANEL and db.insideInfoPanel then
 		castbar.backdrop.shadow:Hide()
@@ -89,7 +49,6 @@ local function ConfigureCastbar(unit, unitframe)
 	local castbar = unitframe.Castbar
 
 	if unit == 'player' or unit == 'target' then
-		ConfigureText(unit, castbar)
 		ConfigureCastbarShadow(unit, unitframe)
 		if unitframe.USE_INFO_PANEL and db.insideInfoPanel then
 			if E.db.benikui.unitframes.castbar.text.ShowInfoText then
@@ -99,6 +58,18 @@ local function ConfigureCastbar(unit, unitframe)
 			end
 		else
 			resetCastbarLevel(unit, unitframe)
+		end
+	elseif unit == "focus" or unit == "pet" then
+		ConfigureCastbarShadow(unit, unitframe)
+	elseif unit == "arena" then
+		for i = 1, 5 do
+			local unitframe = _G["ElvUF_Arena"..i]
+			ConfigureCastbarShadow(unit, unitframe)
+		end
+	elseif unit == "boss" then
+		for i = 1, 5 do
+			local unitframe = _G["ElvUF_Boss"..i]
+			ConfigureCastbarShadow(unit, unitframe)
 		end
 	end
 end
@@ -116,27 +87,18 @@ end
 function mod:UpdateAllCastbars()
 	mod:UpdateSettings("player")
 	mod:UpdateSettings("target")
+	mod:UpdateSettings("focus")
 	mod:UpdateSettings("pet")
+	mod:UpdateSettings("arena")
+	mod:UpdateSettings("boss")
 end
 
 --Castbar texture
 function mod:PostCast(unit, unitframe)
-	local db = E.db.benikui.unitframes.castbar.text
-
 	local castTexture = LSM:Fetch("statusbar", E.db.benikui.unitframes.textures.castbar)
-	local pr, pg, pb, pa = BUI:unpackColor(db.player.textColor)
-	local tr, tg, tb, ta = BUI:unpackColor(db.target.textColor)
 
 	if not self.isTransparent then
 		self:SetStatusBarTexture(castTexture)
-	end
-
-	if unit == 'player' then
-		self.Text:SetTextColor(pr, pg, pb, pa)
-		self.Time:SetTextColor(pr, pg, pb, pa)
-	elseif unit == 'target' then
-		self.Text:SetTextColor(tr, tg, tb, ta)
-		self.Time:SetTextColor(tr, tg, tb, ta)
 	end
 
 	if not E.db.benikui.unitframes.castbarColor.enable then return; end
@@ -160,22 +122,10 @@ end
 function mod:PostCastInterruptible(unit, unitframe)
 	if unit == "vehicle" or unit == "player" then return end
 
-	local db = E.db.benikui.unitframes.castbar.text
-
 	local castTexture = LSM:Fetch("statusbar", E.db.benikui.unitframes.textures.castbar)
-	local pr, pg, pb, pa = BUI:unpackColor(db.player.textColor)
-	local tr, tg, tb, ta = BUI:unpackColor(db.target.textColor)
 
 	if not self.isTransparent then
 		self:SetStatusBarTexture(castTexture)
-	end
-
-	if unit == 'player' then
-		self.Text:SetTextColor(pr, pg, pb, pa)
-		self.Time:SetTextColor(pr, pg, pb, pa)
-	elseif unit == 'target' then
-		self.Text:SetTextColor(tr, tg, tb, ta)
-		self.Time:SetTextColor(tr, tg, tb, ta)
 	end
 
 	if not E.db.benikui.unitframes.castbarColor.enable then return; end

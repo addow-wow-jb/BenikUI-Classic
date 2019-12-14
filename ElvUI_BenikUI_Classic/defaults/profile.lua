@@ -220,12 +220,13 @@ P['benikuiSkins'] = {
 		['atlasloot'] = true,
 		['altoholic'] = true,
 		['clique'] = true,
-		['ora'] = true,
 		['pawn'] = true,
 		['dbm'] = true,
 		['bigwigs'] = true,
 		['immersion'] = true,
 		['adibags'] = true,
+		['spy'] = true,
+		['xtoLevel'] = true,
 	},
 	
 	['variousSkins'] = {
@@ -233,7 +234,6 @@ P['benikuiSkins'] = {
 		['decursive'] = true,
 		['storyline'] = true,
 		['inflight'] = true,
-		['xtoLevel'] = true,
 		['zygor'] = true,
 	},
 }

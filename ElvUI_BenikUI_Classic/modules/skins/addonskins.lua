@@ -183,6 +183,43 @@ local function ImmersionDecor()
 	end)
 end
 
+local function StyleSpyAddon()
+	local spy = _G["Spy_MainWindow"]
+	if spy then
+		spy:Style("Outside")
+	end
+	AS:Desaturate(Spy_MainWindow.StatsButton) -- remove if added in AddonSkins
+end
+
+local function StyleXtoLevel()
+	if not E.db.benikui.general.benikuiStyle or not E.db.benikuiSkins.addonSkins.xtoLevel then return end
+
+	local xtoLevel = _G["XToLevel_AverageFrame_Classic"]
+	if xtoLevel then
+		xtoLevel:Style("Outside")
+	end
+
+	local XtoLevelFrames = {
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterKills"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterQuests"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterDungeons"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterBattles"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterObjectives"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterPetBattles"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterGathering"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterDigs"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterProgress"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterTimer"],
+		_G["XToLevel_AverageFrame_Blocky_PlayerFrameCounterGuildProgress"],
+	}
+
+	for _, frame in pairs(XtoLevelFrames) do
+		if BUI.ShadowMode then
+			frame:CreateSoftShadow()
+		end
+	end
+end
+
 -- Replace the close button
 function AS:SkinCloseButton(Button, Reposition)
 	if Button.Backdrop then return end
@@ -228,6 +265,8 @@ if AS:CheckAddOn('AtlasLoot') then AS:RegisterSkin('AtlasLoot', AtlasLootDecor, 
 if (AS:CheckAddOn('DBM-Core') and AS:CheckAddOn('DBM-StatusBarTimers') and AS:CheckAddOn('DBM-DefaultSkin')) then AS:RegisterSkin('DBM', DbmDecor, 'ADDON_LOADED') end
 if AS:CheckAddOn('BugSack') then AS:RegisterSkin('BugSack', BugSackDecor, 2) end
 if AS:CheckAddOn('Immersion') then AS:RegisterSkin('Immersion', ImmersionDecor, 2) end
+if AS:CheckAddOn('Spy') then AS:RegisterSkin('Spy', StyleSpyAddon, 2) end
+if AS:CheckAddOn('XToLevel') then AS:RegisterSkin('XToLevel', StyleXtoLevel, 2) end
 AS:RegisterSkin('Libraries', LibrariesDecor, 2)
 
 hooksecurefunc(AS, 'AcceptFrame', function(self)

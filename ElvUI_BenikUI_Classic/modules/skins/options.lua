@@ -14,13 +14,15 @@ local DecorElvUIAddons = {
 	{'ElvUI_DTBars2', L['DT Bars 2'], 'dtb2'},
 }
 
-local DecorAddons = {
+local PassToAddonSkins = {
 	{'Skada', L['Skada'], 'skada'},
 	{'Recount', L['Recount'], 'recount'},
 	{'AtlasLoot', L['AtlasLoot'], 'atlasloot'},
 	{'DBM-Core', L['Deadly Boss Mods'], 'dbm'},
 	{'BigWigs', L['BigWigs'], 'bigwigs'},
 	{'Immersion', L['Immersion'], 'immersion'},
+	{'Spy', L['Spy'], 'spy'},
+	{'XToLevel', L['XToLevel'], 'xtoLevel'},
 }
 
 local SupportedProfiles = {
@@ -108,7 +110,7 @@ local function SkinTable()
 		}
 
 	local addorder = 0
-	for i, v in ipairs(DecorAddons) do
+	for i, v in ipairs(PassToAddonSkins) do
 		local addonName, addonString, addonOption = unpack( v )
 		E.Options.args.benikui.args.skins.args.addonskins.args[addonOption] = {
 			order = addorder + 1,
@@ -157,14 +159,8 @@ local function SkinTable()
 					E:StaticPopup_Show('PRIVATE_RL') end,
 				disabled = function() return not IsAddOnLoaded('InFlight_Load') end,
 			},
-			xtoLevel = {
-				order = 5,
-				type = 'toggle',
-				name = L['XToLevel'],
-				disabled = function() return not IsAddOnLoaded('XToLevel') end,
-			},
 			zygor = {
-				order = 6,
+				order = 5,
 				type = 'toggle',
 				name = L['Zygor Guides'],
 				disabled = function() return not BUI.ZG end,
