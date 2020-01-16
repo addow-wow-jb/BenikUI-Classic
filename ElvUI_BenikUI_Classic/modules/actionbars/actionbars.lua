@@ -10,7 +10,7 @@ local IsAddOnLoaded = IsAddOnLoaded
 local C_TimerAfter = C_Timer.After
 local MAX_TOTEMS = MAX_TOTEMS
 
--- GLOBALS: NUM_PET_ACTION_SLOTS, DisableAddOn
+-- GLOBALS: NUM_PET_ACTION_SLOTS
 -- GLOBALS: ElvUI_BarPet, ElvUI_StanceBar
 
 local classColor = E.myclass == 'PRIEST' and E.PriestColors or (CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[E.myclass] or RAID_CLASS_COLORS[E.myclass])
@@ -178,10 +178,9 @@ end
 
 function mod:TotemShadows()
 	if not BUI.ShadowMode then return end
-	local button
 
 	for i=1, MAX_TOTEMS do
-		button = _G["ElvUI_TotemBarTotem"..i];
+		local button = _G["ElvUI_TotemBarTotem"..i];
 		if button and not button.shadow then
 			button:CreateSoftShadow()
 		end
