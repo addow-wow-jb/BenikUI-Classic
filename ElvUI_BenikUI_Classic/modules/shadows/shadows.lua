@@ -149,7 +149,7 @@ function mod:Initialize()
 	--ObjectiveTrackerShadows()
 	--miscShadows()
 	MicroBarShadows()
-	mod:RegisterEvent('START_TIMER')
+	--mod:RegisterEvent('START_TIMER')
 
 	-- AddonSkins
 	mod:AddonSkins()
