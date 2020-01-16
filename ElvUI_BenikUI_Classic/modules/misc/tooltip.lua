@@ -68,7 +68,7 @@ function mod:Initialize()
 
 	mod:SecureHookScript(GameTooltip, 'OnUpdate', 'RecolorTooltipStyle')
 	mod:SecureHookScript(GameTooltip, 'OnTooltipCleared', 'GameTooltip_OnTooltipCleared')
-	S:AddCallback('BenikUI_SkinTooltip', Hooks)
+	Hooks()
 end
 
 BUI:RegisterModule(mod:GetName())
