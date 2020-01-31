@@ -1,3 +1,8 @@
+v1.10 - Jan 31 2020
+*Fixed portrait errors
+*Set ElvUI min version to 1.211
+*License update
+
 v1.09 - Jan 16 2020
 *Fix a tooltip error
 *Comment out START_TIMER. It may cause errors
