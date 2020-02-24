@@ -1,3 +1,8 @@
+v1.11 - Feb 24 2020
+*Complied to latest ElvUI options changes
+*Update and clean Dashboard options
+*Set min ElvUI version to 1.22
+
 v1.10 - Jan 31 2020
 *Fixed portrait errors
 *Set ElvUI min version to 1.211

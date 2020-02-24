@@ -14,7 +14,6 @@ local classColor = E.myclass == 'PRIEST' and E.PriestColors or (CUSTOM_CLASS_COL
 
 -- Dashboards bar frame tables
 BUI.SystemDB = {}
---BUI.TokensDB = {}
 BUI.ProfessionsDB = {}
 BUI.SecondarySkill = SECONDARY_SKILLS:gsub(":", '')
 
@@ -181,7 +180,6 @@ end
 function mod:Initialize()
 	mod:LoadSystem()
 	mod:LoadProfessions()
-	--mod:LoadTokens()
 end
 
 BUI:RegisterModule(mod:GetName())
