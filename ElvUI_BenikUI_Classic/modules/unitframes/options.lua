@@ -208,7 +208,7 @@ end
 tinsert(BUI.Config, ufTable)
 
 local function ufPlayerTable()
-	E.Options.args.unitframe.args.player.args.portrait.args.benikui = {
+	E.Options.args.unitframe.args.individualUnits.args.player.args.portrait.args.benikui = {
 		order = 20,
 		type = 'group',
 		name = BUI.Title,
@@ -223,11 +223,11 @@ local function ufPlayerTable()
 				set = function(info, value)
 					E.db.benikui.unitframes.player[ info[#info] ] = value;
 					if value == true then
-						E.Options.args.unitframe.args.player.args.portrait.args.width.min = 0
+						E.Options.args.unitframe.args.individualUnits.args.player.args.portrait.args.width.min = 0
 						E.db.unitframe.units.player.portrait.width = 0
 						E.db.unitframe.units.player.orientation = "LEFT"
 					else
-						E.Options.args.unitframe.args.player.args.portrait.args.width.min = 15
+						E.Options.args.unitframe.args.individualUnits.args.player.args.portrait.args.width.min = 15
 						E.db.unitframe.units.player.portrait.width = 45
 					end
 					UF:CreateAndUpdateUF('player')
@@ -300,7 +300,7 @@ local function ufPlayerTable()
 		},
 	}
 
-	E.Options.args.unitframe.args.player.args.power.args.vertical = {
+	E.Options.args.unitframe.args.individualUnits.args.player.args.power.args.vertical = {
 		order = 15,
 		type = "toggle",
 		name = BUI:cOption(L['Vertical']),
@@ -311,7 +311,7 @@ end
 tinsert(BUI.Config, ufPlayerTable)
 
 local function ufTargetTable()
-	E.Options.args.unitframe.args.target.args.portrait.args.benikui = {
+	E.Options.args.unitframe.args.individualUnits.args.target.args.portrait.args.benikui = {
 		order = 20,
 		type = 'group',
 		name = BUI.Title,
@@ -326,11 +326,11 @@ local function ufTargetTable()
 				set = function(info, value)
 					E.db.benikui.unitframes.target[ info[#info] ] = value;
 					if value == true then
-						E.Options.args.unitframe.args.target.args.portrait.args.width.min = 0
+						E.Options.args.unitframe.args.individualUnits.args.target.args.portrait.args.width.min = 0
 						E.db.unitframe.units.target.portrait.width = 0
 						E.db.unitframe.units.target.orientation = "RIGHT"
 					else
-						E.Options.args.unitframe.args.target.args.portrait.args.width.min = 15
+						E.Options.args.unitframe.args.individualUnits.args.target.args.portrait.args.width.min = 15
 						E.db.unitframe.units.target.portrait.width = 45
 					end
 					UF:CreateAndUpdateUF('target')
@@ -410,7 +410,7 @@ local function ufTargetTable()
 		},
 	}
 
-	E.Options.args.unitframe.args.target.args.power.args.vertical = {
+	E.Options.args.unitframe.args.individualUnits.args.target.args.power.args.vertical = {
 		order = 15,
 		type = "toggle",
 		name = BUI:cOption(L['Vertical']),
@@ -421,7 +421,7 @@ end
 tinsert(BUI.Config, ufTargetTable)
 
 local function ufTargetTargetTable()
-	E.Options.args.unitframe.args.targettarget.args.portrait.args.benikui = {
+	E.Options.args.unitframe.args.individualUnits.args.targettarget.args.portrait.args.benikui = {
 		order = 20,
 		type = 'group',
 		name = BUI.Title,
@@ -436,11 +436,11 @@ local function ufTargetTargetTable()
 				set = function(info, value)
 					E.db.benikui.unitframes.targettarget[ info[#info] ] = value;
 					if value == true then
-						E.Options.args.unitframe.args.targettarget.args.portrait.args.width.min = 0
+						E.Options.args.unitframe.args.individualUnits.args.targettarget.args.portrait.args.width.min = 0
 						E.db.unitframe.units.targettarget.portrait.width = 0
 						E.db.unitframe.units.targettarget.orientation = "RIGHT"
 					else
-						E.Options.args.unitframe.args.targettarget.args.portrait.args.width.min = 15
+						E.Options.args.unitframe.args.individualUnits.args.targettarget.args.portrait.args.width.min = 15
 						E.db.unitframe.units.targettarget.portrait.width = 45
 						E.db.unitframe.units.targettarget.orientation = "MIDDLE"
 					end
@@ -491,7 +491,7 @@ end
 tinsert(BUI.Config, ufTargetTargetTable)
 
 local function ufPetTable()
-	E.Options.args.unitframe.args.pet.args.portrait.args.benikui = {
+	E.Options.args.unitframe.args.individualUnits.args.pet.args.portrait.args.benikui = {
 		order = 20,
 		type = 'group',
 		name = BUI.Title,
@@ -506,11 +506,11 @@ local function ufPetTable()
 				set = function(info, value)
 					E.db.benikui.unitframes.pet[ info[#info] ] = value;
 					if value == true then
-						E.Options.args.unitframe.args.pet.args.portrait.args.width.min = 0
+						E.Options.args.unitframe.args.individualUnits.args.pet.args.portrait.args.width.min = 0
 						E.db.unitframe.units.pet.portrait.width = 0
 						E.db.unitframe.units.pet.orientation = "RIGHT"
 					else
-						E.Options.args.unitframe.args.pet.args.portrait.args.width.min = 15
+						E.Options.args.unitframe.args.individualUnits.args.pet.args.portrait.args.width.min = 15
 						E.db.unitframe.units.pet.portrait.width = 45
 						E.db.unitframe.units.pet.orientation = "MIDDLE"
 					end
@@ -561,14 +561,14 @@ end
 tinsert(BUI.Config, ufPetTable)
 
 local function injectPartyOptions()
-	E.Options.args.unitframe.args.party.args.portrait.args.height = {
+	E.Options.args.unitframe.args.groupUnits.args.party.args.portrait.args.height = {
 		type = 'range',
 		order = 15,
 		name = BUI:cOption("+ "..L["Height"]),
 		min = 0, max = 150, step = 1,
 	}
 
-	E.Options.args.unitframe.args.party.args.portrait.args.transparent = {
+	E.Options.args.unitframe.args.groupUnits.args.party.args.portrait.args.transparent = {
 		order = 16,
 		type = "toggle",
 		name = BUI:cOption(L['Transparent']),
@@ -579,7 +579,7 @@ end
 tinsert(BUI.Config, injectPartyOptions)
 
 local function injectRaidOptions()
-	E.Options.args.unitframe.args.raid.args.generalGroup.args.classHover = {
+	E.Options.args.unitframe.args.groupUnits.args.raid.args.generalGroup.args.classHover = {
 		order = 7,
 		type = "toggle",
 		name = BUI:cOption(L['Class Hover']),
@@ -590,7 +590,7 @@ end
 tinsert(BUI.Config, injectRaidOptions)
 
 local function injectRaid40Options()
-	E.Options.args.unitframe.args.raid40.args.generalGroup.args.classHover = {
+	E.Options.args.unitframe.args.groupUnits.args.raid40.args.generalGroup.args.classHover = {
 		order = 7,
 		type = "toggle",
 		name = BUI:cOption(L['Class Hover']),
