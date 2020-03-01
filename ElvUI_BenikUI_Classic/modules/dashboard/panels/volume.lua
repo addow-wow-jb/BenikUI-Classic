@@ -24,7 +24,7 @@ end
 
 local function RoundVolume(cat)
 	local volume = tonumber(GetCVar(cat));
-	volume = tonumber(E:Round(volume, 1));
+	volume = E:Round(volume, 1)
 	return volume;
 end
 
@@ -68,7 +68,6 @@ end
 local function Sound_MasterVolumeDown()
 	local volume = RoundVolume('Sound_MasterVolume')
 
-	volume = tonumber(E:Round(volume, 1));
 	if (volume and volume >= 0.1) then
 		SetCVar('Sound_MasterVolume', volume - 0.1);
 	end
