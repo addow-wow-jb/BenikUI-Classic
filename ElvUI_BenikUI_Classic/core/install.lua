@@ -1929,32 +1929,34 @@ end
 local function SetupDataTexts(role)
 	-- Data Texts
 	if BUI.LP then
-		E.db["datatexts"]["panels"]["RightCoordDtPanel"] = 'Time'
-		E.db["datatexts"]["panels"]["LeftCoordDtPanel"] = ' '
+		E.db["datatexts"]["panels"]["LocPlusRightDT"][1] = 'Time'
+		E.db["datatexts"]["panels"]["LocPlusLeftDT"][1] = 'Movement Speed'
+		E.DataTexts:UpdatePanelInfo('LocPlusRightDT')
+		E.DataTexts:UpdatePanelInfo('LocPlusLeftDT')
 	end
 
 	if role == 'tank' then
-		E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["left"] = 'Attack Power'
-		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["left"] = 'Avoidance'
-		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["right"] = 'Armor'
+		E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"][1] = 'Attack Power'
+		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"][1] = 'Avoidance'
+		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"][3] = 'Armor'
 	elseif role == 'dpsMelee' then
-		E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["left"] = 'Attack Power'
-		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["left"] = 'Haste'
-		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["right"] = 'Crit Chance'
+		E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"][1] = 'Attack Power'
+		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"][1] = 'Haste'
+		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"][3] = 'Crit Chance'
 	elseif role == 'healer' or 'dpsCaster' then
-		E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["left"] = 'Spell/Heal Power'
-		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["left"] = 'Haste'
-		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["right"] = 'Crit Chance'
+		E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"][1] = 'Spell/Heal Power'
+		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"][1] = 'Haste'
+		E.db["datatexts"]["panels"]["BuiMiddleDTPanel"][3] = 'Crit Chance'
 	end
 
-	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["middle"] = ''
-	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"]["right"] = 'BuiMail'
+	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"][2] = ''
+	E.db["datatexts"]["panels"]["BuiLeftChatDTPanel"][3] = 'BuiMail'
 
-	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["left"] = 'Bags'
-	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["right"] = 'Gold'
-	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"]["middle"] = ''
+	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"][1] = 'Bags'
+	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"][3] = 'Gold'
+	E.db["datatexts"]["panels"]["BuiRightChatDTPanel"][2] = ''
 
-	E.db["datatexts"]["panels"]["BuiMiddleDTPanel"]["middle"] = 'Mastery'
+	E.db["datatexts"]["panels"]["BuiMiddleDTPanel"][2] = 'Mastery'
 
 	PluginInstallStepComplete.message = BUI.Title..L['DataTexts Set']
 	PluginInstallStepComplete:Show()
