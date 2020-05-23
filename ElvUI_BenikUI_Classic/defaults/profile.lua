@@ -23,6 +23,25 @@ P['databars']['reputation']['textYoffset'] = 0
 -- Add Minimap styling toggle default
 P['general']['minimap']['benikuiStyle'] = true
 
+-- Datatexts
+P['datatexts']['panels']['BuiLeftChatDTPanel'] = {
+	[1] = 'Spell/Heal Power',
+	[2] = 'BfA Missions (BenikUI)',
+	[3] = 'BuiMail',
+}
+
+P['datatexts']['panels']['BuiRightChatDTPanel'] = {
+	[1] = 'Spec Switch (BenikUI)',
+	[2] = 'Gold',
+	[3] = 'Bags',
+}
+
+P['datatexts']['panels']['BuiMiddleDTPanel'] = {
+	[1] = 'Haste',
+	[2] = 'Mastery',
+	[3] = 'Crit Chance',
+}
+
 -- Core
 P['benikui'] = {
 	['installed'] = nil,
@@ -319,3 +338,5 @@ P['dashboards'] = {
 	['textColor'] = 2,
 	['customTextColor'] = {r = 255/255,g = 255/255,b = 255/255},
 }
+
+G.datatexts.newPanelInfo.benikuiStyle = true
