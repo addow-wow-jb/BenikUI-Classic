@@ -13,7 +13,7 @@ local function AreOtherAddOnsEnabled()
 	local name
 	for i = 1, GetNumAddOns() do
 		name = GetAddOnInfo(i)
-		if ((name ~= "ElvUI" and name ~= "ElvUI_Config" and name ~= "ElvUI_BenikUI") and IsAddOnEnabled(name)) then --Loaded or load on demand
+		if ((name ~= "ElvUI" and name ~= "ElvUI_OptionsUI" and name ~= "ElvUI_BenikUI_Classic") and IsAddOnEnabled(name)) then --Loaded or load on demand
 			return "Yes"
 		end
 	end
@@ -25,9 +25,10 @@ local function CreateStatusFrame()
 
 	-- style
 	StatusFrame.backdrop:Style('Outside')
-
+	StatusFrame.PluginFrame.backdrop:Style('Outside')
 	-- hide the logo. Sorry Elv :P
-	StatusFrame.TitleLogoFrame.Texture:SetTexture(nil)
+	StatusFrame.TitleLogoFrame.LogoTop:SetTexture(nil)
+	StatusFrame.TitleLogoFrame.LogoBottom:SetTexture(nil)
 
 	-- create the report title
 	StatusFrame.TitleLogoFrame.Title = StatusFrame.TitleLogoFrame:CreateFontString(nil, "ARTWORK")
