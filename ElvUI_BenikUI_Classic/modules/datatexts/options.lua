@@ -154,3 +154,36 @@ local function Datatexts()
 	}
 end
 tinsert(BUI.Config, Datatexts)
+
+--[[local DTPanelOptions = {
+	benikuiGroup = {
+		order = 6,
+		type = 'group',
+		name = BUI.Title,
+		guiInline = true,
+		args = {
+			benikuiStyle = {
+				order = 1,
+				type = 'toggle',
+				name = L['BenikUI Style'],
+			},
+		},
+	},
+}
+
+local function PanelGroup_Create(panel)
+	E:CopyTable(E.Options.args.datatexts.args.panels.args[panel].args.panelOptions.args, DTPanelOptions)
+end
+
+local function PanelLayoutOptions()
+	for panel in pairs(E.global.datatexts.customPanels) do
+		PanelGroup_Create(panel)
+	end
+end
+
+local function initDataTexts()
+	PanelLayoutOptions()
+	E:CopyTable(E.Options.args.datatexts.args.panels.args.newPanel.args, DTPanelOptions)
+	hooksecurefunc(DT, "PanelLayoutOptions", PanelLayoutOptions)
+end
+tinsert(BUI.Config, initDataTexts)]]
