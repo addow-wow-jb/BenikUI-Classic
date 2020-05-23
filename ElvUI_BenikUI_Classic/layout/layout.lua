@@ -19,37 +19,16 @@ local GameMenuButtonAddons = GameMenuButtonAddons
 local SendChatMessage = SendChatMessage
 local ReloadUI = ReloadUI
 
--- GLOBALS: hooksecurefunc, GarrisonLandingPageMinimapButton_OnClick, CloseMenus, CloseAllWindows, selectioncolor
--- GLOBALS: MainMenuMicroButton_SetNormal, AddOnSkins, MAINMENU_BUTTON, ADDONS, LFG_TITLE, BuiLeftChatDTPanel
+-- GLOBALS: hooksecurefunc, selectioncolor
+-- GLOBALS: AddOnSkins, MAINMENU_BUTTON, LFG_TITLE, BuiLeftChatDTPanel
 -- GLOBALS: BuiMiddleDTPanel, BuiRightChatDTPanel, BuiGameClickMenu
--- GLOBALS: SpellBookFrame, PlayerTalentFrame, TalentFrame_LoadUI
--- GLOBALS: GlyphFrame, GlyphFrame_LoadUI, PlayerTalentFrame, TimeManagerFrame
--- GLOBALS: GameTimeFrame, GuildFrame, GuildFrame_LoadUI, EncounterJournal_LoadUI, EncounterJournal
--- GLOBALS: LookingForGuildFrame, LookingForGuildFrame_LoadUI, LookingForGuildFrame_Toggle
--- GLOBALS: GameGameMenuFrame, VideoOptionsFrame, VideoOptionsFrameCancel, AudioOptionsFrame, AudioOptionsFrameCancel
--- GLOBALS: InterfaceOptionsFrame, InterfaceOptionsFrameCancel, GuildFrame_Toggle
--- GLOBALS: LibStub, StoreMicroButton
--- GLOBALS: LeftMiniPanel, RightMiniPanel, Minimap
+-- GLOBALS: EncounterJournal_LoadUI, EncounterJournal
+-- GLOBALS: MinimapPanel, Minimap
 -- GLOBALS: LeftChatPanel, RightChatPanel, CopyChatFrame
 
 local PANEL_HEIGHT = 19;
 local SPACING = (E.PixelMode and 1 or 3)
 local BUTTON_NUM = 4
-
-local Bui_ldtp = CreateFrame('Frame', 'BuiLeftChatDTPanel', E.UIParent)
-local Bui_rdtp = CreateFrame('Frame', 'BuiRightChatDTPanel', E.UIParent)
-local Bui_mdtp = CreateFrame('Frame', 'BuiMiddleDTPanel', E.UIParent)
-
-local function RegDataTexts()
-	DT:RegisterPanel(BuiLeftChatDTPanel, 3, 'ANCHOR_BOTTOM', 0, -4)
-	DT:RegisterPanel(BuiMiddleDTPanel, 3, 'ANCHOR_BOTTOM', 0, -4)
-	DT:RegisterPanel(BuiRightChatDTPanel, 3, 'ANCHOR_BOTTOM', 0, -4)
-
-	L['BuiLeftChatDTPanel'] = BUI.Title..BUI:cOption(L['Left Chat Panel']);
-	L['BuiRightChatDTPanel'] = BUI.Title..BUI:cOption(L['Right Chat Panel']);
-	L['BuiMiddleDTPanel'] = BUI.Title..BUI:cOption(L['Middle Panel']);
-	E.FrameLocks['BuiMiddleDTPanel'] = true;
-end
 
 local Bui_dchat = CreateFrame('Frame', 'BuiDummyChat', E.UIParent)
 local Bui_deb = CreateFrame('Frame', 'BuiDummyEditBoxHolder', E.UIParent)
@@ -290,7 +269,7 @@ function mod:ChangeLayout()
 	Bui_mdtp:Width(db.middle.width or 400)
 	Bui_mdtp:Height(db.middle.height or PANEL_HEIGHT)
 	Bui_mdtp:Style('Outside', nil, false, true)
-	DT:RegisterPanel(BuiMiddleDTPanel, (db.middle.numPoints or 3), 'ANCHOR_BOTTOM', 0, -4)
+	DT:RegisterPanel(BuiMiddleDTPanel, 3, 'ANCHOR_BOTTOM', 0, -4)
 
 	E:CreateMover(Bui_mdtp, "BuiMiddleDtMover", L['BenikUI Middle DataText'], nil, nil, nil, 'ALL,BenikUI', nil, 'benikui,datatexts')
 
@@ -547,7 +526,6 @@ local function InjectDatatextOptions()
 end
 
 function mod:Initialize()
-	--RegDataTexts()
 	self:ChangeLayout()
 	self:ChatStyles()
 	self:ToggleMinimapStyle()
