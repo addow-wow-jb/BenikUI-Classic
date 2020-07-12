@@ -3,6 +3,7 @@ local L = E.Libs.ACL:GetLocale('ElvUI', E.global.general.locale or 'enUS');
 
 local LO = E:GetModule('Layout');
 local BL = BUI:GetModule('Layout')
+local DT = E:GetModule('DataTexts')
 
 if E.db.benikui == nil then E.db.benikui = {} end
 local tinsert = table.insert
@@ -155,7 +156,7 @@ local function Datatexts()
 end
 tinsert(BUI.Config, Datatexts)
 
---[[local DTPanelOptions = {
+local DTPanelOptions = {
 	benikuiGroup = {
 		order = 6,
 		type = 'group',
@@ -186,4 +187,4 @@ local function initDataTexts()
 	E:CopyTable(E.Options.args.datatexts.args.panels.args.newPanel.args, DTPanelOptions)
 	hooksecurefunc(DT, "PanelLayoutOptions", PanelLayoutOptions)
 end
-tinsert(BUI.Config, initDataTexts)]]
+tinsert(BUI.Config, initDataTexts)
