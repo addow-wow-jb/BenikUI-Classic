@@ -1,3 +1,11 @@
+v1.13 - Jul 12 2020
+*Adopt ElvUI DataText changes
+*Fixed an AfkMode error
+*Fixed the Status Report
+*A bunch of fixes taken from retail
+*Fixed a tiny mini ace3 error
+*Fixed icon desaturation on auras
+
 v1.12 - Mar 19 2020
 *Fixed Volume up/down mouseover
 
