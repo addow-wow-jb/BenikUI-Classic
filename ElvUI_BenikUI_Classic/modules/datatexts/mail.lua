@@ -38,7 +38,7 @@ local function OnEvent(self, event, ...)
 		end
 	end
 
-	if unreadMail then
+	if newMail then
 		self.text:SetFormattedText("|cff00ff00%s|r", L['New Mail'])
 		Read = false;
 	else
@@ -76,4 +76,4 @@ function DT:ToggleMailFrame()
 	end
 end
 
-DT:RegisterDatatext('BuiMail', {'PLAYER_ENTERING_WORLD', 'MAIL_INBOX_UPDATE', 'UPDATE_PENDING_MAIL', 'MAIL_CLOSED', 'PLAYER_LOGIN','MAIL_SHOW'}, OnEvent, nil, nil, OnEnter)
+DT:RegisterDatatext('BuiMail', 'BenikUI', {'PLAYER_ENTERING_WORLD', 'MAIL_INBOX_UPDATE', 'UPDATE_PENDING_MAIL', 'MAIL_CLOSED', 'PLAYER_LOGIN','MAIL_SHOW'}, OnEvent, nil, nil, OnEnter)

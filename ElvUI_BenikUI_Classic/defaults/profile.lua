@@ -23,6 +23,25 @@ P['databars']['reputation']['textYoffset'] = 0
 -- Add Minimap styling toggle default
 P['general']['minimap']['benikuiStyle'] = true
 
+-- Datatexts
+P['datatexts']['panels']['BuiLeftChatDTPanel'] = {
+	[1] = 'Spell/Heal Power',
+	[2] = 'Stamina',
+	[3] = 'BuiMail',
+}
+
+P['datatexts']['panels']['BuiRightChatDTPanel'] = {
+	[1] = 'Hit Chance',
+	[2] = 'Gold',
+	[3] = 'Bags',
+}
+
+P['datatexts']['panels']['BuiMiddleDTPanel'] = {
+	[1] = 'Haste',
+	[2] = 'Mastery',
+	[3] = 'Crit Chance',
+}
+
 -- Core
 P['benikui'] = {
 	['installed'] = nil,
@@ -183,25 +202,6 @@ P['benikui'] = {
 	},
 }
 
--- Datatexts
-P.datatexts.panels.BuiLeftChatDTPanel = {
-	left = E.db.datatexts.panels.LeftChatDataPanel.left,
-	middle = E.db.datatexts.panels.LeftChatDataPanel.middle,
-	right = E.db.datatexts.panels.LeftChatDataPanel.right,
-}
-
-P.datatexts.panels.BuiRightChatDTPanel = {
-	left = E.db.datatexts.panels.RightChatDataPanel.left,
-	middle = E.db.datatexts.panels.RightChatDataPanel.middle,
-	right = E.db.datatexts.panels.RightChatDataPanel.right,
-}
-
-P.datatexts.panels.BuiMiddleDTPanel = {
-	left = 'Multistrike',
-	middle = 'Garrison+ (BenikUI)',
-	right = 'Spec Switch (BenikUI)',
-}
-
 -- Skins and ElvUI addons Styling
 P['benikuiSkins'] = {
 	['elvuiAddons'] = {
@@ -319,3 +319,5 @@ P['dashboards'] = {
 	['textColor'] = 2,
 	['customTextColor'] = {r = 255/255,g = 255/255,b = 255/255},
 }
+
+G.datatexts.newPanelInfo.benikuiStyle = true
