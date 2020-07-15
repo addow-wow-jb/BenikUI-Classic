@@ -2,6 +2,8 @@ local BUI, E, L, V, P, G = unpack(select(2, ...))
 local DT = E:GetModule('DataTexts')
 local mod = BUI:NewModule('DataTexts', 'AceEvent-3.0');
 
+local blacklist = panelName == _G.LocPlusLeftDT or panelName == _G.LocPlusRightDT or panelName == _G.MinimapPanel or panelName == _G.LeftChatDataPanel or panelName == _G.RightChatDataPanel
+
 function mod:BuildPanelFrame(name, db)
 	db = db or E.global.datatexts.customPanels[name] or DT:Panel_DefaultGlobalSettings(name)
 
@@ -13,9 +15,6 @@ function mod:UpdatePanelInfo(panelName, panel, ...)
 	if not panel then panel = DT.RegisteredPanels[panelName] end
 	local db = panel.db or P.datatexts.panels[panelName] and DT.db.panels[panelName]
 	if not db then return end
-	
-	-- don't mess with LocationPlus
-	local blacklist = panelName == 'LocPlusLeftDT' or panelName == 'LocPlusRightDT' or panelName == 'MinimapPanel'
 
 	if not blacklist then
 		panel:Style('Outside')
