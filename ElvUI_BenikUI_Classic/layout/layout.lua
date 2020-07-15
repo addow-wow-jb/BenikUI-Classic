@@ -511,7 +511,7 @@ function mod:Initialize()
 	self:ChatStyles()
 	self:ToggleMinimapStyle()
 	tinsert(BUI.Config, InjectDatatextOptions)
-	
+
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ToggleBuiDts)
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ResizeMinimapPanels)
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ChatStyles)
