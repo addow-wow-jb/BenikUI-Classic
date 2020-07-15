@@ -15,9 +15,9 @@ function mod:UpdatePanelInfo(panelName, panel, ...)
 	if not db then return end
 	
 	-- don't mess with LocationPlus
-	local locPanel = BUI.LP and panelName == 'LocPlusLeftDT' or panelName == 'LocPlusRightDT'
+	local blacklist = panelName == 'LocPlusLeftDT' or panelName == 'LocPlusRightDT' or panelName == 'MinimapPanel'
 
-	if not locPanel then
+	if not blacklist then
 		panel:Style('Outside')
 		if db.benikuiStyle then
 			if panel.style then
