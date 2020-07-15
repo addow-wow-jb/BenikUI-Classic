@@ -94,11 +94,6 @@ function mod:Initialize()
 	hooksecurefunc(CH, "UpdateEditboxAnchors", mod.UpdateEditboxAnchors)
 	hooksecurefunc(CH, "StyleChat", Style)
 	mod.UpdateEditboxAnchors()
-	--self:RegisterEvent('PLAYER_ENTERING_WORLD')
 end
 
 BUI:RegisterModule(mod:GetName())
-
-
-
---BUI:UpdateEditboxAnchors()
