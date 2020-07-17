@@ -1,6 +1,6 @@
 local BUI, E, L, V, P, G = unpack(select(2, ...))
 local mod = BUI:NewModule('FlightMode', 'AceTimer-3.0', 'AceEvent-3.0');
-ocal LO = E:GetModule('Layout')
+local LO = E:GetModule('Layout')
 
 local _G = _G
 local GetTime = GetTime
