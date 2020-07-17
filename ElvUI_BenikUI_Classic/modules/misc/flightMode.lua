@@ -1,5 +1,6 @@
 local BUI, E, L, V, P, G = unpack(select(2, ...))
 local mod = BUI:NewModule('FlightMode', 'AceTimer-3.0', 'AceEvent-3.0');
+ocal LO = E:GetModule('Layout')
 
 local _G = _G
 local GetTime = GetTime
@@ -202,6 +203,7 @@ function mod:SetFlightMode(status)
 			LeftChatPanel.backdrop.wideshadow:SetFrameStrata('BACKGROUND') -- it loses its framestrata somehow. Needs digging
 			LeftChatPanel:ClearAllPoints()
 			LeftChatPanel:Point("BOTTOMLEFT", self.FlightMode.bottom, "TOPLEFT", 24, 24)
+			_G.LeftChatDataPanel:Hide()
 		end
 		
 		for i, v in ipairs(AddonsToHide) do
@@ -299,6 +301,8 @@ function mod:SetFlightMode(status)
 			LeftChatPanel.backdrop.wideshadow:Hide()
 			LeftChatPanel:ClearAllPoints()
 			LeftChatPanel:Point("BOTTOMLEFT", LeftChatMover, "BOTTOMLEFT")
+			LO:RepositionChatDataPanels()
+			LO:ToggleChatPanels()
 		end
 
 		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
