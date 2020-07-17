@@ -172,7 +172,7 @@ function mod:SetFlightMode(status)
 
 	if(status) then
 		self.FlightMode:Show()
-
+		print('TESTING FLIGHT MODE')
 		-- Hide some frames
 		if E.private.general.minimap.enable then
 			Minimap:Hide()
