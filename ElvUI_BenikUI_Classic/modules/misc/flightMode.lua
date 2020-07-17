@@ -204,6 +204,7 @@ function mod:SetFlightMode(status)
 			LeftChatPanel:ClearAllPoints()
 			LeftChatPanel:Point("BOTTOMLEFT", self.FlightMode.bottom, "TOPLEFT", 24, 24)
 			_G.LeftChatDataPanel:Hide()
+			print('ON THE AIR!!!')
 		end
 		
 		for i, v in ipairs(AddonsToHide) do
@@ -303,6 +304,7 @@ function mod:SetFlightMode(status)
 			LeftChatPanel:Point("BOTTOMLEFT", LeftChatMover, "BOTTOMLEFT")
 			LO:RepositionChatDataPanels()
 			LO:ToggleChatPanels()
+			print('THE EAGLE HAS LANDED!!!')
 		end
 
 		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
