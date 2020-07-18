@@ -314,7 +314,7 @@ function mod:SetFlightMode(status)
 			end
 			LeftChatPanel.backdrop.wideshadow:Hide()
 			LeftChatPanel:ClearAllPoints()
-			LeftChatPanel:SetAllPoints(LeftChatMover)
+			LeftChatPanel:Point("BOTTOMLEFT", LeftChatMover, "BOTTOMLEFT")
 			LeftChatPanel:SetFrameStrata('BACKGROUND')
 			LO:RepositionChatDataPanels()
 			LO:ToggleChatPanels()
