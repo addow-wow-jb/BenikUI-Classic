@@ -203,6 +203,7 @@ function mod:SetFlightMode(status)
 			LeftChatPanel.backdrop.wideshadow:SetFrameStrata('BACKGROUND') -- it loses its framestrata somehow. Needs digging
 			LeftChatPanel:ClearAllPoints()
 			LeftChatPanel:Point("BOTTOMLEFT", self.FlightMode.bottom, "TOPLEFT", 24, 24)
+			LeftChatPanel:SetFrameStrata('BACKGROUND')
 			if LeftChatPanel.backdrop.style then
 				LeftChatPanel.backdrop.style:SetFrameStrata('BACKGROUND')
 				LeftChatPanel.backdrop.style:SetFrameLevel(2)
