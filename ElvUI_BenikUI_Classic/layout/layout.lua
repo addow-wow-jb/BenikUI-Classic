@@ -441,8 +441,8 @@ function mod:ChangeLayout()
 	ElvUI_TopPanel:SetScript('OnShow', Panel_OnShow)
 	ElvUI_TopPanel:SetFrameLevel(0)
 
-	LeftChatPanel.backdrop:Style('Outside', 'LeftChatPanel_Bui') -- keeping the names. Maybe use them as rep or xp bars... dunno... yet
-	RightChatPanel.backdrop:Style('Outside', 'RightChatPanel_Bui')
+	LeftChatPanel.backdrop:Style('Outside')
+	RightChatPanel.backdrop:Style('Outside')
 
 	if BUI.ShadowMode then
 		MinimapPanel:CreateSoftShadow()

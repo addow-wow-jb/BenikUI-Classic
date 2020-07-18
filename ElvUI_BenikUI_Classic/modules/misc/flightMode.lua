@@ -172,7 +172,7 @@ function mod:SetFlightMode(status)
 
 	if(status) then
 		self.FlightMode:Show()
-		print('TESTING FLIGHT MODE')
+
 		-- Hide some frames
 		if E.private.general.minimap.enable then
 			Minimap:Hide()
@@ -203,8 +203,13 @@ function mod:SetFlightMode(status)
 			LeftChatPanel.backdrop.wideshadow:SetFrameStrata('BACKGROUND') -- it loses its framestrata somehow. Needs digging
 			LeftChatPanel:ClearAllPoints()
 			LeftChatPanel:Point("BOTTOMLEFT", self.FlightMode.bottom, "TOPLEFT", 24, 24)
+			if LeftChatPanel.backdrop.style then
+				LeftChatPanel.backdrop.style:SetFrameStrata('BACKGROUND')
+				LeftChatPanel.backdrop.style:SetFrameLevel(2)
+				LeftChatPanel.backdrop.style.styleShadow:SetFrameStrata('BACKGROUND')
+				LeftChatPanel.backdrop.style.styleShadow:SetFrameLevel(0)
+			end
 			_G.LeftChatDataPanel:Hide()
-			print('ON THE AIR!!!')
 		end
 		
 		for i, v in ipairs(AddonsToHide) do
@@ -298,13 +303,21 @@ function mod:SetFlightMode(status)
 			LeftChatPanel:SetParent(E.UIParent)
 			if LeftChatPanel.backdrop.shadow then
 				LeftChatPanel.backdrop.shadow:Show()
+				LeftChatPanel.backdrop.shadow:SetFrameStrata('BACKGROUND') -- it loses its framestrata somehow. Needs digging
+				LeftChatPanel.backdrop.shadow:SetFrameLevel(0)
+			end
+			if LeftChatPanel.backdrop.style then
+				LeftChatPanel.backdrop.style:SetFrameStrata('BACKGROUND')
+				LeftChatPanel.backdrop.style:SetFrameLevel(2)
+				LeftChatPanel.backdrop.style.styleShadow:SetFrameStrata('BACKGROUND')
+				LeftChatPanel.backdrop.style.styleShadow:SetFrameLevel(0)
 			end
 			LeftChatPanel.backdrop.wideshadow:Hide()
 			LeftChatPanel:ClearAllPoints()
-			LeftChatPanel:Point("BOTTOMLEFT", LeftChatMover, "BOTTOMLEFT")
+			LeftChatPanel:SetAllPoints(LeftChatMover)
+			LeftChatPanel:SetFrameStrata('BACKGROUND')
 			LO:RepositionChatDataPanels()
 			LO:ToggleChatPanels()
-			print('THE EAGLE HAS LANDED!!!')
 		end
 
 		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
