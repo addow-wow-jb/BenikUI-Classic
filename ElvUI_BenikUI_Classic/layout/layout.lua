@@ -81,10 +81,22 @@ local bbuttons = {}
 
 function mod:ToggleBuiDts()
 	local db = E.db.benikui.datatexts.chat
+	local edb = E.db.chat.panelBackdrop
 
 	if db.enable then
-		BuiLeftChatDTPanel:Show()
-		BuiRightChatDTPanel:Show()
+		if edb == 'SHOWBOTH' then
+			BuiLeftChatDTPanel:Show()
+			BuiRightChatDTPanel:Show()
+		elseif edb == 'LEFT' then
+			BuiLeftChatDTPanel:Show()
+			BuiRightChatDTPanel:Hide()
+		elseif edb == 'RIGHT' then
+			BuiLeftChatDTPanel:Hide()
+			BuiRightChatDTPanel:Show()
+		elseif edb == 'HIDEBOTH' then
+			BuiLeftChatDTPanel:Hide()
+			BuiRightChatDTPanel:Hide()
+		end
 	else
 		BuiLeftChatDTPanel:Hide()
 		BuiRightChatDTPanel:Hide()
