@@ -81,6 +81,7 @@ local bbuttons = {}
 
 function mod:ToggleBuiDts()
 	local db = E.db.benikui.datatexts.chat
+<<<<<<< HEAD
 	local edb = E.db.datatexts
 
 	if edb.leftChatPanel or edb.rightChatPanel then
@@ -104,6 +105,12 @@ function mod:ToggleBuiDts()
 				BuiRightChatDTPanel:Show()
 			end
 		end
+=======
+
+	if db.enable then
+		BuiLeftChatDTPanel:Show()
+		BuiRightChatDTPanel:Show()
+>>>>>>> origin/development
 	else
 		BuiLeftChatDTPanel:Hide()
 		BuiRightChatDTPanel:Hide()
@@ -460,8 +467,8 @@ function mod:ChangeLayout()
 	ElvUI_TopPanel:SetScript('OnShow', Panel_OnShow)
 	ElvUI_TopPanel:SetFrameLevel(0)
 
-	LeftChatPanel.backdrop:Style('Outside', 'LeftChatPanel_Bui') -- keeping the names. Maybe use them as rep or xp bars... dunno... yet
-	RightChatPanel.backdrop:Style('Outside', 'RightChatPanel_Bui')
+	LeftChatPanel.backdrop:Style('Outside')
+	RightChatPanel.backdrop:Style('Outside')
 
 	if BUI.ShadowMode then
 		MinimapPanel:CreateSoftShadow()
@@ -530,7 +537,11 @@ function mod:Initialize()
 	self:ChatStyles()
 	self:ToggleMinimapStyle()
 	tinsert(BUI.Config, InjectDatatextOptions)
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/development
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ToggleBuiDts)
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ResizeMinimapPanels)
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ChatStyles)
