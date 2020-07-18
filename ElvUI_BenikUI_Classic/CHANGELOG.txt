@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 v1.14 - Jul 18 2020
 *Fixed Chat strata issue after leaving flightMode
 *Fixed Chat EditBox when assigned on the Middle Datatext
@@ -10,7 +8,6 @@ v1.14 - Jul 18 2020
 *Fixed the ParchmentRemover error during Install
 *Fixed a datatext error when Style is disabled
 
->>>>>>> origin/development
 v1.13 - Jul 12 2020
 *Adopt ElvUI DataText changes
 *Fixed an AfkMode error

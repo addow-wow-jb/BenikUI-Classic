@@ -81,36 +81,10 @@ local bbuttons = {}
 
 function mod:ToggleBuiDts()
 	local db = E.db.benikui.datatexts.chat
-<<<<<<< HEAD
-	local edb = E.db.datatexts
-
-	if edb.leftChatPanel or edb.rightChatPanel then
-		db.enable = false
-		BuiLeftChatDTPanel:Hide()
-		BuiRightChatDTPanel:Hide()
-	end
-
-	if db.enable then
-		if db.showChatDt == 'SHOWBOTH' then
-			BuiLeftChatDTPanel:Show()
-			BuiRightChatDTPanel:Show()
-		elseif db.showChatDt == 'LEFT' then
-			if not edb.leftChatPanel then
-				BuiLeftChatDTPanel:Show()
-			end
-			BuiRightChatDTPanel:Hide()
-		elseif db.showChatDt == 'RIGHT' then
-			BuiLeftChatDTPanel:Hide()
-			if not edb.rightChatPanel then
-				BuiRightChatDTPanel:Show()
-			end
-		end
-=======
 
 	if db.enable then
 		BuiLeftChatDTPanel:Show()
 		BuiRightChatDTPanel:Show()
->>>>>>> origin/development
 	else
 		BuiLeftChatDTPanel:Hide()
 		BuiRightChatDTPanel:Hide()
@@ -537,11 +511,7 @@ function mod:Initialize()
 	self:ChatStyles()
 	self:ToggleMinimapStyle()
 	tinsert(BUI.Config, InjectDatatextOptions)
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> origin/development
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ToggleBuiDts)
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ResizeMinimapPanels)
 	hooksecurefunc(LO, 'ToggleChatPanels', mod.ChatStyles)
