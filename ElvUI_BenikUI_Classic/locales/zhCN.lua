@@ -52,12 +52,6 @@ L['Hide Mail Icon'] = true
 L['Middle'] = true
 L['New Mail'] = true
 L['No Mail'] = true
-<<<<<<< HEAD
-L['Show'] = true
-=======
-L['Show Garrison Currency'] = true
-L['Show Oil'] = true
->>>>>>> parent of 30860e0... Simplified the Chat DTs toggle and renamed their option from 'Enable' to 'Show', since they are enabled/disabled via ElvUI options
 L['Show/Hide Chat DataTexts. ElvUI chat datatexts must be disabled'] = true
 L['Show/Hide Mail Icon on minimap'] = true
 L['Show/Hide garrison currency on the datatext tooltip'] = true
