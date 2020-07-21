@@ -207,8 +207,10 @@ function mod:SetFlightMode(status)
 			if LeftChatPanel.backdrop.style then
 				LeftChatPanel.backdrop.style:SetFrameStrata('BACKGROUND')
 				LeftChatPanel.backdrop.style:SetFrameLevel(2)
-				LeftChatPanel.backdrop.style.styleShadow:SetFrameStrata('BACKGROUND')
-				LeftChatPanel.backdrop.style.styleShadow:SetFrameLevel(0)
+				if LeftChatPanel.backdrop.style.styleShadow then
+					LeftChatPanel.backdrop.style.styleShadow:SetFrameStrata('BACKGROUND')
+					LeftChatPanel.backdrop.style.styleShadow:SetFrameLevel(0)
+				end
 			end
 			_G.LeftChatDataPanel:Hide()
 		end
@@ -226,10 +228,6 @@ function mod:SetFlightMode(status)
 
 		-- Disable Blizz location messsages
 		ZoneTextFrame:UnregisterAllEvents()
-
-		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
-			LeftChatPanel_Bui.styleShadow:Hide()
-		end
 
 		self.startTime = GetTime()
 		self.timer = self:ScheduleRepeatingTimer('UpdateTimer', 1)
@@ -310,8 +308,10 @@ function mod:SetFlightMode(status)
 			if LeftChatPanel.backdrop.style then
 				LeftChatPanel.backdrop.style:SetFrameStrata('BACKGROUND')
 				LeftChatPanel.backdrop.style:SetFrameLevel(2)
-				LeftChatPanel.backdrop.style.styleShadow:SetFrameStrata('BACKGROUND')
-				LeftChatPanel.backdrop.style.styleShadow:SetFrameLevel(0)
+				if LeftChatPanel.backdrop.style.styleShadow then
+					LeftChatPanel.backdrop.style.styleShadow:SetFrameStrata('BACKGROUND')
+					LeftChatPanel.backdrop.style.styleShadow:SetFrameLevel(0)
+				end
 			end
 			LeftChatPanel.backdrop.wideshadow:Hide()
 			LeftChatPanel:ClearAllPoints()
@@ -319,11 +319,6 @@ function mod:SetFlightMode(status)
 			LeftChatPanel:SetFrameStrata('BACKGROUND')
 			LO:RepositionChatDataPanels()
 			LO:ToggleChatPanels()
-		end
-
-		if LeftChatPanel_Bui and LeftChatPanel_Bui.styleShadow then
-			LeftChatPanel_Bui.styleShadow:Show()
-			LeftChatPanel_Bui.styleShadow:SetFrameStrata('BACKGROUND') -- it loses its framestrata somehow. Needs digging
 		end
 
 		--BuiTaxiButton:SetParent(E.UIParent)
