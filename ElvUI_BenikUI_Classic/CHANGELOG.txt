@@ -1,3 +1,9 @@
+v1.142 - Aug 8 2020
+*Really fixed the shadow error during flightMode
+
+v1.141 - Jul 29 2020
+*Fixed a shadow error during flightMode
+
 v1.14 - Jul 18 2020
 *Fixed Chat strata issue after leaving flightMode
 *Fixed Chat EditBox when assigned on the Middle Datatext
