@@ -133,7 +133,7 @@ function mod:UpdateXpNotifier()
 end
 
 function mod:XpTextOffset()
-	local text = ElvUI_ExperienceBar.text
+	local text = _G.ElvUI_ExperienceBar.text
 	text:Point('CENTER', 0, E.db.databars.experience.textYoffset or 0)
 end
 
