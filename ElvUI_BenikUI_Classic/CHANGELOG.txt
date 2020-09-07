@@ -1,3 +1,8 @@
+v1.15 - Sep 8 2020
+*Followed ElvUI databars changes
+*Tuned the install
+*Tuned Databars options
+
 v1.142 - Aug 8 2020
 *Really fixed the shadow error during flightMode
 
