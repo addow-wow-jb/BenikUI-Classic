@@ -1,24 +1,14 @@
 local BUI, E, L, V, P, G = unpack(select(2, ...))
 local mod = BUI:GetModule('Databars');
 local DT = E:GetModule('DataTexts');
-local M = E:GetModule('DataBars');
+local DB = E:GetModule('DataBars');
 local LSM = E.LSM;
 
 local _G = _G
 
-local find, gsub = string.find, string.gsub
-
-local incpat = gsub(gsub(FACTION_STANDING_INCREASED, "(%%s)", "(.+)"), "(%%d)", "(.+)")
-local changedpat = gsub(gsub(FACTION_STANDING_CHANGED, "(%%s)", "(.+)"), "(%%d)", "(.+)")
-local decpat = gsub(gsub(FACTION_STANDING_DECREASED, "(%%s)", "(.+)"), "(%%d)", "(.+)")
-
 local GetWatchedFactionInfo = GetWatchedFactionInfo
-local SetWatchedFactionIndex = SetWatchedFactionIndex
-local GetNumFactions = GetNumFactions
-local GetGuildInfo = GetGuildInfo
-local GetFactionInfo = GetFactionInfo
 
--- GLOBALS: hooksecurefunc, selectioncolor, ElvUI_ReputationBar, SpellBookFrame, ToggleCharacter
+-- GLOBALS: hooksecurefunc, selectioncolor, ToggleCharacter
 
 local function OnClick(self)
 	if self.template == 'NoBackdrop' then return end
@@ -26,7 +16,7 @@ local function OnClick(self)
 end
 
 function mod:ApplyRepStyling()
-	local bar = ElvUI_ReputationBar
+	local bar = _G.ElvUI_ReputationBar
 	if E.db.databars.reputation.enable then
 		if bar.fb then
 			if E.db.databars.reputation.orientation == 'VERTICAL' then
@@ -50,7 +40,7 @@ end
 
 function mod:ToggleRepBackdrop()
 	if E.db.benikuiDatabars.reputation.enable ~= true then return end
-	local bar = ElvUI_ReputationBar
+	local bar = _G.ElvUI_ReputationBar
 	local db = E.db.benikuiDatabars.reputation
 
 	if bar.fb then
@@ -74,7 +64,7 @@ function mod:ToggleRepBackdrop()
 end
 
 function mod:UpdateRepNotifierPositions()
-	local bar = ElvUI_ReputationBar.statusBar
+	local bar = DB.StatusBars.Reputation
 
 	local db = E.db.benikuiDatabars.reputation.notifiers
 	local arrow = ""
@@ -114,7 +104,7 @@ function mod:UpdateRepNotifierPositions()
 end
 
 function mod:UpdateRepNotifier()
-	local bar = ElvUI_ReputationBar.statusBar
+	local bar = DB.StatusBars.Reputation
 	local name, reaction, min, max, value, factionID = GetWatchedFactionInfo()
 
 	if not name or E.db.databars.reputation.orientation ~= 'VERTICAL' or (reaction == MAX_REPUTATION_REACTION) then
@@ -126,57 +116,26 @@ function mod:UpdateRepNotifier()
 end
 
 function mod:RepTextOffset()
-	local text = ElvUI_ReputationBar.text
+	local text = _G.ElvUI_ReputationBar.text
 	text:Point('CENTER', 0, E.db.databars.reputation.textYoffset or 0)
 end
 
--- Credit: Feraldin, ElvUI Enhanced (Legion)
-function mod:SetWatchedFactionOnReputationBar(event, msg)
-	if not E.db.benikuiDatabars.reputation.autotrack then return end
-
-	local _, _, faction, amount = find(msg, incpat)
-	if not faction then _, _, faction, amount = find(msg, changedpat) or find(msg, decpat) end
-	if faction then
-		if faction == GUILD_REPUTATION then
-			faction = GetGuildInfo("player")
-		end
-
-		local active = GetWatchedFactionInfo()
-		for factionIndex = 1, GetNumFactions() do
-			local name = GetFactionInfo(factionIndex)
-			if name == faction and name ~= active then
-				SetWatchedFactionIndex(factionIndex)
-				break
-			end
-		end
-	end
-end
-
-function mod:ToggleRepAutotrack()
-	if E.db.benikuiDatabars.reputation.autotrack then
-		self:RegisterEvent('CHAT_MSG_COMBAT_FACTION_CHANGE', 'SetWatchedFactionOnReputationBar')
-	else
-		self:UnregisterEvent('CHAT_MSG_COMBAT_FACTION_CHANGE')
-	end
-end
-
 function mod:LoadRep()
-	local bar = ElvUI_ReputationBar
+	local bar = _G.ElvUI_ReputationBar
 
 	self:RepTextOffset()
-	hooksecurefunc(M, 'UpdateReputation', mod.RepTextOffset)
-	self:ToggleRepAutotrack()
+	hooksecurefunc(DB, 'ReputationBar_Update', mod.RepTextOffset)
 
 	local db = E.db.benikuiDatabars.reputation.notifiers
 
 	if db.enable then
-		self:CreateNotifier(bar.statusBar)
+		self:CreateNotifier(bar)
 		self:UpdateRepNotifierPositions()
-
-		hooksecurefunc(M, 'UpdateReputation', mod.UpdateRepNotifier)
+		self:UpdateRepNotifier()
+		hooksecurefunc(DB, 'ReputationBar_Update', mod.UpdateRepNotifier)
 		hooksecurefunc(DT, 'LoadDataTexts', mod.UpdateRepNotifierPositions)
-		hooksecurefunc(M, 'UpdateReputationDimensions', mod.UpdateRepNotifierPositions)
-		hooksecurefunc(M, 'UpdateReputationDimensions', mod.UpdateRepNotifier)
+		hooksecurefunc(DB, 'UpdateAll', mod.UpdateRepNotifierPositions)
+		hooksecurefunc(DB, 'UpdateAll', mod.UpdateRepNotifier)
 
 		E:Delay(1, mod.UpdateRepNotifier)
 	end
@@ -187,5 +146,5 @@ function mod:LoadRep()
 	self:ToggleRepBackdrop()
 	self:ApplyRepStyling()
 
-	hooksecurefunc(M, 'UpdateReputationDimensions', mod.ApplyRepStyling)
+	hooksecurefunc(DB, 'UpdateAll', mod.ApplyRepStyling)
 end
