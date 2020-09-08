@@ -492,6 +492,11 @@ end
 function mod:PLAYER_ENTERING_WORLD(...)
 	self:ToggleBuiDts()
 	self:regEvents()
+
+	DT:UpdatePanelInfo('BuiLeftChatDTPanel')
+	DT:UpdatePanelInfo('BuiRightChatDTPanel')
+	DT:UpdatePanelInfo('BuiMiddleDTPanel')
+
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
 
