@@ -484,18 +484,17 @@ function mod:ToggleMinimapStyle()
 end
 
 function mod:regEvents()
-	self:MiddleDatatextLayout()
-	self:MiddleDatatextDimensions()
-	self:ToggleTransparency()
+	mod:MiddleDatatextLayout()
+	mod:MiddleDatatextDimensions()
+	mod:ToggleTransparency()
+	DT:UpdatePanelInfo('BuiLeftChatDTPanel')
+	DT:UpdatePanelInfo('BuiRightChatDTPanel')
+	DT:UpdatePanelInfo('BuiMiddleDTPanel')
 end
 
 function mod:PLAYER_ENTERING_WORLD(...)
 	self:ToggleBuiDts()
 	self:regEvents()
-
-	DT:UpdatePanelInfo('BuiLeftChatDTPanel')
-	DT:UpdatePanelInfo('BuiRightChatDTPanel')
-	DT:UpdatePanelInfo('BuiMiddleDTPanel')
 
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 end
@@ -524,6 +523,7 @@ function mod:Initialize()
 	hooksecurefunc(DT, 'UpdatePanelInfo', mod.MiddleDatatextLayout)
 	hooksecurefunc(DT, 'UpdatePanelInfo', mod.ToggleTransparency)
 	hooksecurefunc(DT, 'LoadDataTexts', updateButtonFont)
+	hooksecurefunc(DT, 'LoadDataTexts', mod.regEvents)
 	hooksecurefunc(E, 'UpdateMedia', updateButtonFont)
 	self:RegisterEvent('PLAYER_ENTERING_WORLD')
 end
