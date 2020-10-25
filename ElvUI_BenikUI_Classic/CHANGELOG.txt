@@ -1,3 +1,8 @@
+v1.16 - Oct 25 2020
+*Fixed Chat Datatexts not updating correctly on login
+*Remove Combat Font.  credit burzum and kringel
+*Fixed Databars errors
+
 v1.15 - Sep 8 2020
 *Followed ElvUI databars changes
 *Tuned the install

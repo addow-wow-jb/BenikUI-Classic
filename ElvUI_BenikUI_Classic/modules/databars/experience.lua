@@ -36,12 +36,12 @@ function mod:ApplyXpStyling()
 	end
 
 	if E.db.benikuiDatabars.experience.buiStyle then
-		if bar.backdrop.style then
-			bar.backdrop.style:Show()
+		if bar.holder.style then
+			bar.holder.style:Show()
 		end
 	else
-		if bar.backdrop.style then
-			bar.backdrop.style:Hide()
+		if bar.holder.style then
+			bar.holder.style:Hide()
 		end
 	end
 end

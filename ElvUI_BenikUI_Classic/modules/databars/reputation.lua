@@ -28,12 +28,12 @@ function mod:ApplyRepStyling()
 	end
 
 	if E.db.benikuiDatabars.reputation.buiStyle then
-		if bar.style then
-			bar.style:Show()
+		if bar.holder.style then
+			bar.holder.style:Show()
 		end
 	else
-		if bar.style then
-			bar.style:Hide()
+		if bar.holder.style then
+			bar.holder.style:Hide()
 		end
 	end
 end

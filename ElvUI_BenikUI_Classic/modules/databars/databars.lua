@@ -36,8 +36,8 @@ end
 
 function mod:StyleBar(bar, onClick)
 	bar.fb = CreateFrame('Button', nil, bar)
-	bar.fb:Point('TOPLEFT', bar.backdrop, 'BOTTOMLEFT', 0, -SPACING)
-	bar.fb:Point('BOTTOMRIGHT', bar.backdrop, 'BOTTOMRIGHT', 0, (E.PixelMode and -20 or -22))
+	bar.fb:Point('TOPLEFT', bar.holder, 'BOTTOMLEFT', 0, -SPACING)
+	bar.fb:Point('BOTTOMRIGHT', bar.holder, 'BOTTOMRIGHT', 0, (E.PixelMode and -20 or -22))
 
 	bar.fb:SetScript('OnClick', onClick)
 
@@ -46,7 +46,7 @@ function mod:StyleBar(bar, onClick)
 	end
 
 	if E.db.benikui.general.benikuiStyle ~= true then return end
-	bar.backdrop:Style('Outside', nil, false, true)
+	bar.holder:Style('Outside', nil, false, true)
 end
 
 function mod:Initialize()
