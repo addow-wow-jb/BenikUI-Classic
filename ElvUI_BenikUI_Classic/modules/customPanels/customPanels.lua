@@ -27,8 +27,6 @@ local PanelDefault = {
 	['clickThrough'] = false,
 	['strata'] = "LOW",
 	['combatHide'] = true,
-	['petHide'] = true,
-	['vehicleHide'] = true,
 	['tooltip'] = true,
 	['visibility'] = "",
 	['styleColor'] = 1,
@@ -278,26 +276,10 @@ function mod:OnEvent(event, unit)
 	for name in pairs(E.db.benikui.panels) do
 		if name then
 			local db = E.db.benikui.panels[name]
-			if (db.enable ~= true) or (inCombat and db.combatHide) or (inVehicle and db.vehicleHide) then
+			if (db.enable ~= true) or (inCombat and db.combatHide) then
 				_G[name]:Hide()
 			else
 				_G[name]:Show()
-			end
-			if event == "PET_BATTLE_CLOSE" then
-				_G[name]:SetFrameStrata(db.strata or 'LOW')
-			end
-		end
-	end
-end
-
-function mod:RegisterHide()
-	for name in pairs(E.db.benikui.panels) do
-		if name then
-			local db = E.db.benikui.panels[name]
-			if db.petHide then
-				E.FrameLocks[name] = { parent = E.UIParent }
-			else
-				E.FrameLocks[name] = nil
 			end
 		end
 	end
@@ -307,7 +289,6 @@ function mod:UpdatePanels()
 	mod:CreatePanel()
 	mod:SetupPanels()
 	mod:Resize()
-	mod:RegisterHide()
 	mod:UpdatePanelTitle()
 end
 
