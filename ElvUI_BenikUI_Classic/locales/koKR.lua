@@ -32,6 +32,23 @@ L['RightClick: Toggle Embedded Addon'] = true
 L['ShiftClick to toggle chat'] = true
 L['Click to show the Addon List'] = true
 
+-- Custom Panels
+L['Clone'] = true
+L['Clone the Custom Panel: |cff00c0fa%s|r.\nPlease type the new Name'] = true
+L['Create'] = true
+L['Enable tooltip to reveal the panel name'] = true
+L['Name Tooltip'] = true
+L['New Custom Panel'] = true
+L['Style Position'] = true
+L['Texture Color'] = true
+L['The Custom Panel name |cff00c0fa%s|r already exists. Please choose another one.'] = true
+L['This will delete the Custom Panel named |cff00c0fa%s|r.\nContinue?'] = true
+L['This works like a macro, you can run different situations to get the panel to show/hide differently.\n Example: "[combat] show;hide"'] = true
+L['Title Bar Position'] = true
+L['Title Text Position'] = true
+L['Title'] = true
+L['Type a unique name for the new panel. \n|cff00c0faNote: "BenikUI_" will be added at the beginning, to ensure uniqueness|r'] = true
+
 -- Misc
 L['Camera rotation'] = true
 L['iLevel'] = true
