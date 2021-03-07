@@ -28,7 +28,6 @@ local colorValues = {
 	[2] = CUSTOM,
 	[3] = L['Value Color'],
 	[4] = DEFAULT,
-	[5] = L['Covenant Color']
 }
 
 local function updateOptions()
@@ -426,7 +425,7 @@ end
 local function panelsTable()
 	E.Options.args.benikui.args.panels = {
 		type = "group",
-		name = BUI:cOption(L["Custom Panels"], "orange"),
+		name = L["Custom Panels"],
 		order = 70,
 		childGroups = "select",
 		args = {
