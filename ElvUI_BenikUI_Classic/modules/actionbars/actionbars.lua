@@ -127,17 +127,17 @@ function mod:TransparentBackdrops()
 		for k = 1, 12 do
 			local buttonBars = {_G['ElvUI_Bar'..i..'Button'..k]}
 			for _, button in pairs(buttonBars) do
-				if button.backdrop then
+				if button then
 					if BUI.ShadowMode then
-						if not button.backdrop.shadow then
-							button.backdrop:CreateSoftShadow()
+						if not button.shadow then
+							button:CreateSoftShadow()
 						end
 					end
 
 					if db.transparent then
-						button.backdrop:SetTemplate('Transparent')
+						button:SetTemplate('Transparent')
 					else
-						button.backdrop:SetTemplate('Default', true)
+						button:SetTemplate('Default', true)
 					end
 				end
 			end
@@ -159,17 +159,17 @@ function mod:TransparentBackdrops()
 	for i = 1, NUM_PET_ACTION_SLOTS do
 		local petButtons = {_G['PetActionButton'..i]}
 		for _, button in pairs(petButtons) do
-			if button.backdrop then
+			if button then
 				if BUI.ShadowMode then
-					if not button.backdrop.shadow then
-						button.backdrop:CreateSoftShadow()
+					if not button.shadow then
+						button:CreateSoftShadow()
 					end
 				end
 
 				if db.transparent then
-					button.backdrop:SetTemplate('Transparent')
+					button:SetTemplate('Transparent')
 				else
-					button.backdrop:SetTemplate('Default', true)
+					button:SetTemplate('Default', true)
 				end
 			end
 		end
