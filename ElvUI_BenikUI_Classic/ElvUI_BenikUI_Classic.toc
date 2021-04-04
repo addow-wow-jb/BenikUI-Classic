@@ -1,6 +1,6 @@
 ## Interface: 11306
 ## Author: Benik
-## Version: 1.17
+## Version: 1.18
 ## Title: |cff1784d1ElvUI|r |cff00c0faBenikUI Classic|r
 ## Notes: an ElvUI Classic decorative/enhancement edit
 ## RequiredDeps: ElvUI
