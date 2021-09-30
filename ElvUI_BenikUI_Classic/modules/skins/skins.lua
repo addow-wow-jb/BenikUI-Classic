@@ -53,9 +53,11 @@ local function styleFreeBlizzardFrames()
 		AddFriendEntryFrame:Style("Outside")
 		FriendsFrame.backdrop:Style("Outside")
 		FriendsFriendsFrame:Style("Outside")
-		RecruitAFriendFrame:Style("Outside")
-		RecruitAFriendSentFrame:Style("Outside")
-		RecruitAFriendSentFrame.MoreDetails.Text:FontTemplate()
+		-- ..AddOns\ElvUI_BenikUI_Classic\modules\skins\skins.lua:57: attempt to index global 'RecruitAFriendFrame' (a nil value)
+		--RecruitAFriendFrame:Style("Outside")
+		-- ..AddOns\ElvUI_BenikUI_Classic\modules\skins\skins.lua:57: attempt to index global 'RecruitAFriendSentFrame' (a nil value)
+		--RecruitAFriendSentFrame:Style("Outside")
+		--RecruitAFriendSentFrame.MoreDetails.Text:FontTemplate()
 	end
 
 	if db.gossip then
@@ -69,7 +71,8 @@ local function styleFreeBlizzardFrames()
 
 	if db.help then
 		HelpFrame.backdrop:Style("Outside")
-		HelpFrameHeader.backdrop:Style("Outside")
+		-- ...AddOns\ElvUI_BenikUI_Classic\modules\skins\skins.lua:74: attempt to index global 'HelpFrameHeader' (a nil value)
+		-- HelpFrameHeader.backdrop:Style("Outside")
 	end
 
 	if db.loot then
