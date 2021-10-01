@@ -323,7 +323,8 @@ local function skinZygor()
 			frame.isStyled = true
 		end
 	end
-	hooksecurefunc(ZGV.WhoWhere, "CreateMenuFrame", SkinFindNearest)
+	-- Message: ...AddOns\ElvUI_BenikUI_Classic\modules\skins\skins.lua:326: hooksecurefunc(): CreateMenuFrame is not a function
+	--hooksecurefunc(ZGV.WhoWhere, "CreateMenuFrame", SkinFindNearest)
 
 	local function SkinActionbar()
 		local frame = ZGV.ActionBar.Frame

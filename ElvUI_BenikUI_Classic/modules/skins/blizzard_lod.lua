@@ -155,9 +155,12 @@ local function style_TalentUI()
 	then
 		return
 	end
-
-	if _G["TalentFrame"].backdrop then
+	
+	--[[if _G["TalentFrame"].backdrop then
 		_G["TalentFrame"].backdrop:Style("Outside")
+	end]]
+	if _G["PlayerTalentFrame"].backdrop then
+		_G["PlayerTalentFrame"].backdrop:Style("Outside")
 	end
 
 	for i = 1, 5 do

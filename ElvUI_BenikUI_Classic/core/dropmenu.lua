@@ -22,14 +22,14 @@ BUI.MenuList = {
 	{text = SOCIAL_BUTTON, func = function() ToggleFriendsFrame() end},
 	{text = TALENTS,
 	func = function()
-		if not TalentFrame then
-			TalentFrame_LoadUI()
+		if not PlayerTalentFrame then
+			PlayerTalentFrame_LoadUI()
 		end
 
-		if not TalentFrame:IsShown() then
-			ShowUIPanel(TalentFrame)
+		if not PlayerTalentFrame:IsShown() then
+			ShowUIPanel(PlayerTalentFrame)
 		else
-			HideUIPanel(TalentFrame)
+			HideUIPanel(PlayerTalentFrame)
 		end
 	end},
 	{text = MAINMENU_BUTTON,

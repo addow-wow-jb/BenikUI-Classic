@@ -15,8 +15,8 @@ _G[addon] = Engine
 BUI.Config = {}
 BUI.Title = format('|cff00c0fa%s |r', 'BenikUI Classic')
 BUI["RegisteredModules"] = {}
-BUI.Eversion = tonumber(E.version)
-BUI.Erelease = tonumber(GetAddOnMetadata("ElvUI_BenikUI_Classic", "X-ElvuiVersion"))
+BUI.Eversion = E.version
+BUI.Erelease = GetAddOnMetadata("ElvUI_BenikUI_Classic", "X-ElvuiVersion")
 
 function BUI:RegisterModule(name)
 	if self.initialized then
@@ -62,7 +62,7 @@ E.Libs.EP:HookInitialize(BUI, BUI.Init)
 
 --Version check
 E.PopupDialogs["BENIKUI_VERSION_MISMATCH"] = {
-	text = format(L["%s\n\nYour ElvUI version %.2f is not compatible with BenikUI.\nLatest ElvUI version is %.2f. Please download it from here:\n"], BUI.Title, BUI.Eversion, BUI.Erelease),
+	text = format(L["%s\n\nYour ElvUI version %s is not compatible with BenikUI.\nLatest ElvUI version is %s. Please download it from here:\n"], BUI.Title, BUI.Eversion, BUI.Erelease),
 	button1 = CLOSE,
 	timeout = 0,
 	whileDead = 1,
